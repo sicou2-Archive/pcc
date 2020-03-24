@@ -38,4 +38,13 @@ motorcycles = ['honda', 'yamaha', 'suzuki']
 first_owned = motorcycles.pop(0)
 print(f'The first motorcycle I owned was a {first_owned.title()}.')
 
-#stopped at removing an item by value
+motorcycles.remove('yamaha')
+print(motorcycles)
+
+motorcycles = ['honda', 'yamaha', 'suzuki', 'ducati']
+
+too_expensive = 'ducati'
+motorcycles.remove(too_expensive)
+print(motorcycles)
+print(f"\nA {too_expensive.title()} is too expensive for me.")
+
