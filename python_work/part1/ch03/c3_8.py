@@ -27,4 +27,3 @@ print(visit)
 visit.sort(reverse = True)
 print(visit)
 
-#stopped on 3_9 need to start

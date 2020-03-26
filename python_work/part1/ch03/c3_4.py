@@ -12,6 +12,8 @@ def invites():
 
 invites()
 
+list_len = len(dinner_list)
+print(list_len)
 
 print(f'\n{dinner_list[1]} will do me no honor. His name struck from the fun list\n\n')
 
@@ -34,7 +36,8 @@ def expanded_invites():
 
 invites()
 expanded_invites()
-
+list_len = len(dinner_list)
+print(list_len)
 print('\nWar! Trechery! The table has been destroyed by the vile Choob! Dinner for many has been lost to the sands of time. Our two closest advisors will be allowed council.\n')
 
 list_len = len(dinner_list) - 2
@@ -47,7 +50,7 @@ for i in range(0, list_len):
 
 
 list_len = len(dinner_list)
-
+print(list_len)
 for i in range(0, list_len):
 	print(f'We urgently must consult, {dinner_list[0]}! We must correct our table tragedy!\n')
 	del dinner_list[0]
