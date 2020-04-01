@@ -1,0 +1,58 @@
+Part I:BASICS
+
+        Ch 1: Getting Started
+Getting Python started: done
+Getting started in the Python Interpreter
+HelloWorld.py
+
+        Ch 2: Variables and Simple Data Types
+    Variables
+variable = "Thing assigning to variable."
+variable = "Thing that replaces old value in variable"
+Variables can have letters, numbers, and _
+    Can only start with letter or _; No spaces; do not use Python
+    keywords; should be short and descriptive without being overly
+    short or descriptive; be careful with lower-case L and number 1 or 
+    capital o or number 0
+Can think of variables as boxes, though it can be better to think of
+ them as labels
+
+    Strings
+String is series of characters, usually to be displayed to a user, 
+    surrounded by ' ', or " "
+.title() variable.title() Capitalize words in string
+.lower() variable.lower() lower-case words in string
+.upper() variable.upper() upper-case words in string
+Variables in strings. Two methods, format string and .format();
+    f'thing {variable}'; 'string {}  {}'.format(var_1, var_2);
+    I do know that there is something to do with % to format strings, 
+    though I am not super sure how to use that. I think it is more of 
+    a Python 'pre 3.6' thing. 
+Can do formating to a string and then assign that to a variable
+Can use escape \n (newline) and \t (tab) to add white space to a string
+.rstrip() variable_string.rstrip() strip all white space to the right 
+    of the string permanently 
+
+
+
+    Numbers
+    Comments
+    The Zen of Python
+
+        Ch 3: Introducing Lists
+
+        Ch 4: Working with Lists
+
+        Ch 5: if Statements
+
+        Ch 6: Dictionaries
+
+        Ch 7: User Input and while Loops
+
+        Ch 8: Functions
+
+        Ch 9: Classes
+
+        Ch 10: Files and Exceptions
+
+        Ch 11: Testing Your Code
