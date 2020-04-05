@@ -61,21 +61,62 @@
         
 # print('\nNEXT 7_6\n DONE')
 
+# print('\nNEXT 7_7')
 
+# x = 1
+# z = 1
+# while True:
+#     print(x)
 
+#     x += 1
 
+#     print(x)
+#     #tried to Fibinachi and just... no. 
 
+print('\nNEXT 7_8 and 7_9')
+sandwich_orders = ['bacon', 'pastrami','baked bean', 'pastrami',
+                   'barbecue', 'pastrami', 'blt', 'pastrami', 
+                   'british rail',]
+finished_sandwiches = []
 
+print('Sorry folks, we are all out of pastrami, you are going to need'
+    ' to choose another sandwich.\n')
 
+while 'pastrami' in sandwich_orders:
+    sandwich_orders.remove('pastrami')
 
-print('\nNEXT 7_7')
+while sandwich_orders:
+    for sandwich in sandwich_orders:
+        print(f"Next up, {sandwich}!")
+        making = sandwich_orders.pop(0)
+        finished_sandwiches.append(making)
 
-x = 1
-z = 1
-while True:
-    print(x)
+print("All of the sandwich orders have been made!")
+print(finished_sandwiches)
 
-    x += 1
+print('\nNEXT 7_10')
 
-    print(x)
-    #tried to Fibinachi and just... no. 
+dream_vacation = {}
+
+stop_flag = True
+
+while stop_flag:
+
+    print('Where is a dream vacation for you? ')
+    vacation = input('> ')
+
+    print('What would you like to do there? ')
+    event = input('> ')
+
+    dream_vacation[vacation] = event
+
+    print('Is there anywhere else you want to go? (y/ n) ')
+    proceed = input('> ')
+    if proceed == 'n':
+        stop_flag = 0
+
+for vacation, event in dream_vacation.items():
+    print(f'You want to go to {vacation} and {event.lower()}.')
+
+print('That sounds fun!')
+

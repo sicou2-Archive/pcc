@@ -130,11 +130,95 @@ print(sorted(list))
 list.reverse() can be used to simply reverse the current list order
     permanently, however this is not so big of a deal since you can 
     list.reverse() a second time to get back to your first order. 
+You can len(list_variable) to get the int (starting at 1)of indexes in 
+    the list
 
     Avoiding Index Errors When Working with Lists
+Be aware of off-by-one errors
+Remember list[-1] to get the last item in a list. This always works 
+    except for when the list is empty
 
 
         Ch 4: Working with Lists
+    Looping Through an Entire List
+Looping is useful, huh, who would have thought. 
+list_of_n_length
+for num in list:
+    print(num)
+I might be wrong, but for-loops need to be indexable, otherwise it 
+    cannot count where it is in the loop.
+If possible make the "num" part of the loop at least a little 
+    descriptive even if it is only a temp variable. Where "num" is the 
+    index position variable at that index, in the list being looped. 
+You can do almost anything from within a loop. print(f"{num.title()})")
+Just remember that it will do this every time it goes through that loop,
+    so be aware of the rammifications. 
+As long as every line in the loop is properly indented, you get to stay 
+    in the loop. Once you dedent, you are telling Python to stop the 
+    loops instructions there. 
+
+    Avoiding Indentation Errors
+Indentation is what Python usesto determine how things are related to 
+    the rest of the program. 
+If you forget to indent immidiately after a line expecting an indent, 
+    you will get an error;  
+If you forget to continue to indent lines that are supposed to be in the
+    loop, assuming you indented at least one line correctly, you will 
+    not get an error, however you *will* get unexpected behaviors; 
+    these kinds of errors are called 'Logical Errors'
+If you indent when you are not supposed to you will get an 
+    'IndentationError'. variable = 1
+                            print(variable) <- ERROR
+If you indent unnesessarily after the completion of a loop, you will get
+    a Logical Error and that (those) line will be included in the loop
+    and the consequences of that.     
+Try to remember to not forget the colon. Just dont, syntax error and a 
+    feeling of sillyness.
+
+    Making Numerical Lists
+Lots of reasons to keep a list of numbers in a program, positions,
+    status, values. All kinds of reasons. 
+range()
+for num in range(0,11,1) <- ([index to start on], index to stop at but 
+    not include, [amount to increment by]) '[]' are optional
+list = range(1,5) will give a list of [1,2,3,4] to 'list'
+min(list) = 1
+max(list) = 4
+sum(list) = 10
+List Comprehensions
+    I do not understand these totally, however I an not totally sure 
+        they are necessary. 
+squares = []
+for value in range(1, 11):
+    squares.append(value**2)
+
+
+
+print(squares)
+
+^V^V^V same thing ^V^V^V
+
+squares = [value**2 for value in range(1, 11)]
+print(squares)
+
+Instructions:
+1 begin with a descriptive name for the list
+2 open square brackets [ and define the expression for the values you 
+    want to store in the new list
+3 then write a for loop to generate the numbers you want to feed in to 
+    the expression and then close the square brackets ]
+
+#######STOPPED JUST BEFORE 4_3 TRY IT YOURSELF ON LIST COMPREHENSION P59
+
+    Working with Part of a List
+
+
+    Tuples
+
+
+    Styling Your Code
+
+
 
         Ch 5: if Statements
 
