@@ -32,14 +32,107 @@ Can do formating to a string and then assign that to a variable
 Can use escape \n (newline) and \t (tab) to add white space to a string
 .rstrip() variable_string.rstrip() strip all white space to the right 
     of the string permanently 
-
-
+Be careful about extra whitespace, it can cause problems
+.lstrip() strip all white space to the left of the string permanently 
+.strip() strip all white space on both sided of the string permanently
+Be careful when using single or double quotes inside of strings. Make 
+    sure to mix when possible and to use \' \" when needed. 
 
     Numbers
++ add; - subtract; * multiply; / divide; ** exponents, 
+% modulus (remainder); // floor divide (whole number only)
+2 + 3*4 is one way to help make readability better by showing order of 
+    operations a little more clearly. 
+    
+    Floats
+once a number becomes a float it stays what way until forced to do 
+    otherwise. 
+Calling a float makes a float, float(), or dividing (/). 
+Be careful due to how computers deal with floats, you can sometimes get
+    a crazy amount of decimal places. 
+Python defaults to a float in any operation that uses a float regardless
+    of what it evaluates to. 
+You can use underscored to make large numbers more readable, however 
+    Python ignores them 1_000_000 or 1_00_00_00
+It is possible to assign multiple variables values on a single line of 
+    code; x, y, z = 1, 3, 5 
+Python does not have explicit constants, however you can indicate that
+something is a constant by using ALL_CAPS_IN_THE_VARIABLE_NAME = 4000
+    
     Comments
+#Comments are notes to yourself and others
+#Can be used as TODO, or explane things, or reminders, or whatever you
+    #want them to be used for. 
+#There are no block comments in Python
+#Good comments are there to remind you what something does after you 
+    #have to leave it and come back to it later. Just enough to jog your
+    # or someone elses memory. 
+#If something took you more than one or two stabs to figure out how to 
+    #get something working it is probably a good idea to comment on it. 
+    
     The Zen of Python
+In the Python Shell to get the ZoP
+>>> import this
+The Zen of Python, by Tim Peters
+Beautiful is better than ugly...
+...
+This is the Python community's guiding philosophy. 
 
         Ch 3: Introducing Lists
+    What Is a List?
+A list is a data structure that is collection of items in a particular 
+    order
+    As opposed to a dict, tuple, or set (there are others too)
+in Python [] square brackets indicate a list
+    a_list = [1, 2, 'dog', True, 'happy']
+You can access an element in a list by using its index number, (starting
+    at 0 (zero))
+Index positions start at 0 
+Be wary of off by one errors
+Can use indexed values from a list f'String {variable[0]}'
+
+    Changing, Adding, and Removing Elements
+Can modify by directly assigning the new value to the variable index
+    variable[3] = 'tommy'
+Can add to a list in a few ways
+    variable_list.append('sam') adds 'sam' to the end of the list
+    variable_list[3].insert('jim') adds 'jim' at index value 3 moving
+        everything after index 3 down one index
+Can also remove items from a list:
+    del variable_list[1] will remove the item from index 1
+    variable_list.pop() will remove the last item in the list.
+        you can also assign this popped item to another variable
+    popped = variable_list.pop()
+    variable_list.remove('item to be removed') will remove the first
+    instance of 'item to be removed' moving every item after up one 
+    index number
+
+    Organizing a List
+variable.sort() will permanently sory a list alphabetically
+can also do variable.sort(reverse=True) to reverse alphabetize a list
+    permenantly
+I know this comes up later when talking about slicing a list, but you
+cannot just assign a list to another variable to preserve the original 
+order of that list. 
+    If you do not slice and just list = original_list, when you sort
+        list, original_list will be sorted as well. You must slice 
+        the list and the "re-slice" the list in order to return an 
+        original order
+            You can so this by new_list = old_list[:]
+A temporart sorting of a list can be done with the sorted() function
+sorted(list) will return the list temporarilly sorted alphabetically.
+NOTE: Python does something weird with UPPER and lower case letters
+    when sorting them. Be careful when dealing with this so you do not 
+    get unexpected behaviors. 
+    sorted(list, reverse=True) will also work for sorted. 
+It seems like you can not print(list.sort()) but you *CAN* 
+print(sorted(list))
+list.reverse() can be used to simply reverse the current list order
+    permanently, however this is not so big of a deal since you can 
+    list.reverse() a second time to get back to your first order. 
+
+    Avoiding Index Errors When Working with Lists
+
 
         Ch 4: Working with Lists
 
