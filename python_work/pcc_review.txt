@@ -10,12 +10,11 @@ HelloWorld.py
 variable = "Thing assigning to variable."
 variable = "Thing that replaces old value in variable"
 Variables can have letters, numbers, and _
-    Can only start with letter or _; No spaces; do not use Python
-    keywords; should be short and descriptive without being overly
-    short or descriptive; be careful with lower-case L and number 1 or 
-    capital o or number 0
-Can think of variables as boxes, though it can be better to think of
- them as labels
+    Can only start with letter or _; No spaces; do not use Python keywords; 
+    should be short and descriptive without being overly short or descriptive; 
+    be careful with lower-case L and number 1 or capital o or number 0
+Can think of variables as boxes, though it can be better to think of them as 
+    labels
 
     Strings
 String is series of characters, usually to be displayed to a user, 
@@ -25,9 +24,9 @@ String is series of characters, usually to be displayed to a user,
 .upper() variable.upper() upper-case words in string
 Variables in strings. Two methods, format string and .format();
     f'thing {variable}'; 'string {}  {}'.format(var_1, var_2);
-    I do know that there is something to do with % to format strings, 
-    though I am not super sure how to use that. I think it is more of 
-    a Python 'pre 3.6' thing. 
+    I do know that there is something to do with % to format strings, though I 
+    am not super sure how to use that. I think it is more of a Python 'pre 3.6'
+     thing. 
 Can do formating to a string and then assign that to a variable
 Can use escape \n (newline) and \t (tab) to add white space to a string
 .rstrip() variable_string.rstrip() strip all white space to the right 
@@ -35,8 +34,8 @@ Can use escape \n (newline) and \t (tab) to add white space to a string
 Be careful about extra whitespace, it can cause problems
 .lstrip() strip all white space to the left of the string permanently 
 .strip() strip all white space on both sided of the string permanently
-Be careful when using single or double quotes inside of strings. Make 
-    sure to mix when possible and to use \' \" when needed. 
+Be careful when using single or double quotes inside of strings. Make sure to 
+    mix when possible and to use \' \" when needed. 
 
     Numbers
 + add; - subtract; * multiply; / divide; ** exponents, 
@@ -45,30 +44,29 @@ Be careful when using single or double quotes inside of strings. Make
     operations a little more clearly. 
     
     Floats
-once a number becomes a float it stays what way until forced to do 
-    otherwise. 
+once a number becomes a float it stays what way until forced to do otherwise. 
 Calling a float makes a float, float(), or dividing (/). 
-Be careful due to how computers deal with floats, you can sometimes get
-    a crazy amount of decimal places. 
-Python defaults to a float in any operation that uses a float regardless
-    of what it evaluates to. 
-You can use underscored to make large numbers more readable, however 
-    Python ignores them 1_000_000 or 1_00_00_00
-It is possible to assign multiple variables values on a single line of 
-    code; x, y, z = 1, 3, 5 
-Python does not have explicit constants, however you can indicate that
-something is a constant by using ALL_CAPS_IN_THE_VARIABLE_NAME = 4000
+Be careful due to how computers deal with floats, you can sometimes get a crazy
+     amount of decimal places. 
+Python defaults to a float in any operation that uses a float regardless of 
+    what it evaluates to. 
+You can use underscored to make large numbers more readable, however Python 
+    ignores them 1_000_000 or 1_00_00_00
+It is possible to assign multiple variables values on a single line of code; 
+    x, y, z = 1, 3, 5 
+Python does not have explicit constants, however you can indicate that 
+    something is a constant by using ALL_CAPS_IN_THE_VARIABLE_NAME = 4000
     
     Comments
 #Comments are notes to yourself and others
-#Can be used as TODO, or explane things, or reminders, or whatever you
-    #want them to be used for. 
+#Can be used as TODO, or explane things, or reminders, or whatever you want 
+    #them to be used for. 
 #There are no block comments in Python
-#Good comments are there to remind you what something does after you 
-    #have to leave it and come back to it later. Just enough to jog your
-    # or someone elses memory. 
-#If something took you more than one or two stabs to figure out how to 
-    #get something working it is probably a good idea to comment on it. 
+#Good comments are there to remind you what something does after you have to 
+    #leave it and come back to it later. Just enough to jog your or someone 
+    #elses memory. 
+#If something took you more than one or two stabs to figure out how to get 
+    #something working it is probably a good idea to comment on it. 
     
     The Zen of Python
 In the Python Shell to get the ZoP
@@ -80,13 +78,12 @@ This is the Python community's guiding philosophy.
 
         Ch 3: Introducing Lists
     What Is a List?
-A list is a data structure that is collection of items in a particular 
-    order
-    As opposed to a dict, tuple, or set (there are others too)
+A list is a data structure that is collection of items in a particular order
+As opposed to a dict, tuple, or set (there are others too)
 in Python [] square brackets indicate a list
     a_list = [1, 2, 'dog', True, 'happy']
-You can access an element in a list by using its index number, (starting
-    at 0 (zero))
+You can access an element in a list by using its index number, (starting at 0 
+    (zero))
 Index positions start at 0 
 Be wary of off by one errors
 Can use indexed values from a list f'String {variable[0]}'
@@ -111,32 +108,29 @@ Can also remove items from a list:
 variable.sort() will permanently sory a list alphabetically
 can also do variable.sort(reverse=True) to reverse alphabetize a list
     permenantly
-I know this comes up later when talking about slicing a list, but you
-cannot just assign a list to another variable to preserve the original 
-order of that list. 
-    If you do not slice and just list = original_list, when you sort
-        list, original_list will be sorted as well. You must slice 
-        the list and the "re-slice" the list in order to return an 
-        original order
+I know this comes up later when talking about slicing a list, but you cannot 
+    just assign a list to another variable to preserve the original order of 
+    that list. 
+    If you do not slice and just list = original_list, when you sort list, 
+        original_list will be sorted as well. You must slice the list and the 
+        "re-slice" the list in order to return an original order
             You can so this by new_list = old_list[:]
 A temporart sorting of a list can be done with the sorted() function
 sorted(list) will return the list temporarilly sorted alphabetically.
-NOTE: Python does something weird with UPPER and lower case letters
-    when sorting them. Be careful when dealing with this so you do not 
-    get unexpected behaviors. 
+NOTE: Python does something weird with UPPER and lower case letters (ASCII)
+    when sorting them. Be careful when dealing with this so you do not get 
+    unexpected behaviors. 
     sorted(list, reverse=True) will also work for sorted. 
-It seems like you can not print(list.sort()) but you *CAN* 
-print(sorted(list))
+It seems like you can not print(list.sort()) but you *CAN* print(sorted(list))
 list.reverse() can be used to simply reverse the current list order
     permanently, however this is not so big of a deal since you can 
     list.reverse() a second time to get back to your first order. 
-You can len(list_variable) to get the int (starting at 1)of indexes in 
-    the list
+You can len(list_variable) to get the int (starting at 1)of indexes in the list
 
     Avoiding Index Errors When Working with Lists
 Be aware of off-by-one errors
-Remember list[-1] to get the last item in a list. This always works 
-    except for when the list is empty
+Remember list[-1] to get the last item in a list. This always works except for 
+    when the list is empty
 
 
         Ch 4: Working with Lists
@@ -145,49 +139,49 @@ Looping is useful, huh, who would have thought.
 list_of_n_length
 for num in list:
     print(num)
-I might be wrong, but for-loops need to be indexable, otherwise it 
-    cannot count where it is in the loop.
-If possible make the "num" part of the loop at least a little 
-    descriptive even if it is only a temp variable. Where "num" is the 
-    index position variable at that index, in the list being looped. 
+I might be wrong, but for-loops need to be indexable, otherwise it cannot count
+    where it is in the loop.
+If possible make the "num" part of the loop at least a little descriptive even 
+    if it is only a temp variable. Where "num" is the index position variable 
+    at that index, in the list being looped. 
 You can do almost anything from within a loop. print(f"{num.title()})")
-Just remember that it will do this every time it goes through that loop,
-    so be aware of the rammifications. 
-As long as every line in the loop is properly indented, you get to stay 
-    in the loop. Once you dedent, you are telling Python to stop the 
-    loops instructions there. 
+Just remember that it will do this every time it goes through that loop, so be 
+    aware of the rammifications. 
+As long as every line in the loop is properly indented, you get to stay in the 
+    loop. Once you dedent, you are telling Python to stop the loops 
+    instructions there. 
 
     Avoiding Indentation Errors
-Indentation is what Python usesto determine how things are related to 
-    the rest of the program. 
-If you forget to indent immidiately after a line expecting an indent, 
-    you will get an error;  
-If you forget to continue to indent lines that are supposed to be in the
-    loop, assuming you indented at least one line correctly, you will 
-    not get an error, however you *will* get unexpected behaviors; 
-    these kinds of errors are called 'Logical Errors'
-If you indent when you are not supposed to you will get an 
-    'IndentationError'. variable = 1
-                            print(variable) <- ERROR
-If you indent unnesessarily after the completion of a loop, you will get
-    a Logical Error and that (those) line will be included in the loop
-    and the consequences of that.     
-Try to remember to not forget the colon. Just dont, syntax error and a 
-    feeling of sillyness.
+Indentation is what Python usesto determine how things are related to the rest 
+    of the program. 
+If you forget to indent immidiately after a line expecting an indent, you will 
+    get an error;  
+If you forget to continue to indent lines that are supposed to be in the loop, 
+    assuming you indented at least one line correctly, you will not get an 
+    error, however you *will* get unexpected behaviors; 
+        these kinds of errors are called 'Logical Errors'
+If you indent when you are not supposed to you will get an 'IndentationError'.
+    variable = 1
+        print(variable) <- ERROR
+If you indent unnesessarily after the completion of a loop, you will get a 
+    Logical Error and that (those) line will be included in the loop and the 
+    consequences of that.     
+Try to remember to not forget the colon. Just dont, syntax error and a feeling 
+    of sillyness.
 
     Making Numerical Lists
-Lots of reasons to keep a list of numbers in a program, positions,
-    status, values. All kinds of reasons. 
+Lots of reasons to keep a list of numbers in a program, positions, status, 
+    values. All kinds of reasons. 
 range()
-for num in range(0,11,1) <- ([index to start on], index to stop at but 
-    not include, [amount to increment by]) '[]' are optional
+for num in range(0,11,1) <- ([index to start on], index to stop at but not 
+    include, [amount to increment by]) '[]' are optional
 list = range(1,5) will give a list of [1,2,3,4] to 'list'
 min(list) = 1
 max(list) = 4
 sum(list) = 10
 List Comprehensions
-    I do not understand these totally, however I an not totally sure 
-        they are necessary. 
+    I do not understand these totally, however I an not totally sure they are 
+        necessary. 
 squares = []
 for value in range(1, 11):
     squares.append(value**2)
@@ -201,35 +195,86 @@ print(squares)
 
 Instructions:
 1 begin with a descriptive name for the list
-2 open square brackets [ and define the expression for the values you 
-    want to store in the new list
-3 then write a for loop to generate the numbers you want to feed in to 
-    the expression and then close the square brackets ]
+2 open square brackets [ and define the expression for the values you want to 
+    store in the new list
+3 then write a for loop to generate the numbers you want to feed in to the 
+    expression and then close the square brackets ]
 
 Once writing 3 or 4 line lists become tedious consider giving List
     Comprehensions a serious look. 
 
     Working with Part of a List
+Remember that lists are mutable. Becareful when fiddling with them.
 slice! Parts of a list
-list = [1, 2, 3, 4]
+list = [1, 2, 3, 4, 5, 6]
 slice_list = list[2:3]
 >>> slice_list
 [2, 3]
 You can work slices a few ways. 
-    list[1:6]
-    list[:6] or 
-    list[5:]
-
-    list[:]
+Note lists count by index, like range(6) does; therefore be wary of off by one 
+    errors
+    list[1:6] list from element 1 to 5
+    list[:6] or list[0:6] (these are the same thing)
+    list[5:] list to end starting at element 5
+    list[:] whole list to copy
+    list[-3:] list starting three from the end and going until the end
+Can use a for-loop to loop through a slick of elements in a list for num in 
+    list[:3]: will give the first three elements in list
+Slices are excellent tools for working with parts of lists;
+    ex taking a players .sort() top three scores, or looping through data sets 
+    with chuncks of data a specific size; or when building a web applicastion, 
+    use slices to display info in a series of pages with a good amount of info 
+    on each page. 
+list_copy = list[:] <- Copy's list
 
     Tuples
-
+A tuple looks the same as a list except it uses () instead of square brackets. 
+tuple = (1, 2, 3, 'string', True)
+Tuples are immutable, that cannot be changed without overwriting the whole 
+    tuple with a new value. 
+To define a tuple with only one element: tuple(8,) put a comma after the first 
+    and only element. 
+If you try to change something in a tuple, Python will throw an error. 
+tuple = (1, 2, 3, 4)
+tuple = (11, 13, 15, 17)
 
     Styling Your Code
-
-
+Python has an agreed upon number of conventions to endure that code typically 
+    reads about the same. 
+PEP (Python Enhancement Proposal) is the current standard on how to style code. 
+Rule of thumb is to write code that is readable as opposed to easier to write. 
+    The reason is, you (should) write your code only once, though you will read
+     it many times. 
+PEP 8 sayas to use 4 (four) spaces per indentation level. 
+*DO NOT* mix tabs with spaces. The interpreter can get confused. 
+Each line should be less than 80 characters. 
+Comment lines should be less than 72 characters. 
+    This is because some tools geet grumpy when these are different. 
+Use blank lines to group parts of your code visually
+Do not do so excessively
+You really do not need more than one line between different sections. 
 
         Ch 5: if Statements
+    A Simple Example
+if-statements can be used to single out special circumstances, like BMW in a 
+    list of cars. 
+At the heart of every if-statement is a conditional test (True/ False)
+>>> car = 'bmw'
+>>> car == 'audi'
+False
+When comparing strings capitalization matters
+Checking for inequality != (not)
+
+
+
+    Conditional Tests
+
+    if Statements
+
+    Using if Statements with Lists
+
+    Styling Your if Statements
+
 
         Ch 6: Dictionaries
 
