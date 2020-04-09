@@ -255,7 +255,8 @@ Do not do so excessively
 You really do not need more than one line between different sections. 
 
         Ch 5: if Statements
-    A Simple Example
+    Conditional Tests
+
 if-statements can be used to single out special circumstances, like BMW in a 
     list of cars. 
 At the heart of every if-statement is a conditional test (True/ False)
@@ -264,12 +265,66 @@ At the heart of every if-statement is a conditional test (True/ False)
 False
 When comparing strings capitalization matters
 Checking for inequality != (not)
-
-
-
-    Conditional Tests
+You can also do numerical comparisons
+== equal to
+< less than
+> greater than
+>= greater or equal
+<= less or equal
+Can also check for multiple conditions on a single line
+>>> a == b and b == c
+False
+>>> a < b and b < c
+True
+and conditional, if I do not know this by now, please just give up
+or conditional, same thing, I actually like this logic stuff. I better know 
+    this
+You can check to see if something is in a list with 'in' keyword 
+    Also, can see if something is 'not in' something 
+>>> list = [1, 2, 3,]
+>>> 5 in list
+False
+>>> 2 in list
+True
+>>> 4 not in list
+True
+>>> 2 not in list
+False
+Boolean Expression is another term for conditional expression
+Boolean Values will always be either True or False
+Boolean Values are often used to keep track of certian conditions; like flags
+>>> user_can_edit = False
+Efficient way to keep track of the different states of a program. 
 
     if Statements
+super simple
+if conditional_test:
+    do_something
+Can put any conditional test on the first line followed by almost any action 
+    in the following block.
+Typically try to not ever complicate your if conditional tests. If it gets hard
+    to read move it somewhere else and call that variable in the if statement
+Indentation plays the same role for if-statements as it did with loops. 
+if-else is used to check the if, if the if is False the else *will* run
+if-elif-else chains can be used to run down a list of possibible actions based
+    on conditionals and run the *first* one the is true. 
+The first one that is true bit is super important. Make sure it is possible to 
+    hit all of the if-elif-else statements based on all of the possible 
+    conditions otherwise the code is pointless. 
+Multiple elif blocks can be used. 
+Not super sure what to do if the if-elif-else chain becomes super long. There
+    is probably a better way to do that, but I am not super positive what that
+    solution is at the moment. 
+The else block is not required in Python
+Sometimes it can be more clear to use a catch all elif statement instead of a 
+    else: 
+Be careful with else blocks. They are a catch all and will catch bad, invalid,
+    or even malicious data. 
+
+#######STOPPED TESTING MULTIPLE CONDITIONS PG 83
+
+
+
 
     Using if Statements with Lists
 

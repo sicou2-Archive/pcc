@@ -35,3 +35,14 @@ def describe_city(city, country='Canada'):
 describe_city('montreal')
 describe_city('toronto')
 describe_city('london', 'england')
+
+print('\nNEXT 8_6')
+
+def city_country(city, country):
+    c_and_c = f'{city}, {country}'
+    return c_and_c.title()
+
+print(city_country('austin', 'texas'))
+print(city_country('petoria', 'south africa'))
+print(city_country('tillinton', 'england'))
+    
