@@ -320,19 +320,41 @@ Sometimes it can be more clear to use a catch all elif statement instead of a
     else: 
 Be careful with else blocks. They are a catch all and will catch bad, invalid,
     or even malicious data. 
-
-#######STOPPED TESTING MULTIPLE CONDITIONS PG 83
-
-
-
-
+if-elif-else can only check one condition. 
+    Therefore if you need to you can use multiple if's chained together to test
+        many things
+You can efficiently check through a list for special values with a for-loop/
+    if-statement combination. For example looking through a list to see if 
+    certain ingredients are in or out of stock. 
+Empty objects return False
+    text = ''
+    list = []
+    therefore you can test with an if to see if something is empty in order to 
+        do something interesting with that empty list. e.g. complete level, 
+        or confirm a task is complete
+    
     Using if Statements with Lists
+You can also check to see if something in one list is in another list with 
+a for-loop and a if-statement
+for thing in list:
+    if thing in another_list:
+        do_something()
 
     Styling Your if Statements
-
+PEP 8 says to put a single space around conditionals for if-statements
+Good: if 3 < 5:
+Not Good: of 3>4:
 
         Ch 6: Dictionaries
+    A Simple Dictionary
 
+    Working with Dictionaries
+
+    Looping Through a Dictionary
+
+    Nesting
+
+    
         Ch 7: User Input and while Loops
 
         Ch 8: Functions

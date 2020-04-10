@@ -46,3 +46,35 @@ print(city_country('austin', 'texas'))
 print(city_country('petoria', 'south africa'))
 print(city_country('tillinton', 'england'))
     
+print('\nNEXT 8_7 and 8_8')
+
+def make_album(artist, album, songs=None):
+        
+    if songs:
+        music_album = {
+            'Artist': artist.title(),
+            'Album': album.title(),
+            'Number of songs': songs
+            }
+    else:
+        music_album = {
+            'Artist': artist.title(),
+            'Album': album.title(),
+            }
+    return music_album
+
+while True: #No I am not going to do another q to quit thing. No. Not now. 
+    artist_text = 'Please enter the name of the artist/band. \n>>>'
+    album_text = 'Please enter the name of the album. \n>>>'
+    songs_text = 'If known please enter the number of songs on the album. \n'
+    'Otherwise please leave blank or enter 0 (zero) \n>>>'
+    artist = input(artist_text)
+    album = input(album_text)
+    songs = input(songs_text)
+    print(make_album(artist, album, songs))
+
+
+#print(make_album('boston','dont look back', 5))
+#print(make_album('metalica','fuel', 8))
+#print(make_album('pink floyd','the wall'))
+
