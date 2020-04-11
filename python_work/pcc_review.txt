@@ -351,6 +351,9 @@ Not Good: of 3>4:
     A Simple Dictionary
 Creating this dict
 a_dict = {'key':value, 1: 2,}
+
+    Working with Dictionaries
+dictionaries in Python are a collection of 'key'-'value' pairs
 Acessing the dict is similar to calling a list index except you refer to the 
     key
 >>> a_dict['key']
@@ -369,12 +372,44 @@ Then can work with it like normal.
 In addition to that empty dicts will return false
 Changing a value in a k-v pair is the same as assigning a new k-v pair except
     you reuse the key. 
-
-
-
-    Working with Dictionaries
+>>> a_dict['key'] = 'happy'
+>>> a_dict['key'] = 'smile'
+You can remove a k-v pair with >>> del a_dict['key']
+This is a permanent deletion, no take-backsies
+Dictionarys can be used to store information for one object and its many 
+    attributes, and also an atribute of many objects. e.g. a person and facts
+    about then vs many people with one response to a poll. 
+        This assumes no nesting. 
+NOTE: A long dict has PEP 8 formatting that assists readability
+a_dict = {
+    'a': 1,
+    'b': 2, 
+    'c': 3,
+    'd': 4,
+    }
+You indent one level "down". 
+    There are other ways to format long dicts and other things. Be aware, be 
+        alert, be alive!
+Use .get() to access things in a list. This will return None (or something else
+    if you tell it to do something else) if the 'key' you are attempting to 
+    access does not exist. 
+>>> variable = a_dict.get('key', 'that does not exist please fix the error')
+a_dict['key'] vs a_dict.get('key')
+Both work, but should use .get if there is a chance that the key does not exist
+    otherwise you will get a KeyError
 
     Looping Through a Dictionary
+Because dicts can be short or long, you can loop through dicts. 
+You can loop through dicts in a few ways
+
+############# STOPPED LOOPING THROUGH A DICT P99
+    Loop throuhg all k-v pairs
+    Loop through all keys
+    Loop through keys in a perticular order
+    Loop through all values in a dict
+
+
+
 
     Nesting
 

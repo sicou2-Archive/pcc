@@ -94,9 +94,7 @@ def print_messages(to_print):
 
 print_messages(messages)
 
-print('\nNEXT 8_10')
-
-
+print('\nNEXT 8_10 and 8_11')
 
 messages = [
     'Dog is a good boy!',
@@ -110,11 +108,60 @@ messages_sent = []
 
 def send_messages(text_messages):
     while text_messages:
-        to_send = text_messages.pop()
+        to_send = text_messages.pop(0)
         print('\nSENDING TEXT MESSAGE: ')
         print(to_send)
         print('MESSAGE SENT')
         messages_sent.append(to_send)
 
-send_messages(messages)
+send_messages(messages[:])
 print('Messages: ', messages, 'Sent: ', messages_sent)
+
+print('\nNEXT 8_12')
+
+def sandwich_toppings(*args):
+    print("\nThe requested toppings for the next order are: ")
+    for topping in args:
+        print(f"- {topping}")
+    print("BUILDING ORDER")
+
+sandwich_toppings('eggs', 'ash')
+sandwich_toppings('salmon', 'salt', 'pickles')
+sandwich_toppings('sand', 'bacon', 'cat meat', 'zinc')
+
+print('\nNEXT 8_13')
+
+def user_profile(first, last, **kwargs):
+    print(f"This is what we know about {first.title()} {last.title()}: ")
+    for key, fact in kwargs.items():
+        print(f"- {key} : {fact.title()}")
+
+user_profile('dan','jones', hair='blond', build='average')
+
+print('\nNEXT 8_14')
+
+def car_info(manufacture, model, **kwargs):
+    car_dict = {}
+    car_dict['make'] = manufacture
+    car_dict['model'] = model
+
+    for key, value in kwargs.items():
+        car_dict[key] = value
+    return car_dict
+
+car_1 = car_info('subaru', 'outback', color='blue', tow_package=True)
+print(car_1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
