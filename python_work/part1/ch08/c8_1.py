@@ -63,18 +63,58 @@ def make_album(artist, album, songs=None):
             }
     return music_album
 
-while True: #No I am not going to do another q to quit thing. No. Not now. 
-    artist_text = 'Please enter the name of the artist/band. \n>>>'
-    album_text = 'Please enter the name of the album. \n>>>'
-    songs_text = 'If known please enter the number of songs on the album. \n'
-    'Otherwise please leave blank or enter 0 (zero) \n>>>'
-    artist = input(artist_text)
-    album = input(album_text)
-    songs = input(songs_text)
-    print(make_album(artist, album, songs))
+# while True: #No I am not going to do another q to quit thing. No. Not now. 
+#     artist_text = 'Please enter the name of the artist/band. \n>>>'
+#     album_text = 'Please enter the name of the album. \n>>>'
+#     songs_text = 'If known please enter the number of songs on the album. \n'
+#     'Otherwise please leave blank or enter 0 (zero) \n>>>'
+#     artist = input(artist_text)
+#     album = input(album_text)
+#     songs = input(songs_text)
+#     print(make_album(artist, album, songs))
 
 
 #print(make_album('boston','dont look back', 5))
 #print(make_album('metalica','fuel', 8))
 #print(make_album('pink floyd','the wall'))
 
+print('\nNEXT 8_9')
+
+messages = [
+    'Dog is a good boy!',
+    'Gypsy is a good girl!',
+    'Hans is a good boy!',
+    'Blaze is a good boy!',
+    'Kidd was a good boy!',
+    ]
+
+def print_messages(to_print):
+    for item in to_print:
+        print(item)
+
+print_messages(messages)
+
+print('\nNEXT 8_10')
+
+
+
+messages = [
+    'Dog is a good boy!',
+    'Gypsy is a good girl!',
+    'Hans is a good boy!',
+    'Blaze is a good boy!',
+    'Kidd was a good boy!',
+    ]
+
+messages_sent = []
+
+def send_messages(text_messages):
+    while text_messages:
+        to_send = text_messages.pop()
+        print('\nSENDING TEXT MESSAGE: ')
+        print(to_send)
+        print('MESSAGE SENT')
+        messages_sent.append(to_send)
+
+send_messages(messages)
+print('Messages: ', messages, 'Sent: ', messages_sent)

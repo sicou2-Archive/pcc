@@ -84,6 +84,8 @@ in Python [] square brackets indicate a list
     a_list = [1, 2, 'dog', True, 'happy']
 You can access an element in a list by using its index number, (starting at 0 
     (zero))
+    >>> a_list[2]
+    'dog'
 Index positions start at 0 
 Be wary of off by one errors
 Can use indexed values from a list f'String {variable[0]}'
@@ -347,6 +349,28 @@ Not Good: of 3>4:
 
         Ch 6: Dictionaries
     A Simple Dictionary
+Creating this dict
+a_dict = {'key':value, 1: 2,}
+Acessing the dict is similar to calling a list index except you refer to the 
+    key
+>>> a_dict['key']
+Keys can be ints or strings
+Keys or values can be assigned with a variable, however once in the dict if the
+    variable changes, the dict will not update
+a dict is a collection of key-value pairs. Each key is connected to a value. 
+Explicitly, to access a value with a key: a_dict['key']
+dicts are dynamic can add or remove from them 
+To add a new k-v pair to a dict: a_dict['new_key'] = 'new value'
+NOTE: As of Python 3.7 dicts are now ordered. When looping through the order
+    the loop goes through the dict will be in the order that the k-v were added
+    to the dict
+Creating an empty dict is simple: new_dict = {}
+Then can work with it like normal. 
+In addition to that empty dicts will return false
+Changing a value in a k-v pair is the same as assigning a new k-v pair except
+    you reuse the key. 
+
+
 
     Working with Dictionaries
 
@@ -354,7 +378,7 @@ Not Good: of 3>4:
 
     Nesting
 
-    
+
         Ch 7: User Input and while Loops
 
         Ch 8: Functions
