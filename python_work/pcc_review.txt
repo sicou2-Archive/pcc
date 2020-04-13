@@ -402,12 +402,37 @@ Both work, but should use .get if there is a chance that the key does not exist
 Because dicts can be short or long, you can loop through dicts. 
 You can loop through dicts in a few ways
 
-############# STOPPED LOOPING THROUGH A DICT P99
-    Loop throuhg all k-v pairs
-    Loop through all keys
-    Loop through keys in a perticular order
-    Loop through all values in a dict
+    Loop through all k-v pairs
+Can loop:
+>>>for key, value in user_0.items(): # 'key' and 'value' are variable names and
+                                    # can be whatever make it clear what they
+                                    # are and are doing. 
+        print(key, value)
+.items() is a method that returns k-v pairs
+the above loop then assigns these pairs to each of the two named variables. 
+Looping through all k-v pairs is a good option when you have a dict of object
+    and one piece of info e.g. 'person':'primary_language' or dicts with the 
+    same 'value-type' for many different keys. 
+see favorite_languages.py
 
+    Loop through all keys
+.keys() is a useful method when you do not need to work with all of the values
+    in a dict
+e.g. loop through a dicts 'keys' to find one or more to do something with them. 
+NOTE: for keys in a_dict.keys(): is the same thing as for keys in a_dict:
+.keys() is the default value for the dict to be iterated over. 
+.keys() is not just for looping. It returns a list of all 'keys'. 
+    Loop through keys in a particular order
+sorted(a_dict.keys()) is an option. 
+Not a whole lot here, but it might be useful when printing something to a user
+    Loop through all values in a dict
+.values() is an option in the same way that .keys() is an option. 
+This is if you need to only loop through the values of a dict. 
+In this example: 
+set(a_dict.values()) is used to creat a set of the values in the dict. A set 
+    is used to identify unique items in a list and only display one instance of
+    them. In this example it was for when there were multiple people with the
+    same favorite language. 
 
 
 
@@ -417,7 +442,7 @@ You can loop through dicts in a few ways
         Ch 7: User Input and while Loops
 
         Ch 8: Functions
-
+WORKING P151
         Ch 9: Classes
 
         Ch 10: Files and Exceptions
