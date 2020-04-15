@@ -433,13 +433,53 @@ set(a_dict.values()) is used to creat a set of the values in the dict. A set
     is used to identify unique items in a list and only display one instance of
     them. In this example it was for when there were multiple people with the
     same favorite language. 
-
-
+A set is a unordered collection with no duplicate elements
+You create a set with either set(something_not_a_set) or with a_set = {'dog'}
+NOTE: you cannot create an empty set with a_set = {}. This would create a dict.
+empty_set = set()
 
     Nesting
-
+This is when you want to store something *in* something else. List in list, or
+dict in list, or set in dict.
+List of dicts
+a_dict = {'a':'1'}
+b_dict = {'b':'2'}
+c_dict = {'c':'3'}
+a_list = [a_dict, b_dict, c_dict]
+List in dict
+a_dict = {'a_key':'a_value', 'b_key': ['a_list', 'b_list',]}
+this shows a couple of things, in addition to the list in a dict ex.
+It showes that a value in a dict does not need to always be the same type of 
+    object that other values in the dict are. 
+When you have a long print call and you need to break it up over several line, 
+    you will close the string with ' or " and then on the next line, intent one
+    level and then open the ' or " again and continue the string. 
+You can nest a list inside a dict any time you want a key to have more than one
+value associated with it. E.g. people and their list of favorite programming
+    languages
+NOTE: DO NOT NEST TO DEEPLY FOR IT IS GREEDY AND WILL AWAKEN NASTY BEASTS,
+    there is also probably a better way to do it. 
+Dicts can do in dicts. 
+    users{'user':{'dict_of_user_facts'}}
+Keep the structure of dicts within dicts the same. It will make this much 
+    easier to read. 
 
         Ch 7: User Input and while Loops
+    How the input() Function Works
+input() pauses the program and waits for the user to type in text. It then 
+    converts that text to a string, and then if it is told to, assigns that 
+    string to a variable. 
+input takes one parameter that is a string and that becomes the prompt for the 
+    input
+input('> ')
+NOTE: Many editors do not run programs with input correctly, probably will need
+    to use the Terminal
+Can use the prompt parameter to ask questions or just give a typing prompt 
+    indicator
+##STOPPED PG 114
+    Introducing while Loops
+
+    Using a while Loop with Lists and Dictionaries
 
         Ch 8: Functions
 WORKING P151
