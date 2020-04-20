@@ -1,121 +1,122 @@
+import restaraunt, user_profile, admin_profile, random
+
 print("NEXT 9_1 and 9_2")
 
-class Restaraunt:
-    '''This is a basic representation of a restaraunt'''
+#Restaraunt class moved to restaraunt.py
 
-    def __init__(self, restaraunt_name, cuisine_type):
-        '''Initialize basic facts about the restaraunt'''
-        self.restaraunt_name = restaraunt_name
-        self.cuisine_type = cuisine_type
-        self.number_served = 0
+tonys = restaraunt.Restaraunt('tony\'s', 'pizza')
+garden = restaraunt.Restaraunt('the garden', 'french')
+pit = restaraunt.Restaraunt('the pit', 'BBQ')
 
-    def describe_restaraunt(self):
-        '''This are the basic facts about the restaraunt'''
-        print(f"The name of the restaraunt is: {self.restaraunt_name.title()}."
-            f"\nThe cuisine type is : {self.cuisine_type}. That sounds great!")
-
-    def open_restaraunt(self):
-        '''This indicates if the restaraunt is open'''
-        print(f"{self.restaraunt_name.title()} is currently open! Lets go!")
-
-    def increment_number_served(self, served_today):
-        '''This increases the total number served by todays served total.'''
-        self.number_served += served_today
-
-
-tonys = Restaraunt('tony\'s', 'pizza')
-garden = Restaraunt('the garden', 'french')
-pit = Restaraunt('the pit', 'BBQ')
-
-tonys.describe_restaraunt()
-tonys.open_restaraunt()
-
-garden.describe_restaraunt()
-garden.open_restaraunt()
-
-pit.describe_restaraunt()
-pit.open_restaraunt()
+tonys.describe_restaraunt(); tonys.open_restaraunt()
+garden.describe_restaraunt(); garden.open_restaraunt()
+pit.describe_restaraunt(); pit.open_restaraunt()
 
 print('\nNEXT 9_3')
 
-class User:
-    '''This creates a citizens user profile'''
-    def __init__(self, first_name, last_name, pet=0, sig_other=0):
-        '''Initialize the citizen's information'''
-        self.first_name = first_name
-        self.last_name = last_name
-        self.pet = pet
-        self.sig_other = sig_other
-        self.fullname = first_name.title() + ' ' + last_name.title()
-        self.login_attempts = 0
+#User class moved to user_profile.py
 
-    def describe_user(self):
-        '''This is the ZONE citizen's profile'''
-        print(f"\nUSER DATA for: {self.fullname}")
+user_1 = user_profile.User('alice', 'alington', 0, 0)
+user_2 = user_profile.User('bob', 'bobbart', 0, 1)
+user_3 = user_profile.User('charlie', 'chazville', 1, 0)
+user_4 = user_profile.User('dan', 'daniael', 1, 1)
 
-        if self.sig_other == 1 or self.pet == 1:
-            if self.sig_other == 1:
-                print("Has a significant other.")
-            if self.pet == 1:
-                print("Has at least one pet.")
-        else:
-            print("We have no further valid data.")
-
-    def greet_user(self):
-        '''
-        This distrubues a friendly greeting to the citizen with 
-        gentle encouragement for LOYALTY
-        '''
-
-        print(f"\n{self.fullname}! The ZONE hopes you are happy!")
-
-        if self.sig_other == 1 or self.pet == 1:
-            if self.sig_other == 1:
-                print("We trust your life partner is remaining LOYAL!")
-            if self.pet == 1:
-                print("We trust you will remain LOYAL for your pets sake.")
-        else:
-            print("LOYALTY is the key to life!")
-
-    def increment_login_attempts(self):
-        self.login_attempts += 1
-        print(f"Number of login attempts: {self.login_attempts}.")
-
-    def reset_login_attempts(self):
-        self.login_attempts = 0
-        print("Login attempts reset.")
-
-
-
-
-user_1 = User('alice', 'alington', 0, 0)
-user_2 = User('bob', 'bobbart', 0, 1)
-user_3 = User('charlie', 'chazville', 1, 0)
-user_4 = User('dan', 'daniael', 1, 1)
-
-user_1.describe_user()
-user_2.describe_user()
-user_3.describe_user()
-user_4.describe_user()
-
-user_1.greet_user()
-user_2.greet_user()
-user_3.greet_user() 
-user_4.greet_user()
+user_1.describe_user(); user_2.describe_user(); user_3.describe_user();
+user_4.describe_user(); user_1.greet_user(); user_2.greet_user()
+user_3.greet_user(); user_4.greet_user()
 
 print('\nNEXT 9_4')
 
-tonys.number_served = 199
-print(tonys.number_served)
-tonys.increment_number_served(34)
-print(tonys.number_served)
+tonys.number_served = 199; print(tonys.number_served)
+tonys.increment_number_served(34); print(tonys.number_served)
 
 print('\nNEXT 9_5')
 
-user_1.increment_login_attempts()
-user_1.increment_login_attempts()
-user_1.increment_login_attempts()
-user_1.increment_login_attempts()
-user_1.reset_login_attempts()
-user_1.increment_login_attempts()
+user_1.increment_login_attempts(); user_1.increment_login_attempts()
+user_1.increment_login_attempts(); user_1.increment_login_attempts()
+user_1.reset_login_attempts(); user_1.increment_login_attempts()
 
+print('\nNEXT 9_6')
+
+class IceCreamStand(restaraunt.Restaraunt):
+    """This represents a restaraunt, specifically an Ice Cream Stand"""
+    def __init__(self, restaraunt_name, cuisine_type):
+        """
+        This inherits the parent arguments and defines the available flavors.
+        """
+        super().__init__(restaraunt_name, cuisine_type)
+        self.flavors = ['chocolate', 'vanilla', 'coffee']
+
+    def display_flavors(self):
+        """ This shows the available flavors. """
+        print("That flavors available today are: ")
+        for flavor in self.flavors:
+            print(f"\t-> {flavor.title()}")
+
+shivers = IceCreamStand('shivers ice cream', 'desert')
+shivers.display_flavors
+
+print('\nNEXT 9-7 and 9_8')
+
+#Privledges class moved to admin_profile.py
+#Admin class moved to admin_profile.py
+
+user_5 = admin_profile.Admin('ellen', 'shields', 1, 1)
+user_5.describe_user()
+user_5.privledges.show_privledges()
+
+print('\nNEXT 9-13')
+
+class Die:
+    """This simulates a single, user selected sided die"""
+
+    def __init__(self, sides=6):
+        """This initializes the class with a die side default of 6."""
+        self.sides = sides
+
+    def roll_die(self):
+        """This simulates the rolling of a die."""
+        rolls = int(input("How many time would you like to roll the die? "))
+
+        for roll in range(rolls):
+            print(f'The die rolls a "{random.randint(1, self.sides)}"!')
+
+blue = Die(10)
+
+#blue.roll_die()
+
+red = Die(20)
+
+#red.roll_die()
+
+print('\nNEXT 9-14')
+
+lottery_numbers = (
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+    '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'
+    )
+winning_numbers = []
+my_ticket = ['3','8','12','14']
+
+#for i in range(4):
+#        my_number = random.choice(lottery_numbers)
+#        my_ticket.append(my_number)
+
+print(my_ticket)
+
+attempts = 0
+
+while sorted(my_ticket) != sorted(winning_numbers) and attempts <= 200000:
+    
+    winning_numbers = []
+
+    for i in range(4):
+        winning_number = random.choice(lottery_numbers)
+        winning_numbers.append(winning_number)
+
+    attempts += 1
+    print(attempts)
+
+print(f"Tonight's winning lotter numbers are {sorted(winning_numbers)}!")
+print(f"It took you {attempts} to win the lottery one time.")
+print(sorted(winning_numbers), (sorted(my_ticket)))

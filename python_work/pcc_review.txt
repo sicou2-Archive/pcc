@@ -476,15 +476,142 @@ NOTE: Many editors do not run programs with input correctly, probably will need
     to use the Terminal
 Can use the prompt parameter to ask questions or just give a typing prompt 
     indicator
-##STOPPED PG 114
+Unless your instructions should be clear and easy-to- follow/understand. Need 
+    to also seperate the instruction text from the users input to make it clear
+    something is expexted from the user. 
+Can help to use a colon then a space at the end of the prompt
+When the prompt is longer than one line, (including when you use a second line
+    for further instructions) you should create a variable and increment/
+    concatenate the string together. 
+    NOTE this is *ONE WAY* to build a multi-line string. 
+    NOTE: I am not sure specifically if this is best practice or just how Eric
+        does this. 
+variable = 'Do the thing user!'
+variable += '\nFurther instructions for clarification user! '
+action = input(variable)
+input() puts everything the user types in to a string. If you expect a number, 
+    you will need to convert that 'str' in to an int with int(user_input) 
+    before trying to manipulate that number with number things.
+If you forget to int() you should get a TypeError
+Modulo is a very useful tool for working with numerical information. 
+It specifically takes a number and divides it by another number and returns the
+    remainder. 
+It does not tell you how many times a number fits in to another number, *ONLY*
+    the remainder. 
+REMEMBER: Modulo any number by 2 and if 0, then the number is even, if 1, the 
+    number is odd. 
+
     Introducing while Loops
+for-loop takes each item in an iterable thing (set, list, dict, tuple, 
+    something... else?) and loops over it once for each item in that collection
+a while-loop repeats until the condition that sets the loop is true.
+while True: <- Will loop forever unless something breaks out of the loop. 
+
+while a_number is <= 399:
+    do something.
+MAKE SURE: that the loop will eventually become false or something breaks out 
+    of the loop, or you will need to wait for the heat death of the universe. 
+Quiting a while loop can be based on many things. User input, a flag that
+    changes to false, *ANYTHING* that can become false, or break out of the 
+    loop. 
+while user_input != 'quit':
+Be wary for user_input strings to 'quit', you might still have to go through 
+    the loop one more time depending on how you have the loop set up. 
+    An if statement can help with that to short circuit out of the loop exactly
+    when you want to. 
+Flags - setting a variable to True or False and then changing that variable 
+    to change a conditional can be simpler than while True and can allow for
+    impact beyond a function. 
+    e.g. A program where there are many things should cause the conditional to
+        stop the loop. This program should only run as long as many 
+        conditionals are true
+The keyword break can be used to immediately end any loop without running any
+    remaining code in that block. This allows you to more elequantly control 
+    exactly the code you want to run in a loop. 
+The keyword continue will restart the loop from that point without finishing 
+    that loop... of the loop. Immediately to the top of the loop. 
+You need to avoid an infinite loop. Everything needs a way out.
+If you get stuck in an infinite loop Crtl-c will interupt the program forcing a
+    stop. Or just close the window. 
+Thoroughly test your loops to make sure that they can and will exit the loop
+    eventually. Especially when the exit conditions are subtle. 
 
     Using a while Loop with Lists and Dictionaries
+You should not modify a list while looping through the list else Python (and 
+    you) will get lost, dazed, and confused. 
+while-loops with list and dicts allows for collecting, using, storing, and 
+organizing input to examine and report later. 
+No for-loop, .pop() from one list to another will not work. 
+remove('string') will only remove one instance of the object you want to remove
+    from that list. You can while-loop many times to make sure all instances
+    of that thing are removed from the whole data structure. 
+Can use input() with a while loop to recieve many responses from a user until 
+    they indicate that their data entry is complete. 'quit' 'end' whatever. 
 
         Ch 8: Functions
-WORKING P151
-        Ch 9: Classes
+    Defining a Function
+Functions are named blocks of code that do one thing. 
+When you want to run that code you 'call' a function. 
+This saves typing and increases modularity and readability. 
+Functions can process data, or display it. (Plus all of the other things)
+>>> def do_a_function():
+>>>     do_code_things
 
+>>> do_a_function()
+THINGS HAPPEN!
+
+Will also need to pass information in to the function. 
+>>> def do_a_function(something_fun_needs):
+>>>     do_code_things + something_fun_needs
+
+>>> do_a_function(some_variable)
+MORE THINGS HAPPEN!
+NOTE: A parameter is a piece of information that a function needs to do its job
+NOTE: An argument is the piece of informatino that is passed to the function
+    so it can do its job. 
+The difference is that a parameter is the definiaiton of what the function 
+    needs and an argument is that actual info that is given to the function. 
+
+    Passing Arguments
+functions can require many parameters, a function call will need many arguments
+There are many ways to pass arguments to the function. 
+    Postitional Arguments
+These arguments must be in the correct specific order in the function call as 
+    defined in the function. 
+>>> def thing(arg1, arg2, arg3)
+
+>>> thing(a_arg1, b_arg2, c_arg3)
+Otherwise everything will get confused and will not work. 
+NOTE: You can call a single function multilple times with no issues. 
+This in fact can be a very efficient way to work. 
+
+## STOPPED PG 132 ORDER MATTERS IN POSITIONAL ARGUMENTS
+
+    Keyword Arguments
+
+    Default Values
+
+
+
+
+
+
+
+    
+    Return Values
+
+    Passing a List
+
+    Passing an Arbitrary Number of Arguments
+
+    Storing Your Functions in Modules
+
+    Styling Functions
+
+
+
+        Ch 9: Classes
+##### STOPPED pg 179 using aliases.
         Ch 10: Files and Exceptions
 
         Ch 11: Testing Your Code
