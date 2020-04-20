@@ -580,16 +580,40 @@ These arguments must be in the correct specific order in the function call as
     defined in the function. 
 >>> def thing(arg1, arg2, arg3)
 
->>> thing(a_arg1, b_arg2, c_arg3)
+>>> cheese = thing(a_arg1, b_arg2, c_arg3)
 Otherwise everything will get confused and will not work. 
 NOTE: You can call a single function multilple times with no issues. 
 This in fact can be a very efficient way to work. 
-
-## STOPPED PG 132 ORDER MATTERS IN POSITIONAL ARGUMENTS
-
+Order matters in Positional Arguments!
+>>> cheese = thing(b_arg2, a_arg1, c_arg3) <- Will ruin everything
     Keyword Arguments
-
+Keyword Argument is a 'key'-'value' pair you pass in a function. 
+The value is directly associated with the key so you cannot get out of order
+    arguments like with positional arguments. 
+Keyword Arguments do not need to be in order
+>>> cheese = thing(a_arg1='taste', c_arg3=42, b_arg2='foo')
+NOTE: NEED TO LOOK IN TO COMBINING POSITIONAL AND K-V ARGUMENTS
+    PROBABLY NOT BEST TO MIX AND MATCH THESE
     Default Values
+You can assign a parameter to a default value in case it is not always needed
+    or not required
+Default values must go at the end of the arg list
+>>> def thing(a_arg1, b_arg2, c_arg3=42)
+>>> cheese = thing(12, 'fancy')
+When no value is used in the argument for the parameter with a default value, 
+    then the default is assigned to that parameter, this is kind of obvious, 
+    I just want to make sure future Brayton understands this. 
+It does not matter what calling style you use, however, try to use the one 
+    that makes thing the most clear and easy to read. 
+An argument error will happen when python expexts a certian number of arguments
+    and a different number is provided
+    (I am looking at you 'self')
+TypeError: function_cool() missing 2 required positional arguments: 'thing1' 
+and 'thing2'
+If your names for args and params are clear solving the problems should be 
+    super simple to find out what is exactly going wrong. 
+
+#STOPPED PG 137#
 
 
 

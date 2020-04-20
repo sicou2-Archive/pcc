@@ -92,15 +92,16 @@ red = Die(20)
 print('\nNEXT 9-14')
 
 lottery_numbers = (
-    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
-    '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'
+    '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+    '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+    '21', '22', '23', '24', '25', '26', '27', '28', '29', '30',    
     )
 winning_numbers = []
-my_ticket = ['3','8','12','14']
+my_ticket = []
 
-#for i in range(4):
-#        my_number = random.choice(lottery_numbers)
-#        my_ticket.append(my_number)
+for i in range(6):
+        my_number = random.choice(lottery_numbers)
+        my_ticket.append(my_number)
 
 print(my_ticket)
 
@@ -110,7 +111,7 @@ while sorted(my_ticket) != sorted(winning_numbers) and attempts <= 200000:
     
     winning_numbers = []
 
-    for i in range(4):
+    for i in range(6):
         winning_number = random.choice(lottery_numbers)
         winning_numbers.append(winning_number)
 
