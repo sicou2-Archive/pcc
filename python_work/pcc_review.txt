@@ -1,5 +1,4 @@
 Part I:BASICS
-
         Ch 1: Getting Started
 Getting Python started: done
 Getting started in the Python Interpreter
@@ -612,19 +611,31 @@ TypeError: function_cool() missing 2 required positional arguments: 'thing1'
 and 'thing2'
 If your names for args and params are clear solving the problems should be 
     super simple to find out what is exactly going wrong. 
-
-#STOPPED PG 137#
-
-
-
-
-
-
-
-    
     Return Values
-
+The value that something gives back to what called it is called a return value
+This allows much of the grunt work to move to functions. 
+When calling a function that returns something it needs a variable that Python
+    can assign that returned value to. 
+This might seem like a lot of work for something simple, however when moving on
+    to working with lots and lots of things it helps. 
+It is possible to make an argument optional
+Simply assign the parameter to a default value of None or an equivalent value
+You can use if statements to control what happens when one of the arguments
+    is not used
+For conditional tests None evaluates to False in Python
+Back to while-loops, make sure that they have a way out of them. Yadda-yadda
+    heat death.
+input('quit') etc
     Passing a List
+Using functions with lists can make working with lists more efficient. 
+The when passing a list to a function, the function is given access to the 
+whole list. 
+This is useful for looping through lists
+You can make changes to a list within the function. These changes to the list
+are permenent. Excepting when passed a slice or a copy.copy or copy.deepcopy
+
+
+###STOPPED TOP PAGE 143
 
     Passing an Arbitrary Number of Arguments
 
@@ -635,7 +646,9 @@ If your names for args and params are clear solving the problems should be
 
 
         Ch 9: Classes
-##### STOPPED pg 179 using aliases.
+
         Ch 10: Files and Exceptions
+
+##### STOPPED pg 184
 
         Ch 11: Testing Your Code
