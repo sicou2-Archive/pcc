@@ -604,7 +604,7 @@ When no value is used in the argument for the parameter with a default value,
     I just want to make sure future Brayton understands this. 
 It does not matter what calling style you use, however, try to use the one 
     that makes thing the most clear and easy to read. 
-An argument error will happen when python expexts a certian number of arguments
+An argument error will happen when Python expects a certian number of arguments
     and a different number is provided
     (I am looking at you 'self')
 TypeError: function_cool() missing 2 required positional arguments: 'thing1' 
@@ -630,16 +630,60 @@ input('quit') etc
 Using functions with lists can make working with lists more efficient. 
 The when passing a list to a function, the function is given access to the 
 whole list. 
+Make sure that you .copy.copy or [:] slice your list if you want the list to 
+    remain unchanged
 This is useful for looping through lists
 You can make changes to a list within the function. These changes to the list
 are permenent. Excepting when passed a slice or a copy.copy or copy.deepcopy
-
-
-###STOPPED TOP PAGE 143
+Try to work toward a program design where modules only do one specific thing
+    This helps with debugging, modularity, *organization* and simplicity.
+When needing to create a slice/copy for a list that is to be passed to a 
+    function, you should create the copy/slice *AT THE FUNCTION CALL*, not in 
+    the function definition. 
+Make sure you have a specific reason to need to copy the list. Otherwise, 
+making a slice/copy is less efficient. 
 
     Passing an Arbitrary Number of Arguments
+It is possible in Python to pass an undefined number of args to a function to 
+    account for unknown conditions from the user. e.g. Pizza toppings
+>>> def do_thing(*args):
+>>>     print(args)
+
+The asterisk instructs Python to make an empty Tuple called 'args' and shove
+    anything it recieves from the function call in to it. 
+In order to mix positional and arbitrary arguments you must put the arbitrary
+    arguments after the positional in the definition
+>>> def do_a_thing(arg1, *args)
+>>>     pass
+
+Note: It seems to be best/standard practice to use the parameter name *args 
+    when creating an arbitrary parameter Tuple.
+
+    Using Arbitrary Keyword Arguments
+When you do not know that type of information that will be passed as an 
+    argument you will use **kwargs
+For example you might always get username but not any additional information 
+    from them. **kwargs solves this. 
+>>> def cool_tool(arg1, **kwargs):
+>>>     pass
+
+Can mix positional, *args, and **kwargs in many ways when defining functions
+
+Note: It seems to be best/standard practice to used the parameter name **kwargs
+    when creating arbitrary 'key-value' parameters.
 
     Storing Your Functions in Modules
+Use descriptive names for your functions. 
+Functions separate blocks of code from your main program. 
+With descriptive names for functions it makes the main program easier to follow
+Taking this further you can store functions in Modules that are called from a 
+    different file than your main program. 
+This is done with an import statement. 
+>>> import tool_module
+
+### STOPPED PG 150
+
+
 
     Styling Functions
 
