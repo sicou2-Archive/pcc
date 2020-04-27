@@ -51,7 +51,7 @@ print('\nNEXT 10-4 COMMENTED OUT')
 #         else:
 #             file_object.write(f'{guest_sign.title()}\n')
 
-print('\nNEXT 10-5')
+print('\nNEXT 10-5 COMMENTED OUT')
 
 filename = 'text_files/programming_reasons.txt'
 
@@ -74,3 +74,28 @@ while True:
             break
 
         file_object.write(f"{name.title()}: {reason}\n")
+
+print('\nNEXT 10-6 and 10-7')
+
+while True:
+    print("Choose two numbers to add together.\nType 'q' at any time to "
+    "quit.")
+
+    first_response = input("What is your first number?\n> ")
+        if first_response == 'q'
+            break
+    try:
+        first_number = int(first_response)
+    except ValueError:
+        print("That is not a valid number. Please enter a numberic digit.")
+        continue
+    else:
+
+    try:
+        second_number = int(input("What is your first number?\n> "))
+    except ValueError:
+        print("That is not a valid number. Please enter a numberic digit.")
+        continue
+    else:
+        sum = first_number + second_number
+        print(sum)
