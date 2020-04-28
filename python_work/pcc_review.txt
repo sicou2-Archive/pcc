@@ -58,7 +58,7 @@ Python does not have explicit constants, however you can indicate that
     
     Comments
 #Comments are notes to yourself and others
-#Can be used as TODO, or explane things, or reminders, or whatever you want 
+#Can be used as TODO, or explain things, or reminders, or whatever you want 
     #them to be used for. 
 #There are no block comments in Python
 #Good comments are there to remind you what something does after you have to 
@@ -98,15 +98,17 @@ Can add to a list in a few ways
         everything after index 3 down one index
 Can also remove items from a list:
     del variable_list[1] will remove the item from index 1
+    NOTE: This will not return the value that was removed. 
     variable_list.pop() will remove the last item in the list.
         you can also assign this popped item to another variable
+    NOTE: pop will return the popped value
     popped = variable_list.pop()
     variable_list.remove('item to be removed') will remove the first
     instance of 'item to be removed' moving every item after up one 
     index number
 
     Organizing a List
-variable.sort() will permanently sory a list alphabetically
+variable.sort() will permanently sort a list alphabetically
 can also do variable.sort(reverse=True) to reverse alphabetize a list
     permenantly
 I know this comes up later when talking about slicing a list, but you cannot 
@@ -115,33 +117,39 @@ I know this comes up later when talking about slicing a list, but you cannot
     If you do not slice and just list = original_list, when you sort list, 
         original_list will be sorted as well. You must slice the list and the 
         "re-slice" the list in order to return an original order
+    NOTE: This is because variables to lists are more like pointers as opposed
+        to "boxes" of items. 
             You can so this by new_list = old_list[:]
-A temporart sorting of a list can be done with the sorted() function
+A temporary sorting of a list can be done with the sorted() function
 sorted(list) will return the list temporarilly sorted alphabetically.
 NOTE: Python does something weird with UPPER and lower case letters (ASCII)
     when sorting them. Be careful when dealing with this so you do not get 
     unexpected behaviors. 
     sorted(list, reverse=True) will also work for sorted. 
 It seems like you can not print(list.sort()) but you *CAN* print(sorted(list))
+    NOTE: This *has* to have something to do with modules/methods and functions
+        However, I still do not 100% have why you can do one and not the other
+            sorted in my head.
 list.reverse() can be used to simply reverse the current list order
     permanently, however this is not so big of a deal since you can 
     list.reverse() a second time to get back to your first order. 
-You can len(list_variable) to get the int (starting at 1)of indexes in the list
+You can len(list_variable) to get the int (starting at 1) of indexes in the 
+    list
 
     Avoiding Index Errors When Working with Lists
 Be aware of off-by-one errors
 Remember list[-1] to get the last item in a list. This always works except for 
     when the list is empty
 
-
         Ch 4: Working with Lists
     Looping Through an Entire List
 Looping is useful, huh, who would have thought. 
 list_of_n_length
-for num in list:
+for num in list_of_n_length:
     print(num)
 I might be wrong, but for-loops need to be indexable, otherwise it cannot count
     where it is in the loop.
+    NOTE: This is correct
 If possible make the "num" part of the loop at least a little descriptive even 
     if it is only a temp variable. Where "num" is the index position variable 
     at that index, in the list being looped. 
@@ -153,17 +161,18 @@ As long as every line in the loop is properly indented, you get to stay in the
     instructions there. 
 
     Avoiding Indentation Errors
-Indentation is what Python usesto determine how things are related to the rest 
+Indentation is what Python uses to determine how things are related to the rest 
     of the program. 
+    i.e Blocks
 If you forget to indent immidiately after a line expecting an indent, you will 
     get an error;  
 If you forget to continue to indent lines that are supposed to be in the loop, 
     assuming you indented at least one line correctly, you will not get an 
     error, however you *will* get unexpected behaviors; 
-        these kinds of errors are called 'Logical Errors'
+        These kinds of errors are called 'Logical Errors'
 If you indent when you are not supposed to you will get an 'IndentationError'.
-    variable = 1
-        print(variable) <- ERROR
+>>> variable = 1
+>>>     print(variable) <- ERROR
 If you indent unnesessarily after the completion of a loop, you will get a 
     Logical Error and that (those) line will be included in the loop and the 
     consequences of that.     
@@ -176,23 +185,23 @@ Lots of reasons to keep a list of numbers in a program, positions, status,
 range()
 for num in range(0,11,1) <- ([index to start on], index to stop at but not 
     include, [amount to increment by]) '[]' are optional
-list = range(1,5) will give a list of [1,2,3,4] to 'list'
-min(list) = 1
-max(list) = 4
-sum(list) = 10
+>>> list = range(1,5) will give a list of [1,2,3,4] to 'list'
+>>> min(list) = 1
+>>> max(list) = 4
+>>> sum(list) = 10
 List Comprehensions
     I do not understand these totally, however I an not totally sure they are 
         necessary. 
-squares = []
-for value in range(1, 11):
-    squares.append(value**2)
+>>> squares = []
+>>> for value in range(1, 11):
+>>>     squares.append(value**2)
 
-print(squares)
+>>> print(squares)
 
 ^V^V^V same thing ^V^V^V
 
-squares = [value**2 for value in range(1, 11)]
-print(squares)
+>>> squares = [value**2 for value in range(1, 11)]
+>>> print(squares)
 
 Instructions:
 1 begin with a descriptive name for the list
@@ -207,10 +216,10 @@ Once writing 3 or 4 line lists become tedious consider giving List
     Working with Part of a List
 Remember that lists are mutable. Becareful when fiddling with them.
 slice! Parts of a list
-list = [1, 2, 3, 4, 5, 6]
-slice_list = list[2:3]
+>>> list = [1, 2, 3, 4, 5, 6]
+>>> slice_list = list[2:3]
 >>> slice_list
-[2, 3]
+>>> [2, 3]
 You can work slices a few ways. 
 Note lists count by index, like range(6) does; therefore be wary of off by one 
     errors
@@ -219,7 +228,7 @@ Note lists count by index, like range(6) does; therefore be wary of off by one
     list[5:] list to end starting at element 5
     list[:] whole list to copy
     list[-3:] list starting three from the end and going until the end
-Can use a for-loop to loop through a slick of elements in a list for num in 
+Can use a for-loop to loop through a slice of elements in a list for num in 
     list[:3]: will give the first three elements in list
 Slices are excellent tools for working with parts of lists;
     ex taking a players .sort() top three scores, or looping through data sets 
@@ -240,7 +249,7 @@ tuple = (1, 2, 3, 4)
 tuple = (11, 13, 15, 17)
 
     Styling Your Code
-Python has an agreed upon number of conventions to endure that code typically 
+Python has an agreed upon number of conventions to ensure that code typically 
     reads about the same. 
 PEP (Python Enhancement Proposal) is the current standard on how to style code. 
 Rule of thumb is to write code that is readable as opposed to easier to write. 
@@ -303,12 +312,12 @@ if conditional_test:
     do_something
 Can put any conditional test on the first line followed by almost any action 
     in the following block.
-Typically try to not ever complicate your if conditional tests. If it gets hard
+Typically try to not over complicate your if conditional tests. If it gets hard
     to read move it somewhere else and call that variable in the if statement
 Indentation plays the same role for if-statements as it did with loops. 
 if-else is used to check the if, if the if is False the else *will* run
 if-elif-else chains can be used to run down a list of possibible actions based
-    on conditionals and run the *first* one the is true. 
+    on conditionals and run the *first* one that is true. 
 The first one that is true bit is super important. Make sure it is possible to 
     hit all of the if-elif-else statements based on all of the possible 
     conditions otherwise the code is pointless. 
@@ -448,7 +457,7 @@ a_list = [a_dict, b_dict, c_dict]
 List in dict
 a_dict = {'a_key':'a_value', 'b_key': ['a_list', 'b_list',]}
 this shows a couple of things, in addition to the list in a dict ex.
-It showes that a value in a dict does not need to always be the same type of 
+It shows that a value in a dict does not need to always be the same type of 
     object that other values in the dict are. 
 When you have a long print call and you need to break it up over several line, 
     you will close the string with ' or " and then on the next line, intent one
@@ -458,7 +467,7 @@ value associated with it. E.g. people and their list of favorite programming
     languages
 NOTE: DO NOT NEST TO DEEPLY FOR IT IS GREEDY AND WILL AWAKEN NASTY BEASTS,
     there is also probably a better way to do it. 
-Dicts can do in dicts. 
+Dicts can go in dicts. 
     users{'user':{'dict_of_user_facts'}}
 Keep the structure of dicts within dicts the same. It will make this much 
     easier to read. 
@@ -475,23 +484,24 @@ NOTE: Many editors do not run programs with input correctly, probably will need
     to use the Terminal
 Can use the prompt parameter to ask questions or just give a typing prompt 
     indicator
-Unless your instructions should be clear and easy-to- follow/understand. Need 
+Unless your instructions should be clear and easy-to-follow/understand. Need 
     to also seperate the instruction text from the users input to make it clear
     something is expexted from the user. 
 Can help to use a colon then a space at the end of the prompt
 When the prompt is longer than one line, (including when you use a second line
     for further instructions) you should create a variable and increment/
     concatenate the string together. 
-    NOTE this is *ONE WAY* to build a multi-line string. 
+    NOTE: this is *ONE WAY* to build a multi-line string. 
     NOTE: I am not sure specifically if this is best practice or just how Eric
         does this. 
+    NOTE: In this book Eric tends to use "The Python Method"
 variable = 'Do the thing user!'
 variable += '\nFurther instructions for clarification user! '
 action = input(variable)
 input() puts everything the user types in to a string. If you expect a number, 
     you will need to convert that 'str' in to an int with int(user_input) 
     before trying to manipulate that number with number things.
-If you forget to int() you should get a TypeError
+If you forget to int() you will get a TypeError
 Modulo is a very useful tool for working with numerical information. 
 It specifically takes a number and divides it by another number and returns the
     remainder. 
@@ -519,16 +529,20 @@ Be wary for user_input strings to 'quit', you might still have to go through
     An if statement can help with that to short circuit out of the loop exactly
     when you want to. 
 Flags - setting a variable to True or False and then changing that variable 
-    to change a conditional can be simpler than while True and can allow for
-    impact beyond a function. 
+    to change a conditional can be more simple than while True and can allow 
+    for impact beyond a function. 
     e.g. A program where there are many things should cause the conditional to
         stop the loop. This program should only run as long as many 
         conditionals are true
+
+####STOPPED REVIEW HERE
+
+
 The keyword break can be used to immediately end any loop without running any
     remaining code in that block. This allows you to more elequantly control 
     exactly the code you want to run in a loop. 
 The keyword continue will restart the loop from that point without finishing 
-    that loop... of the loop. Immediately to the top of the loop. 
+    that cycle of the loop. Immediately to the top of the loop. 
 You need to avoid an infinite loop. Everything needs a way out.
 If you get stuck in an infinite loop Crtl-c will interupt the program forcing a
     stop. Or just close the window. 
@@ -566,7 +580,7 @@ Will also need to pass information in to the function.
 >>> do_a_function(some_variable)
 MORE THINGS HAPPEN!
 NOTE: A parameter is a piece of information that a function needs to do its job
-NOTE: An argument is the piece of informatino that is passed to the function
+NOTE: An argument is the piece of information that is passed to the function
     so it can do its job. 
 The difference is that a parameter is the definiaiton of what the function 
     needs and an argument is that actual info that is given to the function. 
@@ -681,15 +695,229 @@ Taking this further you can store functions in Modules that are called from a
 This is done with an import statement. 
 >>> import tool_module
 
-### STOPPED PG 150
-
-
-
+A module is any file that ends in .py that has code you want to import in to 
+    main program
+With import you must specify tool_module before calling the method you need 
+    from that module. tool_module.fun_thing()
+With import, every function in that module becomes available. 
+For whatever reason, you only want to or need to bring in one method:
+>>> from module import function
+This brings in *only* function and module does not need to be specified when 
+    calling function. e.g. module.function() is not needed
+You can import as many functions that you need by separating with commas
+>>> from module import function_1, function_2
+Note there are PEP8 guidelines for importing modules. First line are standard
+    library modules, second line are third party modules, and third line are
+    your own modules. Each line is separated by a single empty line. 
+You can use the keyword as to give functions aliases. 
+>>> from module import function as fun
+This can be used to relieve any conflicting names of things that are already in 
+    your program or other modules that are being used. 
+Note, you can from/import all the functions in a module with:
+>>> from somewhere import *
+This alleviates the need for using somewhere.a_function but it does not make it
+    clear where that method is coming from. 
+NOTE: This is *not* best practice, but you will see it from other programs.  
+NOTE: Best practice is to import the whole module and use dot notation or, 
+    specifically the function or functions that you need. 
     Styling Functions
+Functions should have descriprive names with lowercase and _ (underscores). 
+Descriptive names help everyone involved. 
+Module names should use these conventions as well.
+Every module and function (classes as well) should have a brief doc string 
+    describing what it does. 
+If a default value is specified in a parameter no spaces should be used on 
+    either side of the = sign
+>>> def fun(arg_1=None)
+The same thing goes for 'key-value' default values
+Lines of code should generally be limited to 79 characters for various reasons
+If the function name or parameter list extends the line over 79 characters
+    open paren then go to new line and indent two levels for the different 
+    parameter names. 
+>>> def fun_name_that_might_be_a_little_long(
+>>>         parameter_0, parameter_1, parameter_2, parameter_3, 
+>>>         parameter_4, parameter_5, parameter_6, parameter_7):
+>>>     function_body_containing_code
 
-
+Can make is easier to differentiate two functions by inserting two lines 
+    between each function. 
+All import statements should be written at the beginning of the file. 
+The exception is where there is a DOCSTRING for the file that describes the 
+    nature of the overall program. 
 
         Ch 9: Classes
+In Object-oriented Programming classes can be used to model real world objects.
+When an object is created from a class it is automatically equiped with all of
+    the defined behavior of that class. 
+Creating an object from a class is called instantiation. 
+You work with instances of a class. 
+In creating these blueprints you will define the information that will be 
+    stored and the actions that can be taken. 
+Classes can also extend the functionality of other classes. The sum is greater
+    than its parts. 
+When done well, classes can make life much easier than without. 
+    Creating and Using a Class
+Example: creating a Dog class. It represents a dog, not any specific dog. 
+It can have information like name and age. It can also simulate a dog rolling 
+    over or sitting down. 
+>>> class Cls():
+>>>     """Always have a DOCSTRING telling what the class does."""
+>>>     def __init__(self, arg_1, arg_2):
+>>>         """Always have DOCSTRING telling what the def does."""   
+>>>         self.arg_1 = arg_1
+>>>         self.arg_2 = arg_2
+>>>         self.collar = 'Leather'
+>>>     def fun_1(self, new_command):
+>>>         """Always have a DOCSTRING telling what the def does."""
+>>>         add_new_command_the_dog_can_do
+
+Convention dictates that ClassNames are in CamelCase
+A function that is a part of a class is called a method. Everything that 
+    applies to functions applies to methods as well
+__init__ method is a method that will automatically run when a new instance of 
+    a class is instantiated
+__init__ will have two leading and two trailing underscores (dunders)
+self parameter is required in all methods in a class. This allows Python
+    to reference the object that is calling the method. 
+any other args passed in the Class call are now assigned to the self.arg here
+    in the __init__. Any variable with the prefix of self is available to every
+    method in that class. 
+Variables that are accessible through instances via self. are called Attributes
+>>>new_object = Cls()
+Accessing an attribute
+You use dot notation 
+>>> new_object.arg_1
+Calling methods
+Again, you use dot notation
+>>> new_object.add_new_command_the_dog_can_do()
+You can create as many instances of a class as you want or need. 
+Even if every attribute is the exact same for all of your instances, Python 
+    will always see them as separate objects.
+    Working with Classes and Instances
+Classes can be really good at modeling real world things. 
+Once written you will mostly be dealing with the instances of a class rather 
+    than the class itself.
+You can modify a classes attribute directly
+>>> new_object.arg_1 = 'Ducky'
+Or you can create methods to do it for you. 
+>>> new_object.method_a('Ducky')
+Can easilly set default values for attributes in the __init__
+>>> def __init__(self):
+>>>     self.default_attribute = 'FABULOUS'
+Three basic ways to modify an attribute value. 
+1 Modify it directly as above
+2 Use a method to set it to something
+3 Use a method to increment it. 
+Note be careful, when allowing users to modify attributes. NEVER TRUST THEM.
+Have checks for inept and malicious behavior. e.g. setting an odometer to 0
+    Inheritance
+If a class you need to write is a specialized version of another class you can 
+    use inheritance to take attributes and methods from the Parent class. 
+The specialized version of this class is called the child class. 
+When __init__ for a child class you will probably want to get attributes from
+    the parent. 
+This is done with 
+>>> def __init__(self, arg_1, arg_2)
+>>>     """Always use the DOCSTRINGS."""
+>>>     super().__init__(arg_1, arg_2)
+You do not necessarily need to put in the Parents methods since they are 
+    implicit when you create the Parent/Child pair.  
+super() is a special function that tells Python to call a method from the 
+    parent class. 
+The name super comes from the convention calling the parent class a superclass 
+    and the child class a subclass.
+Once you have everything for the child class inherited from the parent class
+    you can now add new attributes and methods to the child. 
+This is done in the same manner as for the parent class except this 
+    differentiates the child from the parent. A parent cannot call a childs
+    methods. 
+You can also override methods from the parent class. 
+E.g. instead of giving you the fuel mileage of a car you can say that this car
+    does not run on fuel or something like that. 
+This is done by 're-defining' the method from the parent class in the child 
+    class
+>>> def method_name_from_parent(self):
+>>>     print("Do something else here instead")
+
+You might eventually find that your class is becoming cluttered and the 
+    attribute list is becoming long and confusing. It is possible to use 
+    composition to simplify a class by pulling like attributes out in to their
+    own class and initializing an instance of that new class in to the current
+    class.
+>>> class Battery():
+>>>     pass
+>>> class Child():
+>>>     def__init__:
+>>>         self.battery = Battery()
+NOTE: Battery MUST come before Child otherwise Python will not know where to
+    look for battery if it does not know it already exists. 
+Note: When using composition, how would you pass new attribute values to the 
+    instantiaion of a new object from that composed classes default values
+    without redefining in the code itself?
+The method of composition helps with modularity and clean code. It also, can
+    help keep things organized. 
+How you keep things organized is less of a coding issue and more of a 
+    philisophical and managerial issue. 
+As programs become more complicated you deal with higher levels of logic as
+    opposed to syntactic logic. Thinking less about Python and more about how
+    to model the real world in code. 
+There typically is no right or wrong. Some approaches are more efficient than 
+    others.
+    Importing Classes
+To keep programs from becoming huge and cluttered, it can be helpful to move a
+    class to its own module and import the classes you need. 
+Note you can (and should) DOCSTRING modules in the first line of the module. 
+>>> from module import Cls
+Seriously importing classes in an effective way to have readable programs. 
+The purpose of this is to keep the main file nice and clean and easy to read. 
+This also stores most of the logic in other files so you can focus more on the 
+    higher-level logic of the program. 
+It is possible to store as many classes in a module as needed. However, the 
+    same principle applies to readability and clean code. 
+>>> from module import ClsOne, ClsTwo
+You can also import the entire module
+>>> import module
+This gives access to all classes via dot notation
+>>> from module import *
+This imports all classes and methods from module without need for dot notation
+NOTE: This is not best practice. 
+Modules can import other modules to be then used in your program. 
+car.py
+>>> from suspension import Shocks
+game.py
+>>> from car import Car
+
+As with modules, classes can be imported with aliases as well
+>>> from car import ElectricCar as EV
+~snip~
+>>> my_car = EV()
+Python seems to give lots of latitude as to the nature of how you might want to
+    organize your own projects. 
+For now keep code structure simple. 
+
+    The Python Standard Library
+Python Standard Library is included in every Python installation
+Every function or class within it can be used via a simple import
+>>> import random
+>>> rand_num = random.randint(0,6)
+Note: With randint(start, stop[, step])
+>>> rand_choice = random.choice(list)
+Note: Do not use random with security related projects. Python random is 
+    psudo-random. However, it is good enough for fun and interesting projects.
+
+    Styling Classes
+Class names Should be Written with CamelCase
+Every Class will have a """DOCSTRING""" on the immidiate following line after
+    class Cls
+The """DOCSTRING""" will have a brief description of what the class does. 
+Can use blank lines to organize code, however, do not go overboard.
+Within a class one line between methods and two blank lines to separate classes
+When importing modules the standard PEP8 format is:
+>>> import something_from_PSL, something_else_from_PSL
+>>> 
+>>> import third_party_module
+>>> 
+>>> import your_module
 
         Ch 10: Files and Exceptions
 
