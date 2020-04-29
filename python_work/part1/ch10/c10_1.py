@@ -151,6 +151,5 @@ except FileNotFoundError:
         number = input("What is your favorite number? ")
         json.dump(number, f)
 
-
 if number:
     print(f"Your favorite number is {number}!")

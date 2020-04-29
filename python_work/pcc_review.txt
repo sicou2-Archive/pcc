@@ -920,7 +920,52 @@ When importing modules the standard PEP8 format is:
 >>> import your_module
 
         Ch 10: Files and Exceptions
+    Reading from a File
+Text files basically can have any info you need in them and they can be used. 
+Reading from a file is good, but even better is writing to, analyzing, and 
+    modifying that information. 
+It is possible to read an entire file. 
+Can also take all of that info and assign it to a variable. 
+>>> with open('text_file.txt') as file_object:
+>>>     variable = file_object.read()
+>>> print(variable)
+Like it or not, there are a TON of things that happen in those three lines of 
+    code
+Reading the actual PyDoc on a with statement is helpful
+https://docs.python.org/3/reference/compound_stmts.html#grammar-token-with-item
+with is the statement
+open() is the context expression where the context manager is called, to open
+    something.
+'text_file.txt' is the argument that is passed to open()
+as 'file_object' is the target that this is all assigned to. For opening files
+    common convention is file_object = 'f' for the target variable
+with statements are good because they will always exit() the context manager
+    and not leave things hanging out there to cause problems later. 
+When a with statement runs in to a problem it will return the problem and 
+    *still* exit the CM. 
+    Otherwise it will return none and continue as required. 
+This means while we opened the file, the with statement will automatically 
+    close the file no matter what happens in the actual code. 
+With the 'text_file.txt' represented as a file_object we can now read that file
+    in to memory to do things with now or later, in this case we close the file
+    out and print the file contents from memory to the screen. 
+He talks about using a .rstrip() here to help clean up many of the \n that text
+    files tend to have lying aroung that can make printing them not screen 
+    efficient. 
+You can utilize file paths when opening files. 
+When you do not use a path, Python will look for that file in the folder in 
+    which the current python script is being run from. The the file to be used
+    in the current script is not in that folder, you need to use file paths.
 
-##### STOPPED pg 201
+### STOPPED HERE PG 185
+
+    Writing to a File
+
+    Exceptions
+
+    Storing Data
+
+
+
 
         Ch 11: Testing Your Code
