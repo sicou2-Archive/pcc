@@ -956,16 +956,319 @@ You can utilize file paths when opening files.
 When you do not use a path, Python will look for that file in the folder in 
     which the current python script is being run from. The the file to be used
     in the current script is not in that folder, you need to use file paths.
-
-### STOPPED HERE PG 185
+If needed, go deeper in to the file system, you can 'down_a_folder/file.txt'
+If you need to go to another folder above or next to, you need to write the 
+    full path out so python can find it. 
+NOTE: If you need to use backslash in a file path you will need to \\ escape 
+    them in order for Python to not get mad at you. "C:\\path\\to\\file.txt"
+A for-loop can be used to read through a file line by line. 
+>>> for line in file_object:
+In a text file, every line has a \n and if you need to format that out, a
+    .rstrip() can be useful for that. 
+A files contents can be assigned to variable for work done to the later. 
+Depending on the format that a file is presented as and how you need to work 
+    with it, sometimes instead of .rstrip(), maybe a .strip() would be more 
+    useful. 
+All information that is .read() in to Python, will be read in as a string, 
+    therefore if you have data that needs to be crunched on, you will need to 
+    convert it to a type that is the correct type. 
+Really big files can be used in this way, no sweat. 
+By concatenating large files in to one variable (pi) you can use  the in 
+    keyword to search for information within that string. i.e. your birthday
+    in a string. 
+.replace('replace me', 'with these words') seems like a good tool. 
 
     Writing to a File
+One of the simplest ways to save data is to write it to a file. 
+This means that after the program ends, the information will be available for 
+    use at a later time. 
+To write to a file you need to give open a second argument of 'w' < string
+    This will truncate the file so be careful.
+    To me is seems that it is best to only use 'w' when you are writing to a 
+        new file, or some other specific use for overwriting something. 
+There are many modes to open a file with. 'r' - read only, 'w' - truncate, 
+    write and read, and 'a' - append to end of file, are three common ones. 
+    'r+' mode lets you 'read and write to a file'
+https://stackoverflow.com/questions/1466000/python-open-built-in-function-difference-between-modes-a-a-w-w-and-r
+If the file does not exist open() will automatically create one. 
+Apparently Python can only store data to a text file in string format. 
+.write() function is what you can use to write needed data to the file_object.
+.write() will not add \n or anything to the end of the different strings that
+    you are writing to the disk. Therefore, you will need to format things
+    as needed. 
+You will use the 'a' mode to append data to a file without overwriting 
+    everything in that file. Anything that is added to the file in 'a' mode
+    will be added to the end of the file. 
 
     Exceptions
+Exceptions are special objects that are used to manage errors that arise during
+    program execution.
+Using Try-Except blocks allow the program to continue running.
+This can prevent tracebacks which to 'normal' users can be confusing or 
+    difficult to read. 
+T-E blocks can work around an error or they can halt the program in a friendly 
+    manner. 
+>>> try:
+>>>     print(5/0)
+>>> except ZeroDivisionError:
+>>>     print("You cannot divide by Zero (0), select another number.")
+>>> else:
+>>>     do_things_that_continue_the_program
+The hard part about T-E blocks is that you have to foresee the types of errors
+    that the user will see and need to work around those to handle them. 
+You cannot fight an unknown unknown. 
+Good exception handling prevents crashes
+This tends to happen often in programs that require user input. 
+    i.e. The program needs numerals but it is given letters. 
+Be aware, poor exception handling can cause malicious users to have better 
+    ideas as to where to focus their attacks. 
+    Tracebacks to lots of juicy information about the program. 
+try-except-else-finally
+try this
+if this does not work except something else
+if try does work else this
+regardless of everything else finally do the thing
+Handling missing files. 
+They might be in a different location, misspelled, or just plain not there. 
+Here introduces encoding arguments in open()
+>>> with open(file, encoding='utf-8') as f:
+The encoding argument is needed when the system encoding system does not match
+    the encoding system of the file that is being opened. 
+There tends to be limits on what you can do as far as analizing data. However, 
+    this limit is usually huge and only limited by the amount of data you have
+    and the time you have to play with it. 
+Project Gutenberg is a *great* resource for getting text files to analize. 
+.split([sep=None, maxsplit=-1]) is a method that will divide a string up in to 
+    a list by the sep parameter which defaults to an algorithm is used that 
+    splits the string up by its whitespace. maxsplit is the number if splits to
+    be done. 
+This method can be used to help set up a data set to analize a text string. 
+len() will also count the number of elements in a list
+For loops can be super useful while working through lists of data like text 
+    files that need to be individually worked on. 
+Proper exeption handling in this case will make the for-loop robust to handle
+    bad or missing data 
+NOTE: except (someExeption, anotherProblem, andAnotherProblem,) as e:
+Using the above code allows for multiple exeption handling on a single line if
+    needed.
+NOTE: The (is, a , tuple,) and nothing else works there. 
+https://docs.python.org/3/tutorial/errors.html#handling-exceptions
+Sometimes you do not need to specifically do anything when there is an 
+    exception, sometimes it is better to allow a silent fail when it is needed.
+>>> try:
+>>>     a_thing
+>>> except SomeError:
+>>>     pass
+
+the pass keyword can be used for a few things. As a placeholder for a block
+    that will be coded later, or to help errors pass silently, or any other
+    creative reasons you can come up with. 
+
+Deciding what to report as an error and what to not report as an error can be
+    an important decision making process. Giving users information they do not
+    care about or failing to give users information that will help them prevent
+    those errors in the future.
+    It is something that you will want to think about. 
+Once a program is clean and free of syntatical or logical errors, most of the 
+    problems that will crop up will come from external sources of data or user
+    input. 
+.count() method can be used to see how many times a 'specific' string of chars
+    appear in a longer string. 
 
     Storing Data
+Many things ask for input and it might be nice to keep some of that data around
+    so it can be used later. One simple method to do this is with 
+    JSON (JavaScript Object Notaion). json can be used to share info between 
+    Python programs and it is not a specific format to Python (no kidding)
+While it might have been designed for JavaScript, it is used with many 
+    different languages. 
+>>> import json
+>>> information = input("What do you want to tell me? ")
+>>> with open('file.json', 'w') as file_to_dump_to:
+>>>     json.dump(information, file_to_dump_to)
+>>>     variable = json.load('file.json')
+>>> print(variable)
 
-
-
+Refactoring is an important part of the refinement process.
+Yes the code works... buuut it could be better, more clear, and more efficient. 
+You can especially use the refactoring portion of your process to pull out 
+    new functions if they make sense. 
+You will also, simply make everything easier to read and possibly expand in the
+    future.
 
         Ch 11: Testing Your Code
+Testing code is very important to the coding process. Automating the testing
+    process (by writing code to test your code) can make tedious and laborious
+    testing much simpler. 
+This helps in many ways, including when you add new features or expand your 
+    code. You will know that something that used to work does not work now, and 
+    you will have a generally good idea about when thing broke (assuming you
+    are constantly running your tests).
+Eric chooses to use the built in unittest module from PSL. 
+
+    Testing a Function
+For this example we have a first/last name function that we want to expand to
+    allow for a possible middle name. 
+We will want to make sure that adding that ability will not break the only
+    first/last name function. 
+Unit test verifies that one specific part of a functions behavior is correct. 
+A test case is a collection of unit tests that confirm that a functions full
+    behavior is correct. 
+Full coverage is when all possible ways a function can be used is tested. 
+Full coverage on large tests is difficult.
+You need to at least make sure that critical behaviors are tested. 
+The syntax for setting things up takes a minute to get used to. 
+However, once established adding more tests is simple.
+
+>>> import unittest
+>>> from function_module import function_to_test
+>>> 
+>>> class FunctionToTestTestCase(unittest.TestCase)
+>>>     """DOCSTRING"""
+>>>     def a_test_for_function_to_test(self):
+>>>         """MORE DOCSTRING"""
+>>>         formatted_variable = function_to_test('arg_1', 'arg_2')
+>>>         self.assertEqual = ( # This is a unittest function
+>>>                 formatted_variable,
+>>>                 "Correct way to see 'formatted_variable'",
+>>>                 )
+>>> # This tells python to run unittest.main() if it is the program that is 
+>>> # being run by the computer. If a debugger or something else is looking
+>>> # in here, the program will not run as a matter of course and will only
+>>> # be run when the program that is importing it tells the different parts of 
+>>> # it to run. 
+>>> if __name__ == '__main__': 
+>>>     unittest.main()
+
+unittest has many different assert methods. 
+https://docs.python.org/3/library/unittest.html
+assert methods verify that the result that is received is the result that was
+    expected. 
+Here we are running the testing files directly, however, there are many testing
+    frameworks that import test files before running the tests. 
+When a file is imported, the interpreter executes the file as it is imported. 
+This is why we are using if __name__ == '__main__': before getting in to the 
+    main function of the .py file. This allows other programs to import the 
+    test file (or any other file) to be imported where the name of the file 
+    is not interpreted as the main file and can be used in other ways. 
+The the dots that come up indicate the number of tests that are being run that
+    are successful
+There are also a few other symbols that indicate different things. 
+An E for example shows that there was an Error of some kind. 
+F indicates that their is a failed assertion 
+Knowing which test failed is kind of important since it gives you a starting 
+    point from where to find a potential problem. 
+To add a new test, simple define a new function that tests new things. Or if 
+    you feel like wasting time, a test you have already written. 
+Tests with module unittest must start with the name test so it will run 
+    automatically. 
+Make sure that the names of the tests are descriptive enough so that you 
+    understand where problems occur. 
+
+    Testing a Class
+In addition to functions, tests can be used to ensure that whole classes work
+    properly.
+Passing tests for the current state of your class means that future 
+    improvements 
+Python provides many assert methods in unittest.TestCase class
+assert methods test whether a condition you believe is true at a specific point
+    in your code is in fact true. 
+If it is true, your assumptions for that codes behavior are correct. 
+If it is not true Python will raise an exception
+assertEqual(a, b)       Verify that a == b
+assertNotEqual(a, b)    Verify that a != b
+assertTrue(x)           Verify that x is True
+assertFalse(x)          Verify that x is False
+assertIn(item, list)    Verify that item is in list
+assertNotIn(item, list) Verify that item is not in list
+
+Testing a class is very similar to testing a function. Most of the work 
+    involves testing the behavior of methods in that class. 
+
+>>> class_to_test.py
+
+It seems that you should build your tests slowly and deliberately, and only try
+    to test one thing at a time.
+assertIn() is a good method for verifying that something was put in to a list
+    like it was supposed to. For example a survery response being logged. 
+For now we are creating an instance of the class from within the test and 
+    pointing the test program in the direction of what needs to be tested.  
+In the example Eric uses a neat trick to have the test loop through a list of 
+    'responses' to store them in the tested list then another loop checks to 
+    see if assertIn() finds the proper info.
+    This whole thing seems to work since his example class we are testing does
+    not require any user input since there seems to be a lot involved with 
+    testing that. 
+setUp() class seems to be a really useful class for... setting up classes
+    in advance so you do not have to continually restart class instances for 
+    each individual test. 
+
+>>> def setUp(self):
+>>>     """DOCSTRING"""
+>>>     variable = "Some string"
+>>>     self.class_instance = ClassToBeTested(variable)
+>>>     self.test_data_to_go_in = ['list', 'of', 'things']
+>>> def Tests_Proper
+
+setUp does two things, it creates an instance of the class you are testing and
+    it creates a list of things to test against (in this example)
+NOTE: Be careful when adding setup to an already establised test script you 
+    will need to add self. all over the place. to make things work. 
+With setUp() you make one set of instances and attributes and then use these
+    instances in all needed test methods. This is much easier (and cleaner) 
+    than having instances within each test method.
+
+
+                Part II:Projects
+Many of the basics of Python have been covered and can start to build bigger 
+    things. 
+Part II has three types of projects. A game, some data visualization, and a 
+    web applicaiton. 
+The game uses PyGame to get out of the weeds and in to some higher level stuff
+It will be a 2d top-down Galaga style game. 
+The data visualization project teached how to generate data and create 
+    functional and pretty pictures displaying that data using Matplotlib and 
+    Plotly
+It will also show how to access data from the internet and feed in to a 
+    visualizer. 
+Also, will show how to automatically download and visualize data. This sneaks 
+    in to data mining. Which apparently is in demand right now. 
+The web application will use Django to create a simple web app that lets people
+    keep a journal with a UN and password. Will deploy the app so everyone can 
+    access it. 
+After that project you can start to build your own web apps and explore more 
+    resources that come via Django. 
+    
+            Project 1: Alien Invasion
+
+        Ch 12: A Ship that Fires Bullets
+
+        Ch 13: Aliens!
+
+        Ch 14: Scoring
+
+            Project 2: Data Visualization
+
+        Ch 15: Generating Data
+
+        Ch 16: Downloading Data
+
+        Ch 17: Working with APIs
+
+            Project 3: Web Applications
+
+        Ch 18: Getting Started with Django
+
+        Ch 19: User Accounts
+
+        Ch 20: Styling and Deploying on App
+
+        Afterward
+
+        Appendix A: Installation and Troubleshooting
+
+        Appendix B: Text Editors and IDE's
+
+        Appendix C: Getting Help
+
+        Appendix D: Using Git for Version Control
