@@ -1,6 +1,6 @@
 import pygame
 
-from ship import Ship
+from ship_c12_4 import Ship
 
 class Friend(Ship):
     """A class to manage friendly ships."""

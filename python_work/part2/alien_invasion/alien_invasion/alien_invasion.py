@@ -33,15 +33,8 @@ class AlienInvasion:
         while True:
             self._check_events()
             self.ship.update()            
-            self.lasers.update()
+            self._update_lasers()
             self._update_screen()
-
-            # Get rid of lasers that have disappeared. 
-            for laser in self.lasers.copy():
-                if laser.rect.bottom <= 0:
-                    self.lasers.remove(laser)
-            print(len(self.lasers))
-
 
     def _check_events(self):
         """Respond to key presses and mouse events."""
@@ -74,8 +67,21 @@ class AlienInvasion:
 
     def _fire_laser(self):
         """Create a new laser and add it to the lasers group."""
-        new_laser = Laser(self)
-        self.lasers.add(new_laser)
+        if len(self.lasers) < self.settings.lasers_allowed:
+            new_laser = Laser(self)
+            self.lasers.add(new_laser)
+
+    def _update_lasers(self):
+        """Update position of lasers and get rid of old lasers."""
+        # Update laser postitions.
+        self.lasers.update()
+
+        # Get rid of lasers that have disappeared. 
+        for laser in self.lasers.copy():
+            if laser.rect.bottom <= 0:
+                self.lasers.remove(laser)
+        # print(len(self.lasers)) # Debug line
+
 
     def _update_screen(self):
         """Update images on the screen and flip to the new screen."""

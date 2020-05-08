@@ -12,3 +12,10 @@ class Settings:
         # Ship settings
         self.ship_speed = 1.5
         self.friend_speed = .5
+
+        #Laser settings
+        self.laser_width = 15
+        self.laser_height = 3
+        self.laser_speed = 1.0
+        self.laser_color = (250, 5, 30)
+        self.max_lasers = 3

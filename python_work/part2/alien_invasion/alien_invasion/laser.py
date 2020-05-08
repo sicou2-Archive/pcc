@@ -1,4 +1,5 @@
 import pygame
+
 from pygame.sprite import Sprite
 
 class Laser(Sprite):
@@ -21,7 +22,7 @@ class Laser(Sprite):
 
     def update(self):
         """Move the laser up the screen."""
-        #Update the decimal position of the laser.
+        # Update the decimal position of the laser.
         self.y -= self.settings.laser_speed
         # Update the rect position.
         self.rect.y = self.y
