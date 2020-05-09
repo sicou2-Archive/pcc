@@ -1242,6 +1242,203 @@ After that project you can start to build your own web apps and explore more
             Project 1: Alien Invasion
 
         Ch 12: A Ship that Fires Bullets
+    Planning Your Project
+Pygame is a collection of modules that manage graphics, animation, and sounds.
+Tasks like drawing to screen is blackboxed so you can think about higher level
+    things
+Set up Pygame, create a ship that moves and shoots things in response to player
+    input. 
+In further chapters you will make aliens to destroy and then continue to refine
+    the game
+Learn to manage larger projects with many files
+Refactor the code a lot.
+Manage file contents and make code efficient. 
+Making games can be a fun way to learn a language. 
+You get direct(ish) and immidiate(ish) feedback as to what you are making. 
+Experiment and play with everything!
+When building a large project have a plan or general over view that you can 
+    pick goals and smaller problems to solve out of. 
+Phase one here is make a ship that moves left, right, and shoots. 
+
+    Installing Pygame
+$ python -m pip install --user pygame
+
+or in my case 
+
+$ a_pcc
+$ than install pygame
+
+    Starting the Game Project
+First build a Pygame window
+the important things here are 
+    import pygame
+    def __init__(self)
+        pygame.init()
+    self.screen = pygame.display.set_mode((width, height))
+    def run_game(self)
+        watching for events
+        for i in pygame.event.get()
+
+        making the most recently drawn screen
+        pygame.display.flip()
+ai_object = GameClass()
+ai_object.run_game()
+
+There is a lot to unpack here.
+import sys and pygame
+pygame has all of the needed features needed to run the game. 
+pygame.init() starts all of the background settings 
+    It seems that this inits all of the modules contained in Pygame
+    It is also possible to only init the ones that are needed. 
+pygame.display.set_mode() creates a display window
+    requires a (height, width) *TUPLE* 
+^^^ Assign to a self.something
+The object self.something (in this case self.screen) is a surface
+    Pygame seemingly only supports one display screen. 
+    However, these surfaces can have subsurfaces for different "menus"
+Each alien or ship is its own surface that is drawn on to the main surface.
+The surface displayed by display.set_mode() is the entire game window. 
+    Once animation is started it is this surface that is redrawn with changes
+        made by input or the engine. 
+pygame.event.get() is what detects things that happen. Like user input. This
+    listens for everything that might be happening
+The first thing we assign to this is pygame.QUIT which detects the game windows
+    close button. sys.exit() is called in this case. 
+pygame.display.flip() is the instructon that tells Pygame to make the most 
+    recently drawn screen actually visible. 
+In the end we create an instance of the game and then call the main loop, 
+    run_game()
+self.bg_color = (255, 0, 100) in __init__ creates a background color tuple 
+    variable that can then be called by self.screen.fill(self.bg_color) to fill
+    in the game window with the RGB values for that tuple
+We then create a new file settings.py then creates a class Settings():
+Things like window height, width background color, ship speeds etc can be set 
+    here. 
+Then in the main game file from settings import Settings and assign to 
+    self.settings = Settings() like a class composition
+class Settings():
+    def __init__(self):
+        self.things_that_need_to_be_set = 3
+Remember to replace all of the "old" code when refactoring with new files, 
+    classes, and functions
+
+    Adding the Ship Image
+Pygame blit() method will be used to draw game objects to the screen. 
+Make sure that the art you choose for your games is properly licensed. 
+something like https://pixelbay.com/ is a good resource. 
+Can use any type of image in the game, however Pygame loads bitmaps by default. 
+When trying to use other file types you might need to install other image 
+    libraries on to your machine. Most images are .jpg or .png that can then be
+    converted via Photoshop or GIMP.
+Pay attention to background color. Transparent is best. 
+We then create a /images/ folder to store the game image assets
+New game file ship.py with the class Ship() is created. 
+class Ship():
+    def __init__(self, ai_game):
+        #NOTE: that ai_game is passed confusingly with self.ship = Ship(self)
+        where the self in Ship(self) *is* the self object of the game, not the
+        ships self that is on the left side of the = operator. 
+        self.screen = ai_game.screen 
+        self.screen_rect = ai_game.screen.get_rect()
+https://www.pygame.org/docs/ref/surface.html?highlight=get_rect#pygame.Surface.get_rect
+    # get_rect return a new rectangle at (0, 0) with a matching height and 
+        width of the image. In this case it is the game screen.
+        self.image = 'relative_path_to/ship_image.bmp'
+        self.rect = self.image.get_rect()
+        self.rect.midbottom = self.screen_rect.midbottom # sets a position for 
+            the ship to eventually be drawn to
+    def blitme(self):
+        self.screen.blit(self.image, self.rect)
+        # Surface.blit() draws one image on to another.
+https://www.pygame.org/docs/ref/surface.html#pygame.Surface.blit
+Pygame streamlines by letting you treat everything as a rectangle. 
+Simple shapes are easier to simulate as opposed to other things typically. 
+This works well enough. 
+we import pygame before defining the class
+the __init_() takes two parameters, the standard self reference and the 
+    reference to the current instance of the AlienInvasion class. 
+This gives Ship access to all of the methods 
+In Pygame the origin (0, 0) is the top left of the game window. 
+Now to update alien_invasion.py with new Ship class.
+from ship import Ship
+
+    __init__
+        self.ship = Ship(self)
+
+    run_game 
+        self.ship.blitme()
+
+We import the ship class 
+We create an instance of ship
+and we draw the ship to the Surface before .flip() the screen
+
+    Refactoring: The _check_events() and _update_screen Methods
+In large projects, refactoring is important. It simplifies the structure of the
+    code and can make is easier to build on. 
+Here we start to use '_helper_methods' 
+A _helper_method does work inside a class but is not meant to be called through
+an instance
+    It seems that they are functions that perform parts of the computation of 
+        another function. 
+It lets you call that calculation in multiple places and helps with readability
+    of the code. 
+In Python _helper_methods are denoted with a single leading underscore. 
+In this round of code clean up we just move the check events from run_game()
+to the helper _check_events(self) and then call _check_events() in run_game()
+_update_screen is the same thing. 
+A realistic development process is to barely get something running and as simple
+    as possible then refactor early and often. 
+
+    Piloting the Ship
+To respond to keypresses we will use pygame.event.get() and then from there
+    we will use _check_events() to break that down and keep run_game() simple
+From there we will add an elif after the pygame.QUIT for pygame.KEYDOWN and 
+    pygame.KEYUP. It is important to understand when it is important to need to 
+    know when the KEYUP happens. In this case to determine when the player 
+    wants the ship to stop moving. 
+>>> elif event.type == pygame.KEYDOWN:
+>>>     if event.key == pygame.k_RIGHT:
+>>>        # move the ship to the right with ship.moving_right = True
+
+In ship.py add __init__ self.moving_right = False flag
+>>> def update(self):
+>>>     if self.moving_right: #Is true
+>>>         self.rect.x += 1
+
+The equivalent with 
+>>> elif event.type == pygame.KEYUP:
+>>>     if event.key == pygame.k_RIGHT:
+>>>         ship.moving_right = False
+
+From there we add ship.update() to the run_game() loop
+
+Doing the same things for moving the ship to the left except that 
+    self.rect.x need to -= 1 to move left.
+NOTE: In Ship.update if self.moving for both left and right need to be ifs 
+    so that they will cancel each other out instead of allowing the if to take
+    priority over the elif.
+NOTE: In pygame.event.get() only one action for each time the loop goes though
+    gets activated to an elif statement for each level QUIT, RIGHT, LEFT, SPACE
+    is acceptable. 
+Next we put the ships speed in to Settings.py. As of "now" the ship will move
+    only one pixel each time through the loop and for this example we will want
+    to move it 1.5. 
+How do you move something half of a pixel you ask? Well stay tuned. 
+in ship.py self.settings = ai_game.settings
+Next we assign self.x to float(self.rect.x) in order to get the half (or 
+    any decimal for that matter) pixel resolution for the sprite.
+we then increment the self.x by the self.settings.ship_speed in the 
+    if self.moving_left or right and then self.rect.x = self.x where rect will
+    automatically convert the float to an int. 
+NOTE: macOS might not like running this in windowed mode, full screen mode 
+    might fix that. More to come on that later. 
+
+
+
+
+
+    A Quick Recap
+    Shooting Bullets
 
         Ch 13: Aliens!
 
