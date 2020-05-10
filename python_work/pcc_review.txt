@@ -1432,13 +1432,107 @@ we then increment the self.x by the self.settings.ship_speed in the
     automatically convert the float to an int. 
 NOTE: macOS might not like running this in windowed mode, full screen mode 
     might fix that. More to come on that later. 
-
-
-
-
+In order to prevent the ship from going off the screen (to whatever extent you)
+    want to happen:
+>>> if self.moving_right and self.rect.right < self.screen_rect.right:
+>>> #Then use the:
+>>>     self.x += self.settings.ship_speed
+This make it to when the right of the ships rect touches the right side of the
+    screen then the if statement is False and the ship does not move. 
+This code checks the position of the ship before allowing it to move. 
+Time for more refactoring. 
+_check_events() will continue to grow as the number of events to check 
+    grows. 
+Therefore we make two more helper methods _check_keydown_events(self, event):
+and _check_keyup_events(self, event)
+We then move the if statements for the two methods to here. 
+We add a event.key == pygame.K_q for sys.quit()
+To have the game run in full screen mode:
+>>> self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+>>> self.settings.screen_width = self.screen.get_rect().width
+>>> self.settings.screen_height = self.screen.get_rect().height
 
     A Quick Recap
-    Shooting Bullets
+alien_invasion.py is main file that has AlienInvasion class
+It creates many things that are used throughout the game.
+settings are assigned to settings
+main display surface is assigned to screen
+ship is assigned to ship
+The main loop of the game (a while loop) is stored in a module. 
+It calls _helper_methods such as _check_keydown_events() and _update_screen()
+settings.py holds the Settings class, it only has an __init__() which 
+    initialize attributes controlling the game and ship.
+ship.py has the Ship class 
+Ship has an __init__(), an update() method, to manage the ships position, and
+    blitme() to draw the ship to the scree. The ships image is stored in the 
+    images folder as ship.bmp.
+
+    Shooting <s>Bullets</s> lasers
+setup settings.py for the laser settings, self.laser_speed, width, height, and
+    a color tuple. 
+bullet.py has a lot of new things. Including importing the Sprite module from 
+pygame.sprite
+class Laser(Sprite):
+    def __init__(self, ai_game):
+        super().__init__()
+        screen...
+        settings...
+        self.color = self.settings.laser_color
+We first create a laser rect at the origin and then move to correct position
+        self.rect = pygame.Rect(0, 0, self.settings.laser_width,
+            self.settings.laser_height)
+The beams rect midtop is set to self.rect.midtop = ai_game.ship.rect.midtop
+We also do the same thing for self.y to float(self.rect.y) for the different 
+    speeds. 
+For update() we use the same trick to change the int of self.rect.y to a float
+    then assigning the float back to self.rect.y that truncates the number to 
+    an int
+For the draw_laser() method we use pygame.draw.rect(self.screen, self.color, 
+                                       self.rect)
+    screen is the surface to draw on, and color, and the size, there is an 
+    optional parameter that determins line "thickness"
+In alien_invasion.py we creat a group in __init__ 
+    self.bullets = pygame.sprite.Group()
+Next in the game loop self.lasers.update()
+When we call update on a group it will update every object within that group
+To actually fire beams _check_keydown_event needs to see the k_SPACE action.
+from laser import Laser need to be imported. 
+add elif event.key == pygame.K_SPACE:
+        self._fire_laser() # A helper method to be created shortly in the ex.
+def _fire_laser(self):
+    new_laser = Laser(self) # New object
+    self.laser.add(new_laser) # Adds to the group.
+
+Next need to _update_screen with a for loop for each laser beam in the 
+    self.laser.sprites(): < Imported from the parent in Sprite
+        laser.draw_laser()
+lasers.sprites() method returns a list of all sprited in the group lasers
+in order to draw all of them, we will need to loop through that list and 
+    laser.draw_laser()
+It is a good idea to remove all of the old laser beams. Therefore we will loop
+    through a .copy() of lasers and then if the bottom of the beam is at the 
+    edge of the screen (or simply the point in which they need to be removed) 
+    then we self.lasers.remove() opposite of add that is given from the Sprites
+    parent.
+>>> for laser in self.lasers.copy()
+>>>     if laser.rect.bottom <= 0:
+>>>         self.lasers.remove(laser)
+This can be verified that it is working with a print(len(self.lasers)) 
+NOTE: When looping through a list in Python (or in this case Pygame) it expects
+    that the length of the list will remain the same. 
+Because we cannot remove items from that list with the for loop. We actually 
+    will loop over a copy of that loop and remove what is needed in the 
+    original.<<
+Limiting the number of beams on screen is simple. In settings, 
+    self.lasers_allowed = 3 and in the _fire_lasers helper method, 
+    if len(self.lasers) < self.settings.lasers_allowed:
+    This is simple that when the player trys to shoot a beam and if the number
+        of beams on screen is less than the max allowed the fire_lasers method
+        will run. 
+Time to refactor again. 
+    Create a _update_lasers() method that updates the position and removes, 
+        old beams. 
+In the main loop _update_lasers()
 
         Ch 13: Aliens!
 
