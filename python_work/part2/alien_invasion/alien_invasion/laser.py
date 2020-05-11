@@ -2,6 +2,7 @@ import pygame
 
 from pygame.sprite import Sprite
 
+
 class Laser(Sprite):
     """A class to manage lasers fired from the ship."""
 
@@ -14,7 +15,7 @@ class Laser(Sprite):
 
         # Create a laser rect at (0, 0) and then set the correct position.
         self.rect = pygame.Rect(0, 0, self.settings.laser_width,
-            self.settings.laser_height)
+                                self.settings.laser_height)
         self.rect.midtop = ai_game.ship.rect.midtop
 
         # Store the laser's position as a decmial value.
