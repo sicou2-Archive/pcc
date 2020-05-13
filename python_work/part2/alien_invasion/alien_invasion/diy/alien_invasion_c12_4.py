@@ -1,4 +1,5 @@
 import sys
+from random import choice, randint
 
 import pygame
 
@@ -6,6 +7,7 @@ from settings_c12_4 import Settings
 from ship_c12_4 import Ship
 from friend_c12_4 import Friend
 from laser_c12_6 import Laser
+from star import Star
 
 
 class AlienInvasion:
@@ -30,9 +32,9 @@ class AlienInvasion:
         self.ship = Ship(self)
         self.friend = Friend(self)
         self.lasers = pygame.sprite.Group()
+        self.stars = pygame.sprite.Group()
 
-        # Set the background color.
-        self.bg_color = (230, 230, 230)
+        self._create_field()
 
     def run_game(self):
         """Start the main game loop."""
@@ -112,9 +114,38 @@ class AlienInvasion:
             if laser.rect.left >= self.settings.screen_width:
                 self.lasers.remove(laser)
 
+    def _create_field(self):
+        """Create a field of stars."""
+        # Create a star and determine the number of stars in the row.
+        # Spacing between each alien is equal to one star width.
+        star = Star(self)
+        star_width, star_height = star.rect.size
+        available_space_x = self.settings.screen_width
+        number_stars_x = available_space_x // (1 * star_width)
+
+        # Determine the number of rows of aliens that fit on the screen.
+        ship_height = self.ship.rect.height
+        available_space_y = self.settings.screen_height
+        number_rows = available_space_y // (1 * star_height)
+
+        # Create the full field of stars
+        for row_number in range(number_rows):
+            for star_number in range(number_stars_x):
+                self._create_star(star_number, row_number)
+
+    def _create_star(self, star_number, row_number):
+        """Create a star and place it in the row."""
+        star = Star(self)
+        star_width, star_height = star.rect.size
+        star.x = 2 * star_height * star_number
+        star.rect.x = star.x
+        star.rect.y = 2 * star.rect.height * row_number
+        self.stars.add(star)
+
     def _update_screen(self):
         """Update images on the screen and flip to the new screen."""
         self.screen.fill(self.settings.bg_color)
+        self.stars.draw(self.screen)
         self.ship.blitme()
         self.friend.blitme()
         for laser in self.lasers.sprites():

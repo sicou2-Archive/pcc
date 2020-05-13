@@ -7,13 +7,13 @@ class Settings:
         # Screen settings
         self.screen_width = 1200
         self.screen_height = 800
-        self.bg_color = (0, 0, 230)
+        self.bg_color = (0, 0, 0)
 
         # Ship settings
         self.ship_speed = 1.5
         self.friend_speed = .5
 
-        #Laser settings
+        # Laser settings
         self.laser_width = 15
         self.laser_height = 3
         self.laser_speed = 1.0
