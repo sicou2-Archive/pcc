@@ -34,15 +34,16 @@ class AlienInvasion:
         self.friend = Friend(self)
         self.lasers = pygame.sprite.Group()
         self.stars = pygame.sprite.Group()
-        # self.aliens = pygame.sprite.Group()
+        self.aliens = pygame.sprite.Group()
 
         self._create_field()
-        # self._create_fleet()
+        self._create_fleet()
 
     def run_game(self):
         """Start the main game loop."""
         while True:
             self._check_events()
+            self._update_stars()
             self.ship.update()
             self.friend.update()
             self._update_lasers()
@@ -61,28 +62,28 @@ class AlienInvasion:
 
     def _check_keydown_events(self, event):
         """Respond to keypresses."""
-        if event.key == pygame.K_RIGHT:
+        if event.key == pygame.K_q:
+            sys.exit(0)
+        elif event.key == pygame.K_RIGHT:
             self.ship.moving_right = True
             # self.friend.moving_right = True
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = True
             # self.friend.moving_left = True
-        elif event.key == pygame.K_UP:  # 12.4
-            # self.ship.moving_up = True #12.4
+        elif event.key == pygame.K_UP:
+            # self.ship.moving_up = True
             self.friend.moving_up = True
-        elif event.key == pygame.K_DOWN:  # 12.4
+        elif event.key == pygame.K_DOWN:
             # self.ship.moving_down = True
             self.friend.moving_down = True
-        elif event.key == pygame.K_q:
-            sys.exit(0)
         elif event.key == pygame.K_SPACE:
             self._fire_laser()
-        elif event.key == pygame.K_s:  # 12.4
+        elif event.key == pygame.K_s:
             if self.ship.active == True:
                 self.ship.active = False
                 self.friend.active = True
             elif self.ship.active == False:
-                self.ship.active = True  # 12.4
+                self.ship.active = True
                 self.friend.active = False
 
     def _check_keyup_events(self, event):
@@ -94,10 +95,10 @@ class AlienInvasion:
             self.ship.moving_left = False
             # self.friend.moving_left = False
         elif event.key == pygame.K_UP:  # 12.4
-            # self.ship.moving_up = False #12.4
+            #            self.ship.moving_up = False #12.4
             self.friend.moving_up = False
         elif event.key == pygame.K_DOWN:  # 12.4
-            # self.ship.moving_down = False
+            #            self.ship.moving_down = False
             self.friend.moving_down = False
 
     def _fire_laser(self):
@@ -110,7 +111,6 @@ class AlienInvasion:
         """Update position of the beam and remove old lasers."""
         # Update laser position
         self.lasers.update()
-        # print(len(self.lasers))
 
         # Get rid of lasers off screen.
         for laser in self.lasers.copy():
@@ -120,47 +120,65 @@ class AlienInvasion:
     def _create_field(self):
         """Create a field of stars."""
         # Create a star and determine the number of stars in the row.
-        # Spacing between each alien is equal to one star width.
+        # Spacing between each star is equal to one star width.
         star = Star(self)
         star_width, star_height = star.rect.size
-        available_space_x = self.settings.screen_width
-        number_stars_x = available_space_x // (2 * star_width)
+        self.available_space_x = int((
+            self.settings.screen_width - (.5 * star_width)))
+        self.number_stars_x = self.available_space_x // star_width
 
         # Determine the number of rows of aliens that fit on the screen.
-        ship_height = self.ship.rect.height
+        # ship_height = self.ship.rect.height
         available_space_y = self.settings.screen_height
         number_rows = available_space_y // (2 * star_height)
 
         # Create the full field of stars
-        for row_number in range(number_rows):
-            for star_number in range(number_stars_x):
-                self._create_star(star_number, row_number)
+        # for row_number in range(number_rows):
+        #     for star_number in range(number_stars_x):
+        #         self._create_star(star_number, row_number)
 
-    def _create_star(self, star_number, row_number):
+    def _create_star(self, star_number=0, row_number=0):
         """Create a star and place it in the row."""
-        star = Star(self)
-        star_width, star_height = star.rect.size
-        star.x = star_width + 2 * star_height * star_number
-        star.rect.x = star.x + randint(-15, 15)
-        star.rect.y = ((star.rect.height + 2 * star.rect.height * row_number) +
-                       randint(-15, 15))
-        self.stars.add(star)
+        if len(self.stars) < 100:
+            star = Star(self)
+            star_width, star_height = star.rect.size
+            # star.x = star_width + 2 * star_width * star_number
+            star.x = randint(0, self.available_space_x)
+            star.rect.x = star.x + randint(-15, 15)
+            star.rect.y = ((star.rect.height + 2 * star.rect.height *
+                            row_number) + randint(-15, 15))
+            self.stars.add(star)
 
-    # def _create_fleet(self):
-    #     alien = Alien(self)
-    #     aliens.add()
+    def _remove_star(self):
+        for star in self.stars.copy():
+            if star.rect.top >= self.settings.screen_height:
+                self.stars.remove(star)
 
-    # def _create_alien(self):
-    #     alien = Alien(self)
+    def _update_stars(self):
+        """Update the location of the stars on the screen."""
+        self._create_star()
+        self._remove_star()
+        self.stars.update()
 
-    # def _fleet_change_direction(self):
-    #     pass
+    def _create_fleet(self):
+        alien = Alien(self)
+        self._create_alien()
+
+    def _create_alien(self):
+        alien = Alien(self)
+        alien.x = 400
+        alien.rect.x = alien.x
+        alien.rect.y = alien.y
+        self.aliens.add()
+
+    def _fleet_change_direction(self):
+        pass
 
     def _update_screen(self):
         """Update images on the screen and flip to the new screen."""
         self.screen.fill(self.settings.bg_color)
         self.stars.draw(self.screen)
-        # self.aliens.draw(self.screen)
+        self.aliens.draw(self.screen)
         self.ship.blitme()
         self.friend.blitme()
         for laser in self.lasers.sprites():

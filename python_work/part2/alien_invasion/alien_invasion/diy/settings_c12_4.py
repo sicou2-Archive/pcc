@@ -1,3 +1,5 @@
+from random import randint
+
 
 class Settings:
     """A class to store all settings for Alien Invasion."""
@@ -19,3 +21,9 @@ class Settings:
         self.laser_speed = 1.0
         self.laser_color = (250, 5, 30)
         self.max_lasers = 3
+
+        # Alien settings
+        self.alien_speed = 1.0
+        self.alien_advance = 10
+        # alien_direction of 1 is down; -1 is up
+        self.alien_direction = 1
