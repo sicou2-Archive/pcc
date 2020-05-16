@@ -18,7 +18,7 @@ class Settings:
         # Laser settings
         self.laser_width = 15
         self.laser_height = 3
-        self.laser_speed = 1.0
+        self.laser_speed = 2.0
         self.laser_color = (250, 5, 30)
         self.max_lasers = 3
 

@@ -9,71 +9,71 @@ HelloWorld.py
 variable = "Thing assigning to variable."
 variable = "Thing that replaces old value in variable"
 Variables can have letters, numbers, and _
-    Can only start with letter or _; No spaces; do not use Python keywords; 
-    should be short and descriptive without being overly short or descriptive; 
+    Can only start with letter or _; No spaces; do not use Python keywords;
+    should be short and descriptive without being overly short or descriptive;
     be careful with lower-case L and number 1 or capital o or number 0
-Can think of variables as boxes, though it can be better to think of them as 
+Can think of variables as boxes, though it can be better to think of them as
     labels
 
     Strings
-String is series of characters, usually to be displayed to a user, 
+String is series of characters, usually to be displayed to a user,
     surrounded by ' ', or " "
 .title() variable.title() Capitalize words in string
 .lower() variable.lower() lower-case words in string
 .upper() variable.upper() upper-case words in string
 Variables in strings. Two methods, format string and .format();
     f'thing {variable}'; 'string {}  {}'.format(var_1, var_2);
-    I do know that there is something to do with % to format strings, though I 
+    I do know that there is something to do with % to format strings, though I
     am not super sure how to use that. I think it is more of a Python 'pre 3.6'
-     thing. 
+     thing.
 Can do formating to a string and then assign that to a variable
 Can use escape \n (newline) and \t (tab) to add white space to a string
-.rstrip() variable_string.rstrip() strip all white space to the right 
-    of the string permanently 
+.rstrip() variable_string.rstrip() strip all white space to the right
+    of the string permanently
 Be careful about extra whitespace, it can cause problems
-.lstrip() strip all white space to the left of the string permanently 
+.lstrip() strip all white space to the left of the string permanently
 .strip() strip all white space on both sided of the string permanently
-Be careful when using single or double quotes inside of strings. Make sure to 
-    mix when possible and to use \' \" when needed. 
+Be careful when using single or double quotes inside of strings. Make sure to
+    mix when possible and to use \' \" when needed.
 
     Numbers
-+ add; - subtract; * multiply; / divide; ** exponents, 
++ add; - subtract; * multiply; / divide; ** exponents,
 % modulus (remainder); // floor divide (whole number only)
-2 + 3*4 is one way to help make readability better by showing order of 
-    operations a little more clearly. 
-    
+2 + 3*4 is one way to help make readability better by showing order of
+    operations a little more clearly.
+
     Floats
-once a number becomes a float it stays what way until forced to do otherwise. 
-Calling a float makes a float, float(), or dividing (/). 
+once a number becomes a float it stays what way until forced to do otherwise.
+Calling a float makes a float, float(), or dividing (/).
 Be careful due to how computers deal with floats, you can sometimes get a crazy
-     amount of decimal places. 
-Python defaults to a float in any operation that uses a float regardless of 
-    what it evaluates to. 
-You can use underscored to make large numbers more readable, however Python 
+     amount of decimal places.
+Python defaults to a float in any operation that uses a float regardless of
+    what it evaluates to.
+You can use underscored to make large numbers more readable, however Python
     ignores them 1_000_000 or 1_00_00_00
-It is possible to assign multiple variables values on a single line of code; 
-    x, y, z = 1, 3, 5 
-Python does not have explicit constants, however you can indicate that 
+It is possible to assign multiple variables values on a single line of code;
+    x, y, z = 1, 3, 5
+Python does not have explicit constants, however you can indicate that
     something is a constant by using ALL_CAPS_IN_THE_VARIABLE_NAME = 4000
-    
+
     Comments
 #Comments are notes to yourself and others
-#Can be used as TODO, or explain things, or reminders, or whatever you want 
-    #them to be used for. 
+#Can be used as TODO, or explain things, or reminders, or whatever you want
+    #them to be used for.
 #There are no block comments in Python
-#Good comments are there to remind you what something does after you have to 
-    #leave it and come back to it later. Just enough to jog your or someone 
-    #elses memory. 
-#If something took you more than one or two stabs to figure out how to get 
-    #something working it is probably a good idea to comment on it. 
-    
+#Good comments are there to remind you what something does after you have to
+    #leave it and come back to it later. Just enough to jog your or someone
+    #elses memory.
+#If something took you more than one or two stabs to figure out how to get
+    #something working it is probably a good idea to comment on it.
+
     The Zen of Python
 In the Python Shell to get the ZoP
 >>> import this
 The Zen of Python, by Tim Peters
 Beautiful is better than ugly...
 ...
-This is the Python community's guiding philosophy. 
+This is the Python community's guiding philosophy.
 
         Ch 3: Introducing Lists
     What Is a List?
@@ -81,11 +81,11 @@ A list is a data structure that is collection of items in a particular order
 As opposed to a dict, tuple, or set (there are others too)
 in Python [] square brackets indicate a list
     a_list = [1, 2, 'dog', True, 'happy']
-You can access an element in a list by using its index number, (starting at 0 
+You can access an element in a list by using its index number, (starting at 0
     (zero))
     >>> a_list[2]
     'dog'
-Index positions start at 0 
+Index positions start at 0
 Be wary of off by one errors
 Can use indexed values from a list f'String {variable[0]}'
 
@@ -98,100 +98,100 @@ Can add to a list in a few ways
         everything after index 3 down one index
 Can also remove items from a list:
     del variable_list[1] will remove the item from index 1
-    NOTE: This will not return the value that was removed. 
+    NOTE: This will not return the value that was removed.
     variable_list.pop() will remove the last item in the list.
         you can also assign this popped item to another variable
     NOTE: pop will return the popped value
     popped = variable_list.pop()
     variable_list.remove('item to be removed') will remove the first
-    instance of 'item to be removed' moving every item after up one 
+    instance of 'item to be removed' moving every item after up one
     index number
 
     Organizing a List
 variable.sort() will permanently sort a list alphabetically
 can also do variable.sort(reverse=True) to reverse alphabetize a list
     permenantly
-I know this comes up later when talking about slicing a list, but you cannot 
-    just assign a list to another variable to preserve the original order of 
-    that list. 
-    If you do not slice and just list = original_list, when you sort list, 
-        original_list will be sorted as well. You must slice the list and the 
+I know this comes up later when talking about slicing a list, but you cannot
+    just assign a list to another variable to preserve the original order of
+    that list.
+    If you do not slice and just list = original_list, when you sort list,
+        original_list will be sorted as well. You must slice the list and the
         "re-slice" the list in order to return an original order
     NOTE: This is because variables to lists are more like pointers as opposed
-        to "boxes" of items. 
+        to "boxes" of items.
             You can so this by new_list = old_list[:]
 A temporary sorting of a list can be done with the sorted() function
 sorted(list) will return the list temporarilly sorted alphabetically.
 NOTE: Python does something weird with UPPER and lower case letters (ASCII)
-    when sorting them. Be careful when dealing with this so you do not get 
-    unexpected behaviors. 
-    sorted(list, reverse=True) will also work for sorted. 
+    when sorting them. Be careful when dealing with this so you do not get
+    unexpected behaviors.
+    sorted(list, reverse=True) will also work for sorted.
 It seems like you can not print(list.sort()) but you *CAN* print(sorted(list))
     NOTE: This *has* to have something to do with modules/methods and functions
         However, I still do not 100% have why you can do one and not the other
             sorted in my head.
 list.reverse() can be used to simply reverse the current list order
-    permanently, however this is not so big of a deal since you can 
-    list.reverse() a second time to get back to your first order. 
-You can len(list_variable) to get the int (starting at 1) of indexes in the 
+    permanently, however this is not so big of a deal since you can
+    list.reverse() a second time to get back to your first order.
+You can len(list_variable) to get the int (starting at 1) of indexes in the
     list
 
     Avoiding Index Errors When Working with Lists
 Be aware of off-by-one errors
-Remember list[-1] to get the last item in a list. This always works except for 
+Remember list[-1] to get the last item in a list. This always works except for
     when the list is empty
 
         Ch 4: Working with Lists
     Looping Through an Entire List
-Looping is useful, huh, who would have thought. 
+Looping is useful, huh, who would have thought.
 list_of_n_length
 for num in list_of_n_length:
     print(num)
 I might be wrong, but for-loops need to be indexable, otherwise it cannot count
     where it is in the loop.
     NOTE: This is correct
-If possible make the "num" part of the loop at least a little descriptive even 
-    if it is only a temp variable. Where "num" is the index position variable 
-    at that index, in the list being looped. 
+If possible make the "num" part of the loop at least a little descriptive even
+    if it is only a temp variable. Where "num" is the index position variable
+    at that index, in the list being looped.
 You can do almost anything from within a loop. print(f"{num.title()})")
-Just remember that it will do this every time it goes through that loop, so be 
-    aware of the rammifications. 
-As long as every line in the loop is properly indented, you get to stay in the 
-    loop. Once you dedent, you are telling Python to stop the loops 
-    instructions there. 
+Just remember that it will do this every time it goes through that loop, so be
+    aware of the rammifications.
+As long as every line in the loop is properly indented, you get to stay in the
+    loop. Once you dedent, you are telling Python to stop the loops
+    instructions there.
 
     Avoiding Indentation Errors
-Indentation is what Python uses to determine how things are related to the rest 
-    of the program. 
+Indentation is what Python uses to determine how things are related to the rest
+    of the program.
     i.e Blocks
-If you forget to indent immidiately after a line expecting an indent, you will 
-    get an error;  
-If you forget to continue to indent lines that are supposed to be in the loop, 
-    assuming you indented at least one line correctly, you will not get an 
-    error, however you *will* get unexpected behaviors; 
+If you forget to indent immidiately after a line expecting an indent, you will
+    get an error;
+If you forget to continue to indent lines that are supposed to be in the loop,
+    assuming you indented at least one line correctly, you will not get an
+    error, however you *will* get unexpected behaviors;
         These kinds of errors are called 'Logical Errors'
 If you indent when you are not supposed to you will get an 'IndentationError'.
 >>> variable = 1
 >>>     print(variable) <- ERROR
-If you indent unnesessarily after the completion of a loop, you will get a 
-    Logical Error and that (those) line will be included in the loop and the 
-    consequences of that.     
-Try to remember to not forget the colon. Just dont, syntax error and a feeling 
+If you indent unnesessarily after the completion of a loop, you will get a
+    Logical Error and that (those) line will be included in the loop and the
+    consequences of that.
+Try to remember to not forget the colon. Just dont, syntax error and a feeling
     of sillyness.
 
     Making Numerical Lists
-Lots of reasons to keep a list of numbers in a program, positions, status, 
-    values. All kinds of reasons. 
+Lots of reasons to keep a list of numbers in a program, positions, status,
+    values. All kinds of reasons.
 range()
-for num in range(0,11,1) <- ([index to start on], index to stop at but not 
+for num in range(0,11,1) <- ([index to start on], index to stop at but not
     include, [amount to increment by]) '[]' are optional
 >>> list = range(1,5) will give a list of [1,2,3,4] to 'list'
 >>> min(list) = 1
 >>> max(list) = 4
 >>> sum(list) = 10
 List Comprehensions
-    I do not understand these totally, however I an not totally sure they are 
-        necessary. 
+    I do not understand these totally, however I an not totally sure they are
+        necessary.
 >>> squares = []
 >>> for value in range(1, 11):
 >>>     squares.append(value**2)
@@ -205,13 +205,13 @@ List Comprehensions
 
 Instructions:
 1 begin with a descriptive name for the list
-2 open square brackets [ and define the expression for the values you want to 
+2 open square brackets [ and define the expression for the values you want to
     store in the new list
-3 then write a for loop to generate the numbers you want to feed in to the 
+3 then write a for loop to generate the numbers you want to feed in to the
     expression and then close the square brackets ]
 
 Once writing 3 or 4 line lists become tedious consider giving List
-    Comprehensions a serious look. 
+    Comprehensions a serious look.
 
     Working with Part of a List
 Remember that lists are mutable. Becareful when fiddling with them.
@@ -220,55 +220,55 @@ slice! Parts of a list
 >>> slice_list = list[2:3]
 >>> slice_list
 >>> [2, 3]
-You can work slices a few ways. 
-Note lists count by index, like range(6) does; therefore be wary of off by one 
+You can work slices a few ways.
+Note lists count by index, like range(6) does; therefore be wary of off by one
     errors
     list[1:6] list from element 1 to 5
     list[:6] or list[0:6] (these are the same thing)
     list[5:] list to end starting at element 5
     list[:] whole list to copy
     list[-3:] list starting three from the end and going until the end
-Can use a for-loop to loop through a slice of elements in a list for num in 
+Can use a for-loop to loop through a slice of elements in a list for num in
     list[:3]: will give the first three elements in list
 Slices are excellent tools for working with parts of lists;
-    ex taking a players .sort() top three scores, or looping through data sets 
-    with chuncks of data a specific size; or when building a web applicastion, 
-    use slices to display info in a series of pages with a good amount of info 
-    on each page. 
+    ex taking a players .sort() top three scores, or looping through data sets
+    with chuncks of data a specific size; or when building a web applicastion,
+    use slices to display info in a series of pages with a good amount of info
+    on each page.
 list_copy = list[:] <- Copy's list
 
     Tuples
-A tuple looks the same as a list except it uses () instead of square brackets. 
+A tuple looks the same as a list except it uses () instead of square brackets.
 tuple = (1, 2, 3, 'string', True)
-Tuples are immutable, that cannot be changed without overwriting the whole 
-    tuple with a new value. 
-To define a tuple with only one element: tuple(8,) put a comma after the first 
-    and only element. 
-If you try to change something in a tuple, Python will throw an error. 
+Tuples are immutable, that cannot be changed without overwriting the whole
+    tuple with a new value.
+To define a tuple with only one element: tuple(8,) put a comma after the first
+    and only element.
+If you try to change something in a tuple, Python will throw an error.
 tuple = (1, 2, 3, 4)
 tuple = (11, 13, 15, 17)
 
     Styling Your Code
-Python has an agreed upon number of conventions to ensure that code typically 
-    reads about the same. 
-PEP (Python Enhancement Proposal) is the current standard on how to style code. 
-Rule of thumb is to write code that is readable as opposed to easier to write. 
+Python has an agreed upon number of conventions to ensure that code typically
+    reads about the same.
+PEP (Python Enhancement Proposal) is the current standard on how to style code.
+Rule of thumb is to write code that is readable as opposed to easier to write.
     The reason is, you (should) write your code only once, though you will read
-     it many times. 
-PEP 8 sayas to use 4 (four) spaces per indentation level. 
-*DO NOT* mix tabs with spaces. The interpreter can get confused. 
-Each line should be less than 80 characters. 
-Comment lines should be less than 72 characters. 
-    This is because some tools geet grumpy when these are different. 
+     it many times.
+PEP 8 sayas to use 4 (four) spaces per indentation level.
+*DO NOT* mix tabs with spaces. The interpreter can get confused.
+Each line should be less than 80 characters.
+Comment lines should be less than 72 characters.
+    This is because some tools geet grumpy when these are different.
 Use blank lines to group parts of your code visually
 Do not do so excessively
-You really do not need more than one line between different sections. 
+You really do not need more than one line between different sections.
 
         Ch 5: if Statements
     Conditional Tests
 
-if-statements can be used to single out special circumstances, like BMW in a 
-    list of cars. 
+if-statements can be used to single out special circumstances, like BMW in a
+    list of cars.
 At the heart of every if-statement is a conditional test (True/ False)
 >>> car = 'bmw'
 >>> car == 'audi'
@@ -287,10 +287,10 @@ False
 >>> a < b and b < c
 True
 and conditional, if I do not know this by now, please just give up
-or conditional, same thing, I actually like this logic stuff. I better know 
+or conditional, same thing, I actually like this logic stuff. I better know
     this
-You can check to see if something is in a list with 'in' keyword 
-    Also, can see if something is 'not in' something 
+You can check to see if something is in a list with 'in' keyword
+    Also, can see if something is 'not in' something
 >>> list = [1, 2, 3,]
 >>> 5 in list
 False
@@ -304,47 +304,47 @@ Boolean Expression is another term for conditional expression
 Boolean Values will always be either True or False
 Boolean Values are often used to keep track of certian conditions; like flags
 >>> user_can_edit = False
-Efficient way to keep track of the different states of a program. 
+Efficient way to keep track of the different states of a program.
 
     if Statements
 super simple
 if conditional_test:
     do_something
-Can put any conditional test on the first line followed by almost any action 
+Can put any conditional test on the first line followed by almost any action
     in the following block.
 Typically try to not over complicate your if conditional tests. If it gets hard
     to read move it somewhere else and call that variable in the if statement
-Indentation plays the same role for if-statements as it did with loops. 
+Indentation plays the same role for if-statements as it did with loops.
 if-else is used to check the if, if the if is False the else *will* run
 if-elif-else chains can be used to run down a list of possibible actions based
-    on conditionals and run the *first* one that is true. 
-The first one that is true bit is super important. Make sure it is possible to 
-    hit all of the if-elif-else statements based on all of the possible 
-    conditions otherwise the code is pointless. 
-Multiple elif blocks can be used. 
+    on conditionals and run the *first* one that is true.
+The first one that is true bit is super important. Make sure it is possible to
+    hit all of the if-elif-else statements based on all of the possible
+    conditions otherwise the code is pointless.
+Multiple elif blocks can be used.
 Not super sure what to do if the if-elif-else chain becomes super long. There
     is probably a better way to do that, but I am not super positive what that
-    solution is at the moment. 
+    solution is at the moment.
 The else block is not required in Python
-Sometimes it can be more clear to use a catch all elif statement instead of a 
-    else: 
+Sometimes it can be more clear to use a catch all elif statement instead of a
+    else:
 Be careful with else blocks. They are a catch all and will catch bad, invalid,
-    or even malicious data. 
-if-elif-else can only check one condition. 
+    or even malicious data.
+if-elif-else can only check one condition.
     Therefore if you need to you can use multiple if's chained together to test
         many things
 You can efficiently check through a list for special values with a for-loop/
-    if-statement combination. For example looking through a list to see if 
-    certain ingredients are in or out of stock. 
+    if-statement combination. For example looking through a list to see if
+    certain ingredients are in or out of stock.
 Empty objects return False
     text = ''
     list = []
-    therefore you can test with an if to see if something is empty in order to 
-        do something interesting with that empty list. e.g. complete level, 
+    therefore you can test with an if to see if something is empty in order to
+        do something interesting with that empty list. e.g. complete level,
         or confirm a task is complete
-    
+
     Using if Statements with Lists
-You can also check to see if something in one list is in another list with 
+You can also check to see if something in one list is in another list with
 a for-loop and a if-statement
 for thing in list:
     if thing in another_list:
@@ -362,85 +362,85 @@ a_dict = {'key':value, 1: 2,}
 
     Working with Dictionaries
 dictionaries in Python are a collection of 'key'-'value' pairs
-Acessing the dict is similar to calling a list index except you refer to the 
+Acessing the dict is similar to calling a list index except you refer to the
     key
 >>> a_dict['key']
 Keys can be ints or strings
 Keys or values can be assigned with a variable, however once in the dict if the
     variable changes, the dict will not update
-a dict is a collection of key-value pairs. Each key is connected to a value. 
+a dict is a collection of key-value pairs. Each key is connected to a value.
 Explicitly, to access a value with a key: a_dict['key']
-dicts are dynamic can add or remove from them 
+dicts are dynamic can add or remove from them
 To add a new k-v pair to a dict: a_dict['new_key'] = 'new value'
 NOTE: As of Python 3.7 dicts are now ordered. When looping through the order
     the loop goes through the dict will be in the order that the k-v were added
     to the dict
 Creating an empty dict is simple: new_dict = {}
-Then can work with it like normal. 
+Then can work with it like normal.
 In addition to that empty dicts will return false
 Changing a value in a k-v pair is the same as assigning a new k-v pair except
-    you reuse the key. 
+    you reuse the key.
 >>> a_dict['key'] = 'happy'
 >>> a_dict['key'] = 'smile'
 You can remove a k-v pair with >>> del a_dict['key']
 This is a permanent deletion, no take-backsies
-Dictionarys can be used to store information for one object and its many 
+Dictionarys can be used to store information for one object and its many
     attributes, and also an atribute of many objects. e.g. a person and facts
-    about then vs many people with one response to a poll. 
-        This assumes no nesting. 
+    about then vs many people with one response to a poll.
+        This assumes no nesting.
 NOTE: A long dict has PEP 8 formatting that assists readability
 a_dict = {
     'a': 1,
-    'b': 2, 
+    'b': 2,
     'c': 3,
     'd': 4,
     }
-You indent one level "down". 
-    There are other ways to format long dicts and other things. Be aware, be 
+You indent one level "down".
+    There are other ways to format long dicts and other things. Be aware, be
         alert, be alive!
 Use .get() to access things in a list. This will return None (or something else
-    if you tell it to do something else) if the 'key' you are attempting to 
-    access does not exist. 
+    if you tell it to do something else) if the 'key' you are attempting to
+    access does not exist.
 >>> variable = a_dict.get('key', 'that does not exist please fix the error')
 a_dict['key'] vs a_dict.get('key')
 Both work, but should use .get if there is a chance that the key does not exist
     otherwise you will get a KeyError
 
     Looping Through a Dictionary
-Because dicts can be short or long, you can loop through dicts. 
+Because dicts can be short or long, you can loop through dicts.
 You can loop through dicts in a few ways
 
     Loop through all k-v pairs
 Can loop:
 >>>for key, value in user_0.items(): # 'key' and 'value' are variable names and
                                     # can be whatever make it clear what they
-                                    # are and are doing. 
+                                    # are and are doing.
         print(key, value)
 .items() is a method that returns k-v pairs
-the above loop then assigns these pairs to each of the two named variables. 
+the above loop then assigns these pairs to each of the two named variables.
 Looping through all k-v pairs is a good option when you have a dict of object
-    and one piece of info e.g. 'person':'primary_language' or dicts with the 
-    same 'value-type' for many different keys. 
+    and one piece of info e.g. 'person':'primary_language' or dicts with the
+    same 'value-type' for many different keys.
 see favorite_languages.py
 
     Loop through all keys
 .keys() is a useful method when you do not need to work with all of the values
     in a dict
-e.g. loop through a dicts 'keys' to find one or more to do something with them. 
+e.g. loop through a dicts 'keys' to find one or more to do something with them.
 NOTE: for keys in a_dict.keys(): is the same thing as for keys in a_dict:
-.keys() is the default value for the dict to be iterated over. 
-.keys() is not just for looping. It returns a list of all 'keys'. 
+.keys() is the default value for the dict to be iterated over.
+.keys() is not just for looping. It returns a list of all 'keys'.
     Loop through keys in a particular order
-sorted(a_dict.keys()) is an option. 
+sorted(a_dict.keys()) is an option.
 Not a whole lot here, but it might be useful when printing something to a user
     Loop through all values in a dict
-.values() is an option in the same way that .keys() is an option. 
-This is if you need to only loop through the values of a dict. 
-In this example: 
-set(a_dict.values()) is used to creat a set of the values in the dict. A set 
+.values() is an option in the same way that .keys() is an option.
+This is if you need to only loop through the values of a dict.
+In this example:
+set(a_dict.values()) is used to creat a set of the values in the dict. A set
     is used to identify unique items in a list and only display one instance of
     them. In this example it was for when there were multiple people with the
-    same favorite language. 
+    same favorite language.
 A set is a unordered collection with no duplicate elements
 You create a set with either set(something_not_a_set) or with a_set = {'dog'}
 NOTE: you cannot create an empty set with a_set = {}. This would create a dict.
@@ -457,115 +457,115 @@ a_list = [a_dict, b_dict, c_dict]
 List in dict
 a_dict = {'a_key':'a_value', 'b_key': ['a_list', 'b_list',]}
 this shows a couple of things, in addition to the list in a dict ex.
-It shows that a value in a dict does not need to always be the same type of 
-    object that other values in the dict are. 
-When you have a long print call and you need to break it up over several line, 
+It shows that a value in a dict does not need to always be the same type of
+    object that other values in the dict are.
+When you have a long print call and you need to break it up over several line,
     you will close the string with ' or " and then on the next line, intent one
-    level and then open the ' or " again and continue the string. 
+    level and then open the ' or " again and continue the string.
 You can nest a list inside a dict any time you want a key to have more than one
 value associated with it. E.g. people and their list of favorite programming
     languages
 NOTE: DO NOT NEST TO DEEPLY FOR IT IS GREEDY AND WILL AWAKEN NASTY BEASTS,
-    there is also probably a better way to do it. 
-Dicts can go in dicts. 
+    there is also probably a better way to do it.
+Dicts can go in dicts.
     users{'user':{'dict_of_user_facts'}}
-Keep the structure of dicts within dicts the same. It will make this much 
-    easier to read. 
+Keep the structure of dicts within dicts the same. It will make this much
+    easier to read.
 
         Ch 7: User Input and while Loops
     How the input() Function Works
-input() pauses the program and waits for the user to type in text. It then 
-    converts that text to a string, and then if it is told to, assigns that 
-    string to a variable. 
-input takes one parameter that is a string and that becomes the prompt for the 
+input() pauses the program and waits for the user to type in text. It then
+    converts that text to a string, and then if it is told to, assigns that
+    string to a variable.
+input takes one parameter that is a string and that becomes the prompt for the
     input
 input('> ')
 NOTE: Many editors do not run programs with input correctly, probably will need
     to use the Terminal
-Can use the prompt parameter to ask questions or just give a typing prompt 
+Can use the prompt parameter to ask questions or just give a typing prompt
     indicator
-Unless your instructions should be clear and easy-to-follow/understand. Need 
+Unless your instructions should be clear and easy-to-follow/understand. Need
     to also seperate the instruction text from the users input to make it clear
-    something is expexted from the user. 
+    something is expexted from the user.
 Can help to use a colon then a space at the end of the prompt
 When the prompt is longer than one line, (including when you use a second line
     for further instructions) you should create a variable and increment/
-    concatenate the string together. 
-    NOTE: this is *ONE WAY* to build a multi-line string. 
+    concatenate the string together.
+    NOTE: this is *ONE WAY* to build a multi-line string.
     NOTE: I am not sure specifically if this is best practice or just how Eric
-        does this. 
+        does this.
     NOTE: In this book Eric tends to use "The Python Method"
 variable = 'Do the thing user!'
 variable += '\nFurther instructions for clarification user! '
 action = input(variable)
-input() puts everything the user types in to a string. If you expect a number, 
-    you will need to convert that 'str' in to an int with int(user_input) 
+input() puts everything the user types in to a string. If you expect a number,
+    you will need to convert that 'str' in to an int with int(user_input)
     before trying to manipulate that number with number things.
 If you forget to int() you will get a TypeError
-Modulo is a very useful tool for working with numerical information. 
+Modulo is a very useful tool for working with numerical information.
 It specifically takes a number and divides it by another number and returns the
-    remainder. 
+    remainder.
 It does not tell you how many times a number fits in to another number, *ONLY*
-    the remainder. 
-REMEMBER: Modulo any number by 2 and if 0, then the number is even, if 1, the 
-    number is odd. 
+    the remainder.
+REMEMBER: Modulo any number by 2 and if 0, then the number is even, if 1, the
+    number is odd.
 
     Introducing while Loops
-for-loop takes each item in an iterable thing (set, list, dict, tuple, 
+for-loop takes each item in an iterable thing (set, list, dict, tuple,
     something... else?) and loops over it once for each item in that collection
 a while-loop repeats until the condition that sets the loop is true.
-while True: <- Will loop forever unless something breaks out of the loop. 
+while True: <- Will loop forever unless something breaks out of the loop.
 
 while a_number is <= 399:
     do something.
-MAKE SURE: that the loop will eventually become false or something breaks out 
-    of the loop, or you will need to wait for the heat death of the universe. 
+MAKE SURE: that the loop will eventually become false or something breaks out
+    of the loop, or you will need to wait for the heat death of the universe.
 Quiting a while loop can be based on many things. User input, a flag that
-    changes to false, *ANYTHING* that can become false, or break out of the 
-    loop. 
+    changes to false, *ANYTHING* that can become false, or break out of the
+    loop.
 while user_input != 'quit':
-Be wary for user_input strings to 'quit', you might still have to go through 
-    the loop one more time depending on how you have the loop set up. 
+Be wary for user_input strings to 'quit', you might still have to go through
+    the loop one more time depending on how you have the loop set up.
     An if statement can help with that to short circuit out of the loop exactly
-    when you want to. 
-Flags - setting a variable to True or False and then changing that variable 
-    to change a conditional can be more simple than while True and can allow 
-    for impact beyond a function. 
+    when you want to.
+Flags - setting a variable to True or False and then changing that variable
+    to change a conditional can be more simple than while True and can allow
+    for impact beyond a function.
     e.g. A program where there are many things should cause the conditional to
-        stop the loop. This program should only run as long as many 
+        stop the loop. This program should only run as long as many
         conditionals are true
 
 ####STOPPED REVIEW HERE
 
 
 The keyword break can be used to immediately end any loop without running any
-    remaining code in that block. This allows you to more elequantly control 
-    exactly the code you want to run in a loop. 
-The keyword continue will restart the loop from that point without finishing 
-    that cycle of the loop. Immediately to the top of the loop. 
+    remaining code in that block. This allows you to more elequantly control
+    exactly the code you want to run in a loop.
+The keyword continue will restart the loop from that point without finishing
+    that cycle of the loop. Immediately to the top of the loop.
 You need to avoid an infinite loop. Everything needs a way out.
 If you get stuck in an infinite loop Crtl-c will interupt the program forcing a
-    stop. Or just close the window. 
+    stop. Or just close the window.
 Thoroughly test your loops to make sure that they can and will exit the loop
-    eventually. Especially when the exit conditions are subtle. 
+    eventually. Especially when the exit conditions are subtle.
 
     Using a while Loop with Lists and Dictionaries
-You should not modify a list while looping through the list else Python (and 
-    you) will get lost, dazed, and confused. 
-while-loops with list and dicts allows for collecting, using, storing, and 
-organizing input to examine and report later. 
-No for-loop, .pop() from one list to another will not work. 
+You should not modify a list while looping through the list else Python (and
+    you) will get lost, dazed, and confused.
+while-loops with list and dicts allows for collecting, using, storing, and
+organizing input to examine and report later.
+No for-loop, .pop() from one list to another will not work.
 remove('string') will only remove one instance of the object you want to remove
     from that list. You can while-loop many times to make sure all instances
-    of that thing are removed from the whole data structure. 
-Can use input() with a while loop to recieve many responses from a user until 
-    they indicate that their data entry is complete. 'quit' 'end' whatever. 
+    of that thing are removed from the whole data structure.
+Can use input() with a while loop to recieve many responses from a user until
+    they indicate that their data entry is complete. 'quit' 'end' whatever.
 
         Ch 8: Functions
     Defining a Function
-Functions are named blocks of code that do one thing. 
-When you want to run that code you 'call' a function. 
-This saves typing and increases modularity and readability. 
+Functions are named blocks of code that do one thing.
+When you want to run that code you 'call' a function.
+This saves typing and increases modularity and readability.
 Functions can process data, or display it. (Plus all of the other things)
 >>> def do_a_function():
 >>>     do_code_things
@@ -573,7 +573,7 @@ Functions can process data, or display it. (Plus all of the other things)
 >>> do_a_function()
 THINGS HAPPEN!
 
-Will also need to pass information in to the function. 
+Will also need to pass information in to the function.
 >>> def do_a_function(something_fun_needs):
 >>>     do_code_things + something_fun_needs
 
@@ -581,28 +581,28 @@ Will also need to pass information in to the function.
 MORE THINGS HAPPEN!
 NOTE: A parameter is a piece of information that a function needs to do its job
 NOTE: An argument is the piece of information that is passed to the function
-    so it can do its job. 
-The difference is that a parameter is the definiaiton of what the function 
-    needs and an argument is that actual info that is given to the function. 
+    so it can do its job.
+The difference is that a parameter is the definiaiton of what the function
+    needs and an argument is that actual info that is given to the function.
 
     Passing Arguments
 functions can require many parameters, a function call will need many arguments
-There are many ways to pass arguments to the function. 
+There are many ways to pass arguments to the function.
     Postitional Arguments
-These arguments must be in the correct specific order in the function call as 
-    defined in the function. 
+These arguments must be in the correct specific order in the function call as
+    defined in the function.
 >>> def thing(arg1, arg2, arg3)
 
 >>> cheese = thing(a_arg1, b_arg2, c_arg3)
-Otherwise everything will get confused and will not work. 
-NOTE: You can call a single function multilple times with no issues. 
-This in fact can be a very efficient way to work. 
+Otherwise everything will get confused and will not work.
+NOTE: You can call a single function multilple times with no issues.
+This in fact can be a very efficient way to work.
 Order matters in Positional Arguments!
 >>> cheese = thing(b_arg2, a_arg1, c_arg3) <- Will ruin everything
     Keyword Arguments
-Keyword Argument is a 'key'-'value' pair you pass in a function. 
+Keyword Argument is a 'key'-'value' pair you pass in a function.
 The value is directly associated with the key so you cannot get out of order
-    arguments like with positional arguments. 
+    arguments like with positional arguments.
 Keyword Arguments do not need to be in order
 >>> cheese = thing(a_arg1='taste', c_arg3=42, b_arg2='foo')
 NOTE: NEED TO LOOK IN TO COMBINING POSITIONAL AND K-V ARGUMENTS
@@ -613,25 +613,25 @@ You can assign a parameter to a default value in case it is not always needed
 Default values must go at the end of the arg list
 >>> def thing(a_arg1, b_arg2, c_arg3=42)
 >>> cheese = thing(12, 'fancy')
-When no value is used in the argument for the parameter with a default value, 
-    then the default is assigned to that parameter, this is kind of obvious, 
-    I just want to make sure future Brayton understands this. 
-It does not matter what calling style you use, however, try to use the one 
-    that makes thing the most clear and easy to read. 
+When no value is used in the argument for the parameter with a default value,
+    then the default is assigned to that parameter, this is kind of obvious,
+    I just want to make sure future Brayton understands this.
+It does not matter what calling style you use, however, try to use the one
+    that makes thing the most clear and easy to read.
 An argument error will happen when Python expects a certian number of arguments
     and a different number is provided
     (I am looking at you 'self')
-TypeError: function_cool() missing 2 required positional arguments: 'thing1' 
+TypeError: function_cool() missing 2 required positional arguments: 'thing1'
 and 'thing2'
-If your names for args and params are clear solving the problems should be 
-    super simple to find out what is exactly going wrong. 
+If your names for args and params are clear solving the problems should be
+    super simple to find out what is exactly going wrong.
     Return Values
 The value that something gives back to what called it is called a return value
-This allows much of the grunt work to move to functions. 
+This allows much of the grunt work to move to functions.
 When calling a function that returns something it needs a variable that Python
-    can assign that returned value to. 
+    can assign that returned value to.
 This might seem like a lot of work for something simple, however when moving on
-    to working with lots and lots of things it helps. 
+    to working with lots and lots of things it helps.
 It is possible to make an argument optional
 Simply assign the parameter to a default value of None or an equivalent value
 You can use if statements to control what happens when one of the arguments
@@ -641,43 +641,43 @@ Back to while-loops, make sure that they have a way out of them. Yadda-yadda
     heat death.
 input('quit') etc
     Passing a List
-Using functions with lists can make working with lists more efficient. 
-The when passing a list to a function, the function is given access to the 
-whole list. 
-Make sure that you .copy.copy or [:] slice your list if you want the list to 
+Using functions with lists can make working with lists more efficient.
+The when passing a list to a function, the function is given access to the
+whole list.
+Make sure that you .copy.copy or [:] slice your list if you want the list to
     remain unchanged
 This is useful for looping through lists
 You can make changes to a list within the function. These changes to the list
 are permenent. Excepting when passed a slice or a copy.copy or copy.deepcopy
 Try to work toward a program design where modules only do one specific thing
     This helps with debugging, modularity, *organization* and simplicity.
-When needing to create a slice/copy for a list that is to be passed to a 
-    function, you should create the copy/slice *AT THE FUNCTION CALL*, not in 
-    the function definition. 
-Make sure you have a specific reason to need to copy the list. Otherwise, 
-making a slice/copy is less efficient. 
+When needing to create a slice/copy for a list that is to be passed to a
+    function, you should create the copy/slice *AT THE FUNCTION CALL*, not in
+    the function definition.
+Make sure you have a specific reason to need to copy the list. Otherwise,
+making a slice/copy is less efficient.
 
     Passing an Arbitrary Number of Arguments
-It is possible in Python to pass an undefined number of args to a function to 
+It is possible in Python to pass an undefined number of args to a function to
     account for unknown conditions from the user. e.g. Pizza toppings
 >>> def do_thing(*args):
 >>>     print(args)
 
 The asterisk instructs Python to make an empty Tuple called 'args' and shove
-    anything it recieves from the function call in to it. 
+    anything it recieves from the function call in to it.
 In order to mix positional and arbitrary arguments you must put the arbitrary
     arguments after the positional in the definition
 >>> def do_a_thing(arg1, *args)
 >>>     pass
 
-Note: It seems to be best/standard practice to use the parameter name *args 
+Note: It seems to be best/standard practice to use the parameter name *args
     when creating an arbitrary parameter Tuple.
 
     Using Arbitrary Keyword Arguments
-When you do not know that type of information that will be passed as an 
+When you do not know that type of information that will be passed as an
     argument you will use **kwargs
-For example you might always get username but not any additional information 
-    from them. **kwargs solves this. 
+For example you might always get username but not any additional information
+    from them. **kwargs solves this.
 >>> def cool_tool(arg1, **kwargs):
 >>>     pass
 
@@ -687,83 +687,83 @@ Note: It seems to be best/standard practice to used the parameter name **kwargs
     when creating arbitrary 'key-value' parameters.
 
     Storing Your Functions in Modules
-Use descriptive names for your functions. 
-Functions separate blocks of code from your main program. 
+Use descriptive names for your functions.
+Functions separate blocks of code from your main program.
 With descriptive names for functions it makes the main program easier to follow
-Taking this further you can store functions in Modules that are called from a 
-    different file than your main program. 
-This is done with an import statement. 
+Taking this further you can store functions in Modules that are called from a
+    different file than your main program.
+This is done with an import statement.
 >>> import tool_module
 
-A module is any file that ends in .py that has code you want to import in to 
+A module is any file that ends in .py that has code you want to import in to
     main program
-With import you must specify tool_module before calling the method you need 
+With import you must specify tool_module before calling the method you need
     from that module. tool_module.fun_thing()
-With import, every function in that module becomes available. 
+With import, every function in that module becomes available.
 For whatever reason, you only want to or need to bring in one method:
 >>> from module import function
-This brings in *only* function and module does not need to be specified when 
+This brings in *only* function and module does not need to be specified when
     calling function. e.g. module.function() is not needed
 You can import as many functions that you need by separating with commas
 >>> from module import function_1, function_2
 Note there are PEP8 guidelines for importing modules. First line are standard
     library modules, second line are third party modules, and third line are
-    your own modules. Each line is separated by a single empty line. 
-You can use the keyword as to give functions aliases. 
+    your own modules. Each line is separated by a single empty line.
+You can use the keyword as to give functions aliases.
 >>> from module import function as fun
-This can be used to relieve any conflicting names of things that are already in 
-    your program or other modules that are being used. 
+This can be used to relieve any conflicting names of things that are already in
+    your program or other modules that are being used.
 Note, you can from/import all the functions in a module with:
 >>> from somewhere import *
 This alleviates the need for using somewhere.a_function but it does not make it
-    clear where that method is coming from. 
-NOTE: This is *not* best practice, but you will see it from other programs.  
-NOTE: Best practice is to import the whole module and use dot notation or, 
-    specifically the function or functions that you need. 
+    clear where that method is coming from.
+NOTE: This is *not* best practice, but you will see it from other programs.
+NOTE: Best practice is to import the whole module and use dot notation or,
+    specifically the function or functions that you need.
     Styling Functions
-Functions should have descriprive names with lowercase and _ (underscores). 
-Descriptive names help everyone involved. 
+Functions should have descriprive names with lowercase and _ (underscores).
+Descriptive names help everyone involved.
 Module names should use these conventions as well.
-Every module and function (classes as well) should have a brief doc string 
-    describing what it does. 
-If a default value is specified in a parameter no spaces should be used on 
+Every module and function (classes as well) should have a brief doc string
+    describing what it does.
+If a default value is specified in a parameter no spaces should be used on
     either side of the = sign
 >>> def fun(arg_1=None)
 The same thing goes for 'key-value' default values
 Lines of code should generally be limited to 79 characters for various reasons
 If the function name or parameter list extends the line over 79 characters
-    open paren then go to new line and indent two levels for the different 
-    parameter names. 
+    open paren then go to new line and indent two levels for the different
+    parameter names.
 >>> def fun_name_that_might_be_a_little_long(
->>>         parameter_0, parameter_1, parameter_2, parameter_3, 
+>>>         parameter_0, parameter_1, parameter_2, parameter_3,
 >>>         parameter_4, parameter_5, parameter_6, parameter_7):
 >>>     function_body_containing_code
 
-Can make is easier to differentiate two functions by inserting two lines 
-    between each function. 
-All import statements should be written at the beginning of the file. 
-The exception is where there is a DOCSTRING for the file that describes the 
-    nature of the overall program. 
+Can make is easier to differentiate two functions by inserting two lines
+    between each function.
+All import statements should be written at the beginning of the file.
+The exception is where there is a DOCSTRING for the file that describes the
+    nature of the overall program.
 
         Ch 9: Classes
 In Object-oriented Programming classes can be used to model real world objects.
 When an object is created from a class it is automatically equiped with all of
-    the defined behavior of that class. 
-Creating an object from a class is called instantiation. 
-You work with instances of a class. 
-In creating these blueprints you will define the information that will be 
-    stored and the actions that can be taken. 
+    the defined behavior of that class.
+Creating an object from a class is called instantiation.
+You work with instances of a class.
+In creating these blueprints you will define the information that will be
+    stored and the actions that can be taken.
 Classes can also extend the functionality of other classes. The sum is greater
-    than its parts. 
-When done well, classes can make life much easier than without. 
+    than its parts.
+When done well, classes can make life much easier than without.
     Creating and Using a Class
-Example: creating a Dog class. It represents a dog, not any specific dog. 
-It can have information like name and age. It can also simulate a dog rolling 
-    over or sitting down. 
+Example: creating a Dog class. It represents a dog, not any specific dog.
+It can have information like name and age. It can also simulate a dog rolling
+    over or sitting down.
 >>> class Cls():
 >>>     """Always have a DOCSTRING telling what the class does."""
 >>>     def __init__(self, arg_1, arg_2):
->>>         """Always have DOCSTRING telling what the def does."""   
+>>>         """Always have DOCSTRING telling what the def does."""
 >>>         self.arg_1 = arg_1
 >>>         self.arg_2 = arg_2
 >>>         self.collar = 'Leather'
@@ -772,75 +772,75 @@ It can have information like name and age. It can also simulate a dog rolling
 >>>         add_new_command_the_dog_can_do
 
 Convention dictates that ClassNames are in CamelCase
-A function that is a part of a class is called a method. Everything that 
+A function that is a part of a class is called a method. Everything that
     applies to functions applies to methods as well
-__init__ method is a method that will automatically run when a new instance of 
+__init__ method is a method that will automatically run when a new instance of
     a class is instantiated
 __init__ will have two leading and two trailing underscores (dunders)
 self parameter is required in all methods in a class. This allows Python
-    to reference the object that is calling the method. 
+    to reference the object that is calling the method.
 any other args passed in the Class call are now assigned to the self.arg here
     in the __init__. Any variable with the prefix of self is available to every
-    method in that class. 
+    method in that class.
 Variables that are accessible through instances via self. are called Attributes
 >>>new_object = Cls()
 Accessing an attribute
-You use dot notation 
+You use dot notation
 >>> new_object.arg_1
 Calling methods
 Again, you use dot notation
 >>> new_object.add_new_command_the_dog_can_do()
-You can create as many instances of a class as you want or need. 
-Even if every attribute is the exact same for all of your instances, Python 
+You can create as many instances of a class as you want or need.
+Even if every attribute is the exact same for all of your instances, Python
     will always see them as separate objects.
     Working with Classes and Instances
-Classes can be really good at modeling real world things. 
-Once written you will mostly be dealing with the instances of a class rather 
+Classes can be really good at modeling real world things.
+Once written you will mostly be dealing with the instances of a class rather
     than the class itself.
 You can modify a classes attribute directly
 >>> new_object.arg_1 = 'Ducky'
-Or you can create methods to do it for you. 
+Or you can create methods to do it for you.
 >>> new_object.method_a('Ducky')
 Can easilly set default values for attributes in the __init__
 >>> def __init__(self):
 >>>     self.default_attribute = 'FABULOUS'
-Three basic ways to modify an attribute value. 
+Three basic ways to modify an attribute value.
 1 Modify it directly as above
 2 Use a method to set it to something
-3 Use a method to increment it. 
+3 Use a method to increment it.
 Note be careful, when allowing users to modify attributes. NEVER TRUST THEM.
 Have checks for inept and malicious behavior. e.g. setting an odometer to 0
     Inheritance
-If a class you need to write is a specialized version of another class you can 
-    use inheritance to take attributes and methods from the Parent class. 
-The specialized version of this class is called the child class. 
+If a class you need to write is a specialized version of another class you can
+    use inheritance to take attributes and methods from the Parent class.
+The specialized version of this class is called the child class.
 When __init__ for a child class you will probably want to get attributes from
-    the parent. 
-This is done with 
+    the parent.
+This is done with
 >>> def __init__(self, arg_1, arg_2)
 >>>     """Always use the DOCSTRINGS."""
 >>>     super().__init__(arg_1, arg_2)
-You do not necessarily need to put in the Parents methods since they are 
-    implicit when you create the Parent/Child pair.  
-super() is a special function that tells Python to call a method from the 
-    parent class. 
-The name super comes from the convention calling the parent class a superclass 
+You do not necessarily need to put in the Parents methods since they are
+    implicit when you create the Parent/Child pair.
+super() is a special function that tells Python to call a method from the
+    parent class.
+The name super comes from the convention calling the parent class a superclass
     and the child class a subclass.
 Once you have everything for the child class inherited from the parent class
-    you can now add new attributes and methods to the child. 
-This is done in the same manner as for the parent class except this 
+    you can now add new attributes and methods to the child.
+This is done in the same manner as for the parent class except this
     differentiates the child from the parent. A parent cannot call a childs
-    methods. 
-You can also override methods from the parent class. 
+    methods.
+You can also override methods from the parent class.
 E.g. instead of giving you the fuel mileage of a car you can say that this car
-    does not run on fuel or something like that. 
-This is done by 're-defining' the method from the parent class in the child 
+    does not run on fuel or something like that.
+This is done by 're-defining' the method from the parent class in the child
     class
 >>> def method_name_from_parent(self):
 >>>     print("Do something else here instead")
 
-You might eventually find that your class is becoming cluttered and the 
-    attribute list is becoming long and confusing. It is possible to use 
+You might eventually find that your class is becoming cluttered and the
+    attribute list is becoming long and confusing. It is possible to use
     composition to simplify a class by pulling like attributes out in to their
     own class and initializing an instance of that new class in to the current
     class.
@@ -850,38 +850,38 @@ You might eventually find that your class is becoming cluttered and the
 >>>     def__init__:
 >>>         self.battery = Battery()
 NOTE: Battery MUST come before Child otherwise Python will not know where to
-    look for battery if it does not know it already exists. 
-Note: When using composition, how would you pass new attribute values to the 
+    look for battery if it does not know it already exists.
+Note: When using composition, how would you pass new attribute values to the
     instantiaion of a new object from that composed classes default values
     without redefining in the code itself?
 The method of composition helps with modularity and clean code. It also, can
-    help keep things organized. 
-How you keep things organized is less of a coding issue and more of a 
-    philisophical and managerial issue. 
+    help keep things organized.
+How you keep things organized is less of a coding issue and more of a
+    philisophical and managerial issue.
 As programs become more complicated you deal with higher levels of logic as
     opposed to syntactic logic. Thinking less about Python and more about how
-    to model the real world in code. 
-There typically is no right or wrong. Some approaches are more efficient than 
+    to model the real world in code.
+There typically is no right or wrong. Some approaches are more efficient than
     others.
     Importing Classes
 To keep programs from becoming huge and cluttered, it can be helpful to move a
-    class to its own module and import the classes you need. 
-Note you can (and should) DOCSTRING modules in the first line of the module. 
+    class to its own module and import the classes you need.
+Note you can (and should) DOCSTRING modules in the first line of the module.
 >>> from module import Cls
-Seriously importing classes in an effective way to have readable programs. 
-The purpose of this is to keep the main file nice and clean and easy to read. 
-This also stores most of the logic in other files so you can focus more on the 
-    higher-level logic of the program. 
-It is possible to store as many classes in a module as needed. However, the 
-    same principle applies to readability and clean code. 
+Seriously importing classes in an effective way to have readable programs.
+The purpose of this is to keep the main file nice and clean and easy to read.
+This also stores most of the logic in other files so you can focus more on the
+    higher-level logic of the program.
+It is possible to store as many classes in a module as needed. However, the
+    same principle applies to readability and clean code.
 >>> from module import ClsOne, ClsTwo
 You can also import the entire module
 >>> import module
 This gives access to all classes via dot notation
 >>> from module import *
 This imports all classes and methods from module without need for dot notation
-NOTE: This is not best practice. 
-Modules can import other modules to be then used in your program. 
+NOTE: This is not best practice.
+Modules can import other modules to be then used in your program.
 car.py
 >>> from suspension import Shocks
 game.py
@@ -892,8 +892,8 @@ As with modules, classes can be imported with aliases as well
 ~snip~
 >>> my_car = EV()
 Python seems to give lots of latitude as to the nature of how you might want to
-    organize your own projects. 
-For now keep code structure simple. 
+    organize your own projects.
+For now keep code structure simple.
 
     The Python Standard Library
 Python Standard Library is included in every Python installation
@@ -902,34 +902,34 @@ Every function or class within it can be used via a simple import
 >>> rand_num = random.randint(0,6)
 Note: With randint(start, stop[, step])
 >>> rand_choice = random.choice(list)
-Note: Do not use random with security related projects. Python random is 
+Note: Do not use random with security related projects. Python random is
     psudo-random. However, it is good enough for fun and interesting projects.
 
     Styling Classes
 Class names Should be Written with CamelCase
 Every Class will have a """DOCSTRING""" on the immidiate following line after
     class Cls
-The """DOCSTRING""" will have a brief description of what the class does. 
+The """DOCSTRING""" will have a brief description of what the class does.
 Can use blank lines to organize code, however, do not go overboard.
 Within a class one line between methods and two blank lines to separate classes
 When importing modules the standard PEP8 format is:
 >>> import something_from_PSL, something_else_from_PSL
->>> 
+>>>
 >>> import third_party_module
->>> 
+>>>
 >>> import your_module
 
         Ch 10: Files and Exceptions
     Reading from a File
-Text files basically can have any info you need in them and they can be used. 
-Reading from a file is good, but even better is writing to, analyzing, and 
-    modifying that information. 
-It is possible to read an entire file. 
-Can also take all of that info and assign it to a variable. 
+Text files basically can have any info you need in them and they can be used.
+Reading from a file is good, but even better is writing to, analyzing, and
+    modifying that information.
+It is possible to read an entire file.
+Can also take all of that info and assign it to a variable.
 >>> with open('text_file.txt') as file_object:
 >>>     variable = file_object.read()
 >>> print(variable)
-Like it or not, there are a TON of things that happen in those three lines of 
+Like it or not, there are a TON of things that happen in those three lines of
     code
 Reading the actual PyDoc on a with statement is helpful
 https://docs.python.org/3/reference/compound_stmts.html#grammar-token-with-item
@@ -940,74 +940,74 @@ open() is the context expression where the context manager is called, to open
 as 'file_object' is the target that this is all assigned to. For opening files
     common convention is file_object = 'f' for the target variable
 with statements are good because they will always exit() the context manager
-    and not leave things hanging out there to cause problems later. 
-When a with statement runs in to a problem it will return the problem and 
-    *still* exit the CM. 
-    Otherwise it will return none and continue as required. 
-This means while we opened the file, the with statement will automatically 
-    close the file no matter what happens in the actual code. 
+    and not leave things hanging out there to cause problems later.
+When a with statement runs in to a problem it will return the problem and
+    *still* exit the CM.
+    Otherwise it will return none and continue as required.
+This means while we opened the file, the with statement will automatically
+    close the file no matter what happens in the actual code.
 With the 'text_file.txt' represented as a file_object we can now read that file
     in to memory to do things with now or later, in this case we close the file
-    out and print the file contents from memory to the screen. 
+    out and print the file contents from memory to the screen.
 He talks about using a .rstrip() here to help clean up many of the \n that text
-    files tend to have lying aroung that can make printing them not screen 
-    efficient. 
-You can utilize file paths when opening files. 
-When you do not use a path, Python will look for that file in the folder in 
+    files tend to have lying aroung that can make printing them not screen
+    efficient.
+You can utilize file paths when opening files.
+When you do not use a path, Python will look for that file in the folder in
     which the current python script is being run from. The the file to be used
     in the current script is not in that folder, you need to use file paths.
 If needed, go deeper in to the file system, you can 'down_a_folder/file.txt'
-If you need to go to another folder above or next to, you need to write the 
-    full path out so python can find it. 
-NOTE: If you need to use backslash in a file path you will need to \\ escape 
+If you need to go to another folder above or next to, you need to write the
+    full path out so python can find it.
+NOTE: If you need to use backslash in a file path you will need to \\ escape
     them in order for Python to not get mad at you. "C:\\path\\to\\file.txt"
-A for-loop can be used to read through a file line by line. 
+A for-loop can be used to read through a file line by line.
 >>> for line in file_object:
 In a text file, every line has a \n and if you need to format that out, a
-    .rstrip() can be useful for that. 
-A files contents can be assigned to variable for work done to the later. 
-Depending on the format that a file is presented as and how you need to work 
-    with it, sometimes instead of .rstrip(), maybe a .strip() would be more 
-    useful. 
-All information that is .read() in to Python, will be read in as a string, 
-    therefore if you have data that needs to be crunched on, you will need to 
-    convert it to a type that is the correct type. 
-Really big files can be used in this way, no sweat. 
-By concatenating large files in to one variable (pi) you can use  the in 
+    .rstrip() can be useful for that.
+A files contents can be assigned to variable for work done to the later.
+Depending on the format that a file is presented as and how you need to work
+    with it, sometimes instead of .rstrip(), maybe a .strip() would be more
+    useful.
+All information that is .read() in to Python, will be read in as a string,
+    therefore if you have data that needs to be crunched on, you will need to
+    convert it to a type that is the correct type.
+Really big files can be used in this way, no sweat.
+By concatenating large files in to one variable (pi) you can use  the in
     keyword to search for information within that string. i.e. your birthday
-    in a string. 
-.replace('replace me', 'with these words') seems like a good tool. 
+    in a string.
+.replace('replace me', 'with these words') seems like a good tool.
 
     Writing to a File
-One of the simplest ways to save data is to write it to a file. 
-This means that after the program ends, the information will be available for 
-    use at a later time. 
+One of the simplest ways to save data is to write it to a file.
+This means that after the program ends, the information will be available for
+    use at a later time.
 To write to a file you need to give open a second argument of 'w' < string
     This will truncate the file so be careful.
-    To me is seems that it is best to only use 'w' when you are writing to a 
-        new file, or some other specific use for overwriting something. 
-There are many modes to open a file with. 'r' - read only, 'w' - truncate, 
-    write and read, and 'a' - append to end of file, are three common ones. 
+    To me is seems that it is best to only use 'w' when you are writing to a
+        new file, or some other specific use for overwriting something.
+There are many modes to open a file with. 'r' - read only, 'w' - truncate,
+    write and read, and 'a' - append to end of file, are three common ones.
     'r+' mode lets you 'read and write to a file'
 https://stackoverflow.com/questions/1466000/python-open-built-in-function-difference-between-modes-a-a-w-w-and-r
-If the file does not exist open() will automatically create one. 
-Apparently Python can only store data to a text file in string format. 
+If the file does not exist open() will automatically create one.
+Apparently Python can only store data to a text file in string format.
 .write() function is what you can use to write needed data to the file_object.
 .write() will not add \n or anything to the end of the different strings that
     you are writing to the disk. Therefore, you will need to format things
-    as needed. 
-You will use the 'a' mode to append data to a file without overwriting 
+    as needed.
+You will use the 'a' mode to append data to a file without overwriting
     everything in that file. Anything that is added to the file in 'a' mode
-    will be added to the end of the file. 
+    will be added to the end of the file.
 
     Exceptions
 Exceptions are special objects that are used to manage errors that arise during
     program execution.
 Using Try-Except blocks allow the program to continue running.
-This can prevent tracebacks which to 'normal' users can be confusing or 
-    difficult to read. 
-T-E blocks can work around an error or they can halt the program in a friendly 
-    manner. 
+This can prevent tracebacks which to 'normal' users can be confusing or
+    difficult to read.
+T-E blocks can work around an error or they can halt the program in a friendly
+    manner.
 >>> try:
 >>>     print(5/0)
 >>> except ZeroDivisionError:
@@ -1015,45 +1015,45 @@ T-E blocks can work around an error or they can halt the program in a friendly
 >>> else:
 >>>     do_things_that_continue_the_program
 The hard part about T-E blocks is that you have to foresee the types of errors
-    that the user will see and need to work around those to handle them. 
-You cannot fight an unknown unknown. 
+    that the user will see and need to work around those to handle them.
+You cannot fight an unknown unknown.
 Good exception handling prevents crashes
-This tends to happen often in programs that require user input. 
-    i.e. The program needs numerals but it is given letters. 
-Be aware, poor exception handling can cause malicious users to have better 
-    ideas as to where to focus their attacks. 
-    Tracebacks to lots of juicy information about the program. 
+This tends to happen often in programs that require user input.
+    i.e. The program needs numerals but it is given letters.
+Be aware, poor exception handling can cause malicious users to have better
+    ideas as to where to focus their attacks.
+    Tracebacks to lots of juicy information about the program.
 try-except-else-finally
 try this
 if this does not work except something else
 if try does work else this
 regardless of everything else finally do the thing
-Handling missing files. 
-They might be in a different location, misspelled, or just plain not there. 
+Handling missing files.
+They might be in a different location, misspelled, or just plain not there.
 Here introduces encoding arguments in open()
 >>> with open(file, encoding='utf-8') as f:
 The encoding argument is needed when the system encoding system does not match
-    the encoding system of the file that is being opened. 
-There tends to be limits on what you can do as far as analizing data. However, 
+    the encoding system of the file that is being opened.
+There tends to be limits on what you can do as far as analizing data. However,
     this limit is usually huge and only limited by the amount of data you have
-    and the time you have to play with it. 
-Project Gutenberg is a *great* resource for getting text files to analize. 
-.split([sep=None, maxsplit=-1]) is a method that will divide a string up in to 
-    a list by the sep parameter which defaults to an algorithm is used that 
+    and the time you have to play with it.
+Project Gutenberg is a *great* resource for getting text files to analize.
+.split([sep=None, maxsplit=-1]) is a method that will divide a string up in to
+    a list by the sep parameter which defaults to an algorithm is used that
     splits the string up by its whitespace. maxsplit is the number if splits to
-    be done. 
-This method can be used to help set up a data set to analize a text string. 
+    be done.
+This method can be used to help set up a data set to analize a text string.
 len() will also count the number of elements in a list
-For loops can be super useful while working through lists of data like text 
-    files that need to be individually worked on. 
+For loops can be super useful while working through lists of data like text
+    files that need to be individually worked on.
 Proper exeption handling in this case will make the for-loop robust to handle
-    bad or missing data 
+    bad or missing data
 NOTE: except (someExeption, anotherProblem, andAnotherProblem,) as e:
 Using the above code allows for multiple exeption handling on a single line if
     needed.
-NOTE: The (is, a , tuple,) and nothing else works there. 
+NOTE: The (is, a , tuple,) and nothing else works there.
 https://docs.python.org/3/tutorial/errors.html#handling-exceptions
-Sometimes you do not need to specifically do anything when there is an 
+Sometimes you do not need to specifically do anything when there is an
     exception, sometimes it is better to allow a silent fail when it is needed.
 >>> try:
 >>>     a_thing
@@ -1062,26 +1062,26 @@ Sometimes you do not need to specifically do anything when there is an
 
 the pass keyword can be used for a few things. As a placeholder for a block
     that will be coded later, or to help errors pass silently, or any other
-    creative reasons you can come up with. 
+    creative reasons you can come up with.
 
 Deciding what to report as an error and what to not report as an error can be
     an important decision making process. Giving users information they do not
     care about or failing to give users information that will help them prevent
     those errors in the future.
-    It is something that you will want to think about. 
-Once a program is clean and free of syntatical or logical errors, most of the 
+    It is something that you will want to think about.
+Once a program is clean and free of syntatical or logical errors, most of the
     problems that will crop up will come from external sources of data or user
-    input. 
+    input.
 .count() method can be used to see how many times a 'specific' string of chars
-    appear in a longer string. 
+    appear in a longer string.
 
     Storing Data
 Many things ask for input and it might be nice to keep some of that data around
-    so it can be used later. One simple method to do this is with 
-    JSON (JavaScript Object Notaion). json can be used to share info between 
+    so it can be used later. One simple method to do this is with
+    JSON (JavaScript Object Notaion). json can be used to share info between
     Python programs and it is not a specific format to Python (no kidding)
-While it might have been designed for JavaScript, it is used with many 
-    different languages. 
+While it might have been designed for JavaScript, it is used with many
+    different languages.
 >>> import json
 >>> information = input("What do you want to tell me? ")
 >>> with open('file.json', 'w') as file_to_dump_to:
@@ -1090,39 +1090,39 @@ While it might have been designed for JavaScript, it is used with many
 >>> print(variable)
 
 Refactoring is an important part of the refinement process.
-Yes the code works... buuut it could be better, more clear, and more efficient. 
-You can especially use the refactoring portion of your process to pull out 
-    new functions if they make sense. 
+Yes the code works... buuut it could be better, more clear, and more efficient.
+You can especially use the refactoring portion of your process to pull out
+    new functions if they make sense.
 You will also, simply make everything easier to read and possibly expand in the
     future.
 
         Ch 11: Testing Your Code
 Testing code is very important to the coding process. Automating the testing
     process (by writing code to test your code) can make tedious and laborious
-    testing much simpler. 
-This helps in many ways, including when you add new features or expand your 
-    code. You will know that something that used to work does not work now, and 
+    testing much simpler.
+This helps in many ways, including when you add new features or expand your
+    code. You will know that something that used to work does not work now, and
     you will have a generally good idea about when thing broke (assuming you
     are constantly running your tests).
-Eric chooses to use the built in unittest module from PSL. 
+Eric chooses to use the built in unittest module from PSL.
 
     Testing a Function
 For this example we have a first/last name function that we want to expand to
-    allow for a possible middle name. 
+    allow for a possible middle name.
 We will want to make sure that adding that ability will not break the only
-    first/last name function. 
-Unit test verifies that one specific part of a functions behavior is correct. 
+    first/last name function.
+Unit test verifies that one specific part of a functions behavior is correct.
 A test case is a collection of unit tests that confirm that a functions full
-    behavior is correct. 
-Full coverage is when all possible ways a function can be used is tested. 
+    behavior is correct.
+Full coverage is when all possible ways a function can be used is tested.
 Full coverage on large tests is difficult.
-You need to at least make sure that critical behaviors are tested. 
-The syntax for setting things up takes a minute to get used to. 
+You need to at least make sure that critical behaviors are tested.
+The syntax for setting things up takes a minute to get used to.
 However, once established adding more tests is simple.
 
 >>> import unittest
 >>> from function_module import function_to_test
->>> 
+>>>
 >>> class FunctionToTestTestCase(unittest.TestCase)
 >>>     """DOCSTRING"""
 >>>     def a_test_for_function_to_test(self):
@@ -1132,48 +1132,48 @@ However, once established adding more tests is simple.
 >>>                 formatted_variable,
 >>>                 "Correct way to see 'formatted_variable'",
 >>>                 )
->>> # This tells python to run unittest.main() if it is the program that is 
+>>> # This tells python to run unittest.main() if it is the program that is
 >>> # being run by the computer. If a debugger or something else is looking
 >>> # in here, the program will not run as a matter of course and will only
->>> # be run when the program that is importing it tells the different parts of 
->>> # it to run. 
->>> if __name__ == '__main__': 
+>>> # be run when the program that is importing it tells the different parts of
+>>> # it to run.
+>>> if __name__ == '__main__':
 >>>     unittest.main()
 
-unittest has many different assert methods. 
+unittest has many different assert methods.
 https://docs.python.org/3/library/unittest.html
 assert methods verify that the result that is received is the result that was
-    expected. 
+    expected.
 Here we are running the testing files directly, however, there are many testing
-    frameworks that import test files before running the tests. 
-When a file is imported, the interpreter executes the file as it is imported. 
-This is why we are using if __name__ == '__main__': before getting in to the 
-    main function of the .py file. This allows other programs to import the 
-    test file (or any other file) to be imported where the name of the file 
-    is not interpreted as the main file and can be used in other ways. 
+    frameworks that import test files before running the tests.
+When a file is imported, the interpreter executes the file as it is imported.
+This is why we are using if __name__ == '__main__': before getting in to the
+    main function of the .py file. This allows other programs to import the
+    test file (or any other file) to be imported where the name of the file
+    is not interpreted as the main file and can be used in other ways.
 The the dots that come up indicate the number of tests that are being run that
     are successful
-There are also a few other symbols that indicate different things. 
-An E for example shows that there was an Error of some kind. 
-F indicates that their is a failed assertion 
-Knowing which test failed is kind of important since it gives you a starting 
-    point from where to find a potential problem. 
-To add a new test, simple define a new function that tests new things. Or if 
-    you feel like wasting time, a test you have already written. 
-Tests with module unittest must start with the name test so it will run 
-    automatically. 
-Make sure that the names of the tests are descriptive enough so that you 
-    understand where problems occur. 
+There are also a few other symbols that indicate different things.
+An E for example shows that there was an Error of some kind.
+F indicates that their is a failed assertion
+Knowing which test failed is kind of important since it gives you a starting
+    point from where to find a potential problem.
+To add a new test, simple define a new function that tests new things. Or if
+    you feel like wasting time, a test you have already written.
+Tests with module unittest must start with the name test so it will run
+    automatically.
+Make sure that the names of the tests are descriptive enough so that you
+    understand where problems occur.
 
     Testing a Class
 In addition to functions, tests can be used to ensure that whole classes work
     properly.
-Passing tests for the current state of your class means that future 
-    improvements 
+Passing tests for the current state of your class means that future
+    improvements
 Python provides many assert methods in unittest.TestCase class
 assert methods test whether a condition you believe is true at a specific point
-    in your code is in fact true. 
-If it is true, your assumptions for that codes behavior are correct. 
+    in your code is in fact true.
+If it is true, your assumptions for that codes behavior are correct.
 If it is not true Python will raise an exception
 assertEqual(a, b)       Verify that a == b
 assertNotEqual(a, b)    Verify that a != b
@@ -1182,26 +1182,26 @@ assertFalse(x)          Verify that x is False
 assertIn(item, list)    Verify that item is in list
 assertNotIn(item, list) Verify that item is not in list
 
-Testing a class is very similar to testing a function. Most of the work 
-    involves testing the behavior of methods in that class. 
+Testing a class is very similar to testing a function. Most of the work
+    involves testing the behavior of methods in that class.
 
 >>> class_to_test.py
 
 It seems that you should build your tests slowly and deliberately, and only try
     to test one thing at a time.
 assertIn() is a good method for verifying that something was put in to a list
-    like it was supposed to. For example a survery response being logged. 
-For now we are creating an instance of the class from within the test and 
-    pointing the test program in the direction of what needs to be tested.  
-In the example Eric uses a neat trick to have the test loop through a list of 
-    'responses' to store them in the tested list then another loop checks to 
+    like it was supposed to. For example a survery response being logged.
+For now we are creating an instance of the class from within the test and
+    pointing the test program in the direction of what needs to be tested.
+In the example Eric uses a neat trick to have the test loop through a list of
+    'responses' to store them in the tested list then another loop checks to
     see if assertIn() finds the proper info.
     This whole thing seems to work since his example class we are testing does
-    not require any user input since there seems to be a lot involved with 
-    testing that. 
+    not require any user input since there seems to be a lot involved with
+    testing that.
 setUp() class seems to be a really useful class for... setting up classes
-    in advance so you do not have to continually restart class instances for 
-    each individual test. 
+    in advance so you do not have to continually restart class instances for
+    each individual test.
 
 >>> def setUp(self):
 >>>     """DOCSTRING"""
@@ -1212,33 +1212,33 @@ setUp() class seems to be a really useful class for... setting up classes
 
 setUp does two things, it creates an instance of the class you are testing and
     it creates a list of things to test against (in this example)
-NOTE: Be careful when adding setup to an already establised test script you 
-    will need to add self. all over the place. to make things work. 
+NOTE: Be careful when adding setup to an already establised test script you
+    will need to add self. all over the place. to make things work.
 With setUp() you make one set of instances and attributes and then use these
-    instances in all needed test methods. This is much easier (and cleaner) 
+    instances in all needed test methods. This is much easier (and cleaner)
     than having instances within each test method.
 
 
                 Part II:Projects
-Many of the basics of Python have been covered and can start to build bigger 
-    things. 
-Part II has three types of projects. A game, some data visualization, and a 
-    web applicaiton. 
+Many of the basics of Python have been covered and can start to build bigger
+    things.
+Part II has three types of projects. A game, some data visualization, and a
+    web applicaiton.
 The game uses PyGame to get out of the weeds and in to some higher level stuff
-It will be a 2d top-down Galaga style game. 
-The data visualization project teached how to generate data and create 
-    functional and pretty pictures displaying that data using Matplotlib and 
+It will be a 2d top-down Galaga style game.
+The data visualization project teached how to generate data and create
+    functional and pretty pictures displaying that data using Matplotlib and
     Plotly
-It will also show how to access data from the internet and feed in to a 
-    visualizer. 
-Also, will show how to automatically download and visualize data. This sneaks 
-    in to data mining. Which apparently is in demand right now. 
+It will also show how to access data from the internet and feed in to a
+    visualizer.
+Also, will show how to automatically download and visualize data. This sneaks
+    in to data mining. Which apparently is in demand right now.
 The web application will use Django to create a simple web app that lets people
-    keep a journal with a UN and password. Will deploy the app so everyone can 
-    access it. 
-After that project you can start to build your own web apps and explore more 
-    resources that come via Django. 
-    
+    keep a journal with a UN and password. Will deploy the app so everyone can
+    access it.
+After that project you can start to build your own web apps and explore more
+    resources that come via Django.
+
             Project 1: Alien Invasion
 
         Ch 12: A Ship that Fires Bullets
@@ -1247,30 +1247,30 @@ Pygame is a collection of modules that manage graphics, animation, and sounds.
 Tasks like drawing to screen is blackboxed so you can think about higher level
     things
 Set up Pygame, create a ship that moves and shoots things in response to player
-    input. 
+    input.
 In further chapters you will make aliens to destroy and then continue to refine
     the game
 Learn to manage larger projects with many files
 Refactor the code a lot.
-Manage file contents and make code efficient. 
-Making games can be a fun way to learn a language. 
-You get direct(ish) and immidiate(ish) feedback as to what you are making. 
+Manage file contents and make code efficient.
+Making games can be a fun way to learn a language.
+You get direct(ish) and immidiate(ish) feedback as to what you are making.
 Experiment and play with everything!
-When building a large project have a plan or general over view that you can 
-    pick goals and smaller problems to solve out of. 
-Phase one here is make a ship that moves left, right, and shoots. 
+When building a large project have a plan or general over view that you can
+    pick goals and smaller problems to solve out of.
+Phase one here is make a ship that moves left, right, and shoots.
 
     Installing Pygame
 $ python -m pip install --user pygame
 
-or in my case 
+or in my case
 
 $ a_pcc
 $ than install pygame
 
     Starting the Game Project
 First build a Pygame window
-the important things here are 
+the important things here are
     import pygame
     def __init__(self)
         pygame.init()
@@ -1286,116 +1286,116 @@ ai_object.run_game()
 
 There is a lot to unpack here.
 import sys and pygame
-pygame has all of the needed features needed to run the game. 
-pygame.init() starts all of the background settings 
+pygame has all of the needed features needed to run the game.
+pygame.init() starts all of the background settings
     It seems that this inits all of the modules contained in Pygame
-    It is also possible to only init the ones that are needed. 
+    It is also possible to only init the ones that are needed.
 pygame.display.set_mode() creates a display window
-    requires a (height, width) *TUPLE* 
+    requires a (height, width) *TUPLE*
 ^^^ Assign to a self.something
 The object self.something (in this case self.screen) is a surface
-    Pygame seemingly only supports one display screen. 
+    Pygame seemingly only supports one display screen.
     However, these surfaces can have subsurfaces for different "menus"
 Each alien or ship is its own surface that is drawn on to the main surface.
-The surface displayed by display.set_mode() is the entire game window. 
+The surface displayed by display.set_mode() is the entire game window.
     Once animation is started it is this surface that is redrawn with changes
-        made by input or the engine. 
+        made by input or the engine.
 pygame.event.get() is what detects things that happen. Like user input. This
     listens for everything that might be happening
 The first thing we assign to this is pygame.QUIT which detects the game windows
-    close button. sys.exit() is called in this case. 
-pygame.display.flip() is the instructon that tells Pygame to make the most 
-    recently drawn screen actually visible. 
-In the end we create an instance of the game and then call the main loop, 
+    close button. sys.exit() is called in this case.
+pygame.display.flip() is the instructon that tells Pygame to make the most
+    recently drawn screen actually visible.
+In the end we create an instance of the game and then call the main loop,
     run_game()
-self.bg_color = (255, 0, 100) in __init__ creates a background color tuple 
+self.bg_color = (255, 0, 100) in __init__ creates a background color tuple
     variable that can then be called by self.screen.fill(self.bg_color) to fill
     in the game window with the RGB values for that tuple
 We then create a new file settings.py then creates a class Settings():
-Things like window height, width background color, ship speeds etc can be set 
-    here. 
-Then in the main game file from settings import Settings and assign to 
+Things like window height, width background color, ship speeds etc can be set
+    here.
+Then in the main game file from settings import Settings and assign to
     self.settings = Settings() like a class composition
 class Settings():
     def __init__(self):
         self.things_that_need_to_be_set = 3
-Remember to replace all of the "old" code when refactoring with new files, 
+Remember to replace all of the "old" code when refactoring with new files,
     classes, and functions
 
     Adding the Ship Image
-Pygame blit() method will be used to draw game objects to the screen. 
-Make sure that the art you choose for your games is properly licensed. 
-something like https://pixelbay.com/ is a good resource. 
-Can use any type of image in the game, however Pygame loads bitmaps by default. 
-When trying to use other file types you might need to install other image 
+Pygame blit() method will be used to draw game objects to the screen.
+Make sure that the art you choose for your games is properly licensed.
+something like https://pixelbay.com/ is a good resource.
+Can use any type of image in the game, however Pygame loads bitmaps by default.
+When trying to use other file types you might need to install other image
     libraries on to your machine. Most images are .jpg or .png that can then be
     converted via Photoshop or GIMP.
-Pay attention to background color. Transparent is best. 
+Pay attention to background color. Transparent is best.
 We then create a /images/ folder to store the game image assets
-New game file ship.py with the class Ship() is created. 
+New game file ship.py with the class Ship() is created.
 class Ship():
     def __init__(self, ai_game):
         #NOTE: that ai_game is passed confusingly with self.ship = Ship(self)
         where the self in Ship(self) *is* the self object of the game, not the
-        ships self that is on the left side of the = operator. 
-        self.screen = ai_game.screen 
+        ships self that is on the left side of the = operator.
+        self.screen = ai_game.screen
         self.screen_rect = ai_game.screen.get_rect()
 https://www.pygame.org/docs/ref/surface.html?highlight=get_rect#pygame.Surface.get_rect
-    # get_rect return a new rectangle at (0, 0) with a matching height and 
+    # get_rect return a new rectangle at (0, 0) with a matching height and
         width of the image. In this case it is the game screen.
         self.image = 'relative_path_to/ship_image.bmp'
         self.rect = self.image.get_rect()
-        self.rect.midbottom = self.screen_rect.midbottom # sets a position for 
+        self.rect.midbottom = self.screen_rect.midbottom # sets a position for
             the ship to eventually be drawn to
     def blitme(self):
         self.screen.blit(self.image, self.rect)
         # Surface.blit() draws one image on to another.
 https://www.pygame.org/docs/ref/surface.html#pygame.Surface.blit
-Pygame streamlines by letting you treat everything as a rectangle. 
-Simple shapes are easier to simulate as opposed to other things typically. 
-This works well enough. 
+Pygame streamlines by letting you treat everything as a rectangle.
+Simple shapes are easier to simulate as opposed to other things typically.
+This works well enough.
 we import pygame before defining the class
-the __init_() takes two parameters, the standard self reference and the 
-    reference to the current instance of the AlienInvasion class. 
-This gives Ship access to all of the methods 
-In Pygame the origin (0, 0) is the top left of the game window. 
+the __init_() takes two parameters, the standard self reference and the
+    reference to the current instance of the AlienInvasion class.
+This gives Ship access to all of the methods
+In Pygame the origin (0, 0) is the top left of the game window.
 Now to update alien_invasion.py with new Ship class.
 from ship import Ship
 
     __init__
         self.ship = Ship(self)
 
-    run_game 
+    run_game
         self.ship.blitme()
 
-We import the ship class 
+We import the ship class
 We create an instance of ship
 and we draw the ship to the Surface before .flip() the screen
 
     Refactoring: The _check_events() and _update_screen Methods
 In large projects, refactoring is important. It simplifies the structure of the
-    code and can make is easier to build on. 
-Here we start to use '_helper_methods' 
+    code and can make is easier to build on.
+Here we start to use '_helper_methods'
 A _helper_method does work inside a class but is not meant to be called through
 an instance
-    It seems that they are functions that perform parts of the computation of 
-        another function. 
+    It seems that they are functions that perform parts of the computation of
+        another function.
 It lets you call that calculation in multiple places and helps with readability
-    of the code. 
-In Python _helper_methods are denoted with a single leading underscore. 
+    of the code.
+In Python _helper_methods are denoted with a single leading underscore.
 In this round of code clean up we just move the check events from run_game()
 to the helper _check_events(self) and then call _check_events() in run_game()
-_update_screen is the same thing. 
+_update_screen is the same thing.
 A realistic development process is to barely get something running and as simple
-    as possible then refactor early and often. 
+    as possible then refactor early and often.
 
     Piloting the Ship
 To respond to keypresses we will use pygame.event.get() and then from there
     we will use _check_events() to break that down and keep run_game() simple
-From there we will add an elif after the pygame.QUIT for pygame.KEYDOWN and 
-    pygame.KEYUP. It is important to understand when it is important to need to 
-    know when the KEYUP happens. In this case to determine when the player 
-    wants the ship to stop moving. 
+From there we will add an elif after the pygame.QUIT for pygame.KEYDOWN and
+    pygame.KEYUP. It is important to understand when it is important to need to
+    know when the KEYUP happens. In this case to determine when the player
+    wants the ship to stop moving.
 >>> elif event.type == pygame.KEYDOWN:
 >>>     if event.key == pygame.k_RIGHT:
 >>>        # move the ship to the right with ship.moving_right = True
@@ -1405,47 +1405,47 @@ In ship.py add __init__ self.moving_right = False flag
 >>>     if self.moving_right: #Is true
 >>>         self.rect.x += 1
 
-The equivalent with 
+The equivalent with
 >>> elif event.type == pygame.KEYUP:
 >>>     if event.key == pygame.k_RIGHT:
 >>>         ship.moving_right = False
 
 From there we add ship.update() to the run_game() loop
 
-Doing the same things for moving the ship to the left except that 
+Doing the same things for moving the ship to the left except that
     self.rect.x need to -= 1 to move left.
-NOTE: In Ship.update if self.moving for both left and right need to be ifs 
+NOTE: In Ship.update if self.moving for both left and right need to be ifs
     so that they will cancel each other out instead of allowing the if to take
     priority over the elif.
 NOTE: In pygame.event.get() only one action for each time the loop goes though
     gets activated to an elif statement for each level QUIT, RIGHT, LEFT, SPACE
-    is acceptable. 
+    is acceptable.
 Next we put the ships speed in to Settings.py. As of "now" the ship will move
     only one pixel each time through the loop and for this example we will want
-    to move it 1.5. 
-How do you move something half of a pixel you ask? Well stay tuned. 
+    to move it 1.5.
+How do you move something half of a pixel you ask? Well stay tuned.
 in ship.py self.settings = ai_game.settings
-Next we assign self.x to float(self.rect.x) in order to get the half (or 
+Next we assign self.x to float(self.rect.x) in order to get the half (or
     any decimal for that matter) pixel resolution for the sprite.
-we then increment the self.x by the self.settings.ship_speed in the 
+we then increment the self.x by the self.settings.ship_speed in the
     if self.moving_left or right and then self.rect.x = self.x where rect will
-    automatically convert the float to an int. 
-NOTE: macOS might not like running this in windowed mode, full screen mode 
-    might fix that. More to come on that later. 
+    automatically convert the float to an int.
+NOTE: macOS might not like running this in windowed mode, full screen mode
+    might fix that. More to come on that later.
 In order to prevent the ship from going off the screen (to whatever extent you)
     want to happen:
 >>> if self.moving_right and self.rect.right < self.screen_rect.right:
 >>> #Then use the:
 >>>     self.x += self.settings.ship_speed
 This make it to when the right of the ships rect touches the right side of the
-    screen then the if statement is False and the ship does not move. 
-This code checks the position of the ship before allowing it to move. 
-Time for more refactoring. 
-_check_events() will continue to grow as the number of events to check 
-    grows. 
+    screen then the if statement is False and the ship does not move.
+This code checks the position of the ship before allowing it to move.
+Time for more refactoring.
+_check_events() will continue to grow as the number of events to check
+    grows.
 Therefore we make two more helper methods _check_keydown_events(self, event):
 and _check_keyup_events(self, event)
-We then move the if statements for the two methods to here. 
+We then move the if statements for the two methods to here.
 We add a event.key == pygame.K_q for sys.quit()
 To have the game run in full screen mode:
 >>> self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
@@ -1458,19 +1458,19 @@ It creates many things that are used throughout the game.
 settings are assigned to settings
 main display surface is assigned to screen
 ship is assigned to ship
-The main loop of the game (a while loop) is stored in a module. 
+The main loop of the game (a while loop) is stored in a module.
 It calls _helper_methods such as _check_keydown_events() and _update_screen()
-settings.py holds the Settings class, it only has an __init__() which 
+settings.py holds the Settings class, it only has an __init__() which
     initialize attributes controlling the game and ship.
-ship.py has the Ship class 
+ship.py has the Ship class
 Ship has an __init__(), an update() method, to manage the ships position, and
-    blitme() to draw the ship to the scree. The ships image is stored in the 
+    blitme() to draw the ship to the scree. The ships image is stored in the
     images folder as ship.bmp.
 
     Shooting <s>Bullets</s> lasers
 setup settings.py for the laser settings, self.laser_speed, width, height, and
-    a color tuple. 
-bullet.py has a lot of new things. Including importing the Sprite module from 
+    a color tuple.
+bullet.py has a lot of new things. Including importing the Sprite module from
 pygame.sprite
 class Laser(Sprite):
     def __init__(self, ai_game):
@@ -1482,59 +1482,126 @@ We first create a laser rect at the origin and then move to correct position
         self.rect = pygame.Rect(0, 0, self.settings.laser_width,
             self.settings.laser_height)
 The beams rect midtop is set to self.rect.midtop = ai_game.ship.rect.midtop
-We also do the same thing for self.y to float(self.rect.y) for the different 
-    speeds. 
+We also do the same thing for self.y to float(self.rect.y) for the different
+    speeds.
 For update() we use the same trick to change the int of self.rect.y to a float
-    then assigning the float back to self.rect.y that truncates the number to 
+    then assigning the float back to self.rect.y that truncates the number to
     an int
-For the draw_laser() method we use pygame.draw.rect(self.screen, self.color, 
+For the draw_laser() method we use pygame.draw.rect(self.screen, self.color,
                                        self.rect)
-    screen is the surface to draw on, and color, and the size, there is an 
+    screen is the surface to draw on, and color, and the size, there is an
     optional parameter that determins line "thickness"
-In alien_invasion.py we creat a group in __init__ 
+In alien_invasion.py we creat a group in __init__
     self.bullets = pygame.sprite.Group()
 Next in the game loop self.lasers.update()
 When we call update on a group it will update every object within that group
 To actually fire beams _check_keydown_event needs to see the k_SPACE action.
-from laser import Laser need to be imported. 
+from laser import Laser need to be imported.
 add elif event.key == pygame.K_SPACE:
         self._fire_laser() # A helper method to be created shortly in the ex.
 def _fire_laser(self):
     new_laser = Laser(self) # New object
     self.laser.add(new_laser) # Adds to the group.
 
-Next need to _update_screen with a for loop for each laser beam in the 
+Next need to _update_screen with a for loop for each laser beam in the
     self.laser.sprites(): < Imported from the parent in Sprite
         laser.draw_laser()
 lasers.sprites() method returns a list of all sprited in the group lasers
-in order to draw all of them, we will need to loop through that list and 
+in order to draw all of them, we will need to loop through that list and
     laser.draw_laser()
 It is a good idea to remove all of the old laser beams. Therefore we will loop
-    through a .copy() of lasers and then if the bottom of the beam is at the 
-    edge of the screen (or simply the point in which they need to be removed) 
+    through a .copy() of lasers and then if the bottom of the beam is at the
+    edge of the screen (or simply the point in which they need to be removed)
     then we self.lasers.remove() opposite of add that is given from the Sprites
     parent.
 >>> for laser in self.lasers.copy()
 >>>     if laser.rect.bottom <= 0:
 >>>         self.lasers.remove(laser)
-This can be verified that it is working with a print(len(self.lasers)) 
+This can be verified that it is working with a print(len(self.lasers))
 NOTE: When looping through a list in Python (or in this case Pygame) it expects
-    that the length of the list will remain the same. 
-Because we cannot remove items from that list with the for loop. We actually 
-    will loop over a copy of that loop and remove what is needed in the 
+    that the length of the list will remain the same.
+Because we cannot remove items from that list with the for loop. We actually
+    will loop over a copy of that loop and remove what is needed in the
     original.<<
-Limiting the number of beams on screen is simple. In settings, 
-    self.lasers_allowed = 3 and in the _fire_lasers helper method, 
+Limiting the number of beams on screen is simple. In settings,
+    self.lasers_allowed = 3 and in the _fire_lasers helper method,
     if len(self.lasers) < self.settings.lasers_allowed:
     This is simple that when the player trys to shoot a beam and if the number
         of beams on screen is less than the max allowed the fire_lasers method
-        will run. 
-Time to refactor again. 
-    Create a _update_lasers() method that updates the position and removes, 
-        old beams. 
+        will run.
+Time to refactor again.
+    Create a _update_lasers() method that updates the position and removes,
+        old beams.
 In the main loop _update_lasers()
 
         Ch 13: Aliens!
+Here we add Aliens to the game
+First one alien near the top of the screen
+Then a whole row
+Then have fleet advance sideways and down
+Then get rid of aliens hit by laser
+Then limit the number of ships a player has and end game when run out of ships.
+Will learn more about Pygame and managing a large project.
+Learn to detect collisions between game objects like aliens and laser beams
+Collisions define interactions between game objects.
+
+    Reviewing the Project
+Changing phases of development it can be good to revisit plan and clarify
+goals.
+Examine code and see if refactoring is needed. *SPOILER* it is not.
+Add a single alien to screen with appropriate spacing.
+Use spacing around alien and screen size to determine a good number of aliens
+to fit on to the screen. From that write a loop to create aliens to fill the
+upper portion of the screen.
+Make the fleet move sideways until it hits the edge of the screen, then reverse
+    direction and move down a little bit.
+Once whole fleet is shot down, alien hits the ship, or an alien reaches the
+    ground, we will either create a new fleet, or destroy the player ship.
+Limit the number of ships a player gets to eventually end the game.
+
+    Creating the First Alien
+Each aliens behavior will be controlled by class Alien.
+Will be structured much like the ship class.
+Use .bmp
+Place image in to images folder
+alien.py
+>>> from pygame.sprite import Sprite
+>>> class Alien(Sprite)
+In __init__
+>>> super().__init__()
+Place the Alien near the top left of the screen
+Does not need a blitme() method since Pygame.group will do the drawing for us.
+Will only be tracking the aliens horizontal speed accurately float().
+Want to create a single instance of an alien, however, since we know there will
+    eventually be many aliens some support work is done first.
+>>> from alien import Alien
+In __init__
+>>> self.aliens = pygame.sprite.Group()
+>>> self._create_fleet # Helper method that for now will only draw one alien.
+In _create_fleet method make the alien with:
+>>> alien = Alien(self)
+Then add it to the aliens Group
+>>> self.aliens.add(alien)
+In _update_screen
+>>> self.aliens.draw(self.screen)
+
+It really is that simple.
+
+    Building the Alien Fleet
+Need to mathmatically figure out how many aliens you want on the screen.
+Let the game figure out how many based on a formula you determine since the
+    game technically can be played at many different screen sizes.
+available_space_x is the screen width minus two alien widths
+number_aliens_x is available_space_x floor divided by two times alien width.
+
+
+############# STOPPED HERE PG 259
+
+    Making the Fleet Move
+
+    Shooting Aliens
+
+    Ending the Game
 
         Ch 14: Scoring
 

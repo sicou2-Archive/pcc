@@ -44,9 +44,11 @@ class AlienInvasion:
         while True:
             self._check_events()
             self._update_stars()
+            # self._update_fleet()
             self.ship.update()
             self.friend.update()
             self._update_lasers()
+            self._update_aliens()
             self._update_screen()
 
     def _check_events(self):
@@ -117,6 +119,16 @@ class AlienInvasion:
             if laser.rect.left >= self.settings.screen_width:
                 self.lasers.remove(laser)
 
+        self._check_laser_alien_collisions()
+
+    def _check_laser_alien_collisions(self):
+        collisions = pygame.sprite.groupcollide(self.lasers, self.aliens,
+                                                True, True)
+
+        if not self.aliens:
+            self.lasers.empty()
+            self._create_fleet()
+
     def _create_field(self):
         """Create a field of stars."""
         # Create a star and determine the number of stars in the row.
@@ -161,18 +173,45 @@ class AlienInvasion:
         self.stars.update()
 
     def _create_fleet(self):
-        alien = Alien(self)
-        self._create_alien()
 
-    def _create_alien(self):
         alien = Alien(self)
-        alien.x = 400
-        alien.rect.x = alien.x
+        available_space_y, available_space_x = self._calculate_fleet()
+
+        for alien_number in range(available_space_y):
+            for row_number in range(available_space_x):
+                self._create_alien(alien_number, row_number)
+
+    def _calculate_fleet(self):
+        alien = Alien(self)
+        alien_width, alien_height = alien.rect.size
+        # return available_space_y, available_space_x
+        return ((self.settings.screen_height // (alien_height * 2)),
+                (self.settings.screen_width // (alien_height * 2)) - 3)
+
+    def _create_alien(self, alien_number, alien_row):
+        alien = Alien(self)
+        alien_width, alien_height = alien.rect.size
+        alien.y = (alien_number * alien_height * 2) + 5
+        alien.x = self.settings.screen_width - (
+            (alien_row + 1) * alien_width * 2)
         alien.rect.y = alien.y
-        self.aliens.add()
+        alien.rect.x = alien.x
+        self.aliens.add(alien)
+
+    def _check_fleet_edges(self):
+        for alien in self.aliens.sprites():
+            if alien.check_edges():
+                self._fleet_change_direction()
+                break
 
     def _fleet_change_direction(self):
-        pass
+        for alien in self.aliens.sprites():
+            alien.rect.x -= self.settings.alien_advance
+        self.settings.alien_direction *= -1
+
+    def _update_aliens(self):
+        self._check_fleet_edges()
+        self.aliens.update()
 
     def _update_screen(self):
         """Update images on the screen and flip to the new screen."""
