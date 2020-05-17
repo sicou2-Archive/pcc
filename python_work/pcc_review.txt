@@ -1593,13 +1593,74 @@ Let the game figure out how many based on a formula you determine since the
     game technically can be played at many different screen sizes.
 available_space_x is the screen width minus two alien widths
 number_aliens_x is available_space_x floor divided by two times alien width.
-
-
-############# STOPPED HERE PG 259
+Determine the amount of space available then using that number to determin
+    the number of aliens that fit on the screen
+NOTE: Your formulas do not need to actually work the first time you use them.
+    You can see what you get and tweek them as needed.
+With this info can now create a row of aliens.
+Create alien object
+get the width from rect.width
+fit that in to the calculations
+Then with that number create a loop to place the aliens with the appropriate
+    spacing.
+Add the alien object created in the loop to aliens with self.aliens.add(alien)
+When thinking about this make sure you start the loop at zero to make sure that
+    you do not get your spacing messed up.
+NOTE: The number of aliens on the screen with this setup will change based on
+    the width of the game window and or the size of the display the game is
+    running on.
+Refactor the fleet at this point.
+from _create_fleet make _create_alien that needs parameter(alien_number) so it
+can calculate the correct position on the x plane where to place the sprite.
+To finish the fleet by adding more rows make a calculation for the y plane.
+Subtract out some factor for the player ship height to give them a quick chance
+to assess the situation and not have the fleet immidiately in their face.
+available_space_y is the screen height minus three times alien height minus
+    player ship height
+number_rows is available height floor divided by two times alien height
+can pretty much copy the code for creating the row to create additional rows
+_create_alien now will take parameter(row_number) to move the aliens down the
+    screen for each additional row.
 
     Making the Fleet Move
+Movment will be back and forth across the screen moving down a set amount each
+    time the fleet reaches the edge of the screen.
+First thing to do is to just get the whole fleet to move.
+In settings will need to set the aliens speed.
+In alien will need to set self.settings correctly
+Then def update(self): to we can update the position of the aliens exactly and
+    then set the exact number to the self.rect.x as in int.
+In alien_invasion will include a new helper _update_aliens in the game loop
+in _update_aliens will run the update() method from Alien. Due to how Pygame
+group works it will update all of the objects in that group.
+More alien settings of the drop speed and the fleet direction
+Since the values for the alien direction are binary 1 or -1 work in this case.
+in alien.py def check_edges():
+Here we get the screen rect and make an if statement for if an alien reaches >=
+the edge of the screen. Then it will return True.
+Back in alien_invasion helper _check_fleet_edges that if alien.check_edges
+    returns True it will call another helper _change_fleet_direction() and
+        break the loop
+With def _change_fleet_direction a for loop of alien in self.aliens.sprites()
+    that increments every alien.rect the fleet_drop_speed and multiply the
+    fleet direction by -1
+Next will add _check_fleet_edge() in _update_aliens.
+Not going to lie, I kind of like the helper methods.
 
     Shooting Aliens
+To detect collisions of objects it is actually pretty simple.
+In _update_lasers set a variable (in this case collisions) to
+    pygame.sprite.groupcollide(self.group1, self.group2, True, False)
+    Params 1 and 2 are the groups to check and 3 and 4 are if you are to remove
+        that sprite from the group.
+Can also change the nature of the bolts to simplify testing.
+After this, in _update_lasers you can use an if to check to see if the aliens
+    group is empty and then remove all lasers from the lasers group with
+    .empty() and then _create_fleet() to create another fleet.
+This is actually pretty simple.
+Can change the speed of the laser beams to adjust the game balance.
+Refactor _update_lasers()
+Move the collisions calculation out and in to _check_laser_alien_collisions()
 
     Ending the Game
 
