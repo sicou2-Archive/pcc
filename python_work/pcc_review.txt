@@ -1663,6 +1663,42 @@ Refactor _update_lasers()
 Move the collisions calculation out and in to _check_laser_alien_collisions()
 
     Ending the Game
+The game has to end some time, and there needs to be some kind of losing
+    condition or it will become boring very quickly.
+Here we will end the round when the ship or the bottom of the screen is
+    touched by an alien.
+The whole game will end when the player runs out of ships.
+Need to detect alien/ship collisions. To do this pygame.sprite has the
+    .spritecollideany() method. It takes two arguments, the two things to check
+    to see what if anything has collided.
+    If a collision occurs with this method, it will return the collision with
+    the returned sprite. Otherwise, it will return None.
+The next step is to decide how to handle that collision in the game logic
+Here we will create a game_stats.py and in it we will store the stats for this
+    instance of the created game object. Like fleets or ships remaining.
+Game settings will be pulled in to here, but still will be stored in settings.
+A reset_stats method will also live in game_stats to do its job at the start of
+    the game and when the player chooses to play the game again.
+Set the ship limit in settings
+Import game_stats in to main file
+Also add time.sleep() to give the player a second to understand and see what
+    happened at the end of a life.
+Next will add a helper _ship_hit that decrements a player ship, clears the
+    screen of lasers and aliens, recreates the alien fleet and centers the
+    player ship and sleeps for a short time.
+Then in _update_aliens you can call _ship_hit when it detects a collision.
+In ship.py need a center_ship() method self.rect.midbottom = screen midbottom
+    and self.x = float self.rect.x
+Note: Never make more than one ship object. This lets you drag its stats around
+    without having to reset everything. Even over multiple game resets.
+Next a new helper _check_aliens_bottom that basically does the same thing (for
+    alien in aliens.sprites(): and all) for checking the edges, however when it
+    detects the bottom it will call _ship_hit since it game wise is the same
+    thing. Do not forget to break the for loop in the check for each alien
+    since only one alien needs to touch the bottom for the player to lose.
+
+
+
 
         Ch 14: Scoring
 

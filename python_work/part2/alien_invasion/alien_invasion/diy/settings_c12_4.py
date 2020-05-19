@@ -14,6 +14,7 @@ class Settings:
         # Ship settings
         self.ship_speed = 1.5
         self.friend_speed = .5
+        self.ship_limit = 3
 
         # Laser settings
         self.laser_width = 15
@@ -27,3 +28,4 @@ class Settings:
         self.alien_advance = 10
         # alien_direction of 1 is down; -1 is up
         self.alien_direction = 1
+        self.fleet_waves = 3

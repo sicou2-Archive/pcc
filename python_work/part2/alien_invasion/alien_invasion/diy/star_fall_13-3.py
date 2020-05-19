@@ -1,9 +1,11 @@
 import sys
 from random import randint
+from time import sleep
 
 import pygame
 
 from settings_c12_4 import Settings
+from game_stats_13_6 import GameStats
 from ship_c12_4 import Ship
 from friend_c12_4 import Friend
 from laser_c12_6 import Laser
@@ -30,6 +32,8 @@ class AlienInvasion:
 
         pygame.display.set_caption("Alien Invasion")
 
+        self.stats = GameStats(self)
+
         self.ship = Ship(self)
         self.friend = Friend(self)
         self.lasers = pygame.sprite.Group()
@@ -43,12 +47,14 @@ class AlienInvasion:
         """Start the main game loop."""
         while True:
             self._check_events()
-            self._update_stars()
-            # self._update_fleet()
-            self.ship.update()
-            self.friend.update()
-            self._update_lasers()
-            self._update_aliens()
+
+            if self.stats.game_active:
+                self._update_stars()
+                self.ship.update()
+                self.friend.update()
+                self._update_lasers()
+                self._update_aliens()
+
             self._update_screen()
 
     def _check_events(self):
@@ -125,9 +131,13 @@ class AlienInvasion:
         collisions = pygame.sprite.groupcollide(self.lasers, self.aliens,
                                                 True, True)
 
-        if not self.aliens:
+        if not self.aliens and self.stats.fleets_left > 0:
             self.lasers.empty()
+            self.stats.fleets_left -= 1
             self._create_fleet()
+
+        elif self.stats.fleets_left == 0:
+            self.stats.game_active = False
 
     def _create_field(self):
         """Create a field of stars."""
@@ -204,6 +214,26 @@ class AlienInvasion:
                 self._fleet_change_direction()
                 break
 
+    def _check_fleet_bottom(self):
+        # self.screen_rect = self.screen.get_rect()
+        for alien in self.aliens.sprites():
+            if alien.rect.left <= 0:
+                self._ship_collide()
+
+    def _ship_collide(self):
+        if pygame.sprite.spritecollideany(self.friend, self.aliens):
+            if self.stats.ships_left > 0:
+                self.aliens.empty()
+                self.lasers.empty()
+
+                self._create_fleet()
+                self.ship.center_ship()
+                self.stats.ships_left -= 1
+
+                sleep(0.5)
+            else:
+                self.stats.game_active = False
+
     def _fleet_change_direction(self):
         for alien in self.aliens.sprites():
             alien.rect.x -= self.settings.alien_advance
@@ -212,16 +242,17 @@ class AlienInvasion:
     def _update_aliens(self):
         self._check_fleet_edges()
         self.aliens.update()
+        self._ship_collide()
 
     def _update_screen(self):
         """Update images on the screen and flip to the new screen."""
         self.screen.fill(self.settings.bg_color)
         self.stars.draw(self.screen)
         self.aliens.draw(self.screen)
-        self.ship.blitme()
-        self.friend.blitme()
         for laser in self.lasers.sprites():
             laser.draw_laser()
+        self.ship.blitme()
+        self.friend.blitme()
         pygame.display.flip()
 
 
