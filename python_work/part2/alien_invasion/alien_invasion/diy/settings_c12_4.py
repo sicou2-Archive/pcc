@@ -29,3 +29,12 @@ class Settings:
         # alien_direction of 1 is down; -1 is up
         self.alien_direction = 1
         self.fleet_waves = 3
+
+        # Target settings
+
+        self.target_speed = 1.0
+        self.target_direction = 1
+        self.target_width = 90
+        self.target_height = 90
+        self.target_color = (255, 255, 255)
+        self.target_max_miss = 5

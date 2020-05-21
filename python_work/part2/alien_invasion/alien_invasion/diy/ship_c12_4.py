@@ -22,7 +22,7 @@ class Ship:
         self.y = float(self.rect.y)  # 12.4
 
         # Movement flags
-        self.active = True  # 12.4
+        self.active = False  # 12.4
         self.moving_right = False
         self.moving_left = False
         self.moving_up = False  # 12.4

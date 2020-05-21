@@ -12,3 +12,4 @@ class GameStats:
         """Statistics for current game state."""
         self.ships_left = self.settings.ship_limit
         self.fleets_left = self.settings.fleet_waves
+        self.target_miss = self.settings.target_max_miss

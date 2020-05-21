@@ -1691,16 +1691,59 @@ In ship.py need a center_ship() method self.rect.midbottom = screen midbottom
     and self.x = float self.rect.x
 Note: Never make more than one ship object. This lets you drag its stats around
     without having to reset everything. Even over multiple game resets.
-Next a new helper _check_aliens_bottom that basically does the same thing (for
-    alien in aliens.sprites(): and all) for checking the edges, however when it
-    detects the bottom it will call _ship_hit since it game wise is the same
-    thing. Do not forget to break the for loop in the check for each alien
-    since only one alien needs to touch the bottom for the player to lose.
-
-
-
+Next a new helper _check_aliens_bottom which itself goes in to _update_aliens
+    that basically does the same thing (for alien in aliens.sprites(): and all)
+    for checking the edges, however when it detects the bottom it will call
+    _ship_hit since it game wise is the same thing. Do not forget to break the
+    for loop in the check for each alien since only one alien needs to touch
+    the bottom for the player to lose.
+Next issue is there is no stop condition for the players ships going negative.
+    They just keep getting negativ-er.
+Add a game_active flag and set to True (for now).
+In _ship_hit have a if-else check to see how many ships the player has left
+    and in else when the player ships are 0, then flip the game_active flag to
+    false.
+With this we have have sections of the run_game code that should not run when
+    the game_active flag is false. Like ship_update and update_lasers etc
+From here add if game_active: and put those in to the block so that the game
+    will not update when the game is over.
 
         Ch 14: Scoring
+Will now finish the game.
+Add a play button to start the game on demand or to restart the game
+Make the game speed up as the level number increases
+Impliment a scoring system.
+
+    Adding the Play Button
+There is a slight problem with the game starting immidiately when the program
+    is executed.
+First change the game_active flag in game_stats to false upon startup.
+New file and class button.py class Button:
+It will import pygame.font
+it takes self, ai_game, and a message
+It will initialize the screen and create the rect for the screen
+Creates the properties of a button with width and height, the color of the
+    button and text
+Sets the font with self.font = pygame.font.SysFont(None, 48) None tells pygame
+    to use the default font and 48 is the size of that font.
+Will need to define a rect for the button object and a center for that object
+    based on the scree_rect.center (or where ever the button needs to go)
+Last in init there is a helper function that will run _prep_msg (more on that
+    in a sec)
+All of this to me at this exact moment is super clear.
+def _prep_msg(self, msg):
+So it seems that pygame does not render text as text, rather it turns it in to
+an image first and then displays it.
+
+### STOPPED P281 _prep_msg
+
+
+
+
+    Leveling Up
+
+    Scoring
+
 
             Project 2: Data Visualization
 
