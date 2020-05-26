@@ -33,7 +33,8 @@ class AlienInvasion:
         pygame.display.set_caption("Alien Invasion")
 
         self.stats = GameStats(self)
-        self.button = Button(self, "PLAY")
+        self.play_button = Button(self, "PLAY")
+        self.difficulty_buttons = pygame.sprite.Group()
         self.target = Target(self)
         self.ship = Ship(self)
         self.friend = Friend(self)
@@ -59,15 +60,19 @@ class AlienInvasion:
                 sys.exit(0)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
-                self._check_play_button
+                self._check_play_button(mouse_pos)
             elif event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
 
-    def _check_play_button(self):
-        if mouse_pos == self.button.rect:
+    def _check_play_button(self, mouse_pos):
+        button_click = self.play_button.rect.collidepoint(mouse_pos)
+        if button_click and not self.stats.game_active:
+            self.settings.initialize_dynamic_settings()
             self.stats.game_active = True
+            self.stats.reset_game()
+            self.lasers.empty()
 
     def _check_keydown_events(self, event):
         """Respond to keypresses."""
@@ -133,12 +138,15 @@ class AlienInvasion:
 
         self._check_laser_target_collisions()
 
+
+
     def _check_laser_target_collisions(self):
         for laser in self.lasers.copy():
             if pygame.sprite.spritecollideany(self.target, self.lasers):
                 self.lasers.remove(laser)
-
+                self.stats.target_level_hit()
         # self.stats.game_active = False
+        # Not toally sure why this is commented out, but here we are.
 
     def _create_target(self):
         target = Target(self)
@@ -154,6 +162,9 @@ class AlienInvasion:
 
     def _update_target(self):
         self._check_target_edges()
+        if self.stats.hits_on_level == 5:
+            self.stats.reset_level()
+            self.settings.speedup_game()
         self.target.update()
 
     def _ship_collide(self):
@@ -186,6 +197,10 @@ class AlienInvasion:
             laser.draw_laser()
         self.ship.blitme()
         self.friend.blitme()
+
+        if not self.stats.game_active:
+            self.play_button.draw_button()
+
         pygame.display.flip()
 
 

@@ -1735,14 +1735,130 @@ def _prep_msg(self, msg):
 So it seems that pygame does not render text as text, rather it turns it in to
 an image first and then displays it.
 
-### STOPPED P281 _prep_msg
-
-
-
+_prep_msg(self,msg):
+    sets the msg_image to self.font.render(msg, True, self.text.color,
+        self.button_color)
+    we then set the msg_image_rect.center to the self.rect.center
+Last there is a def draw_button(self):
+    that self.screen.fill(button color, button rect)
+    then on top of that self.screen.blit(self.msg_image, self.msg_image_rect)
+To draw the button to the screen need to import Button from button and create
+in __init__ a self.play_button object with self.Button(self, "MESSAGE/PLAY")
+    self for ai_game and "STRING" for msg
+_update_screen needs to now include an if for if the game is not active: to
+    draw the button object.
+NOTE: To ensure it is visible on the screen make sure the button object is
+    drawn last.
+Need to add a new event.type of pygame.MOUSEBUTTONDOWN
+    Must assign a mouse position variable with pygame.mouse.get_pos() and
+    use a to be built helper variable _check_play_button(mouse_pos)
+In _check_play_button you must if to see if the mouse position matches the
+    button rect with self.play_button.rect.collidepoint(mouse_pos)
+    If that matches then set the game to active
+Now to reset the game after the first play through you need to add to the if
+    .collidepoint to reset_stats(), empty the screen of aliens and lasers with
+    aliens.empty() and lasers.empty()
+    Then create a new fleet and set the player ship to center_ship()
+For now the play button is still active even though it is not visible and can
+    reset the game while invisible.
+    To prevent this, in _check_play_button store the .collidepoint(mouse_pos)
+        in a variable and if that variable against if the game is not active.
+        Then do all of the reseting and the like.
+The mouse cursor on screen can be distracting, to clean that up a little bit
+    after you set the game state to true, then hide the mouse cursor with
+    pygame.mouse.set_visable(False)
+Also, do not forget to set the pygame.mouse.set_visable(True) anywhere the
+    game_active is set to false at the end of the game or a pause or whatever.
 
     Leveling Up
+In its current state, the game never gets harder
+First we need to change settings.py to have __init__ have the standard "static"
+    settings and then run a method to initialize the dynamic settings for the
+    game. That is give them their first values before they change later.
+In this game we will have a static speedup scale which is a multiplier for the
+    rate that differenct parts of the game change.
+A new method for settings is def initialize_dynamic_settings():
+    Here we move (from static) ship speed, laser speed, and alien speed. In
+        addition to this we will also move the alien direction just to have
+        their direction always be the same at the start of a new level.
+Another new method is def increase_speed(): which simply takes the three
+    dynamic settings and *= them by the speedup scale.
+From that we will put increase_speed simply in to
+    _check_laser_alien_collisions() after the alien group is found to be empty
+    by the loop. The game will run the center ship create new fleet and now
+    increase_speed()
+In order to reset the game speed after a new game is created, simply add
+    initialize_dynamic_settings() to the _check_play_button() actions list and
+    boom. Slow start to the game.
 
     Scoring
+In game stats.reset_stats(), self.score = 0 so score resets after every game.
+Displaying the score will be similar to displaying the text on buttons, however
+    will not need a box for the button itself.
+New file. scoreboard.py which imports pygame.font with class Scoreboard
+It will __init__ self and ai_game while composed of screen = ai_game.screen,
+    screen_rect = self.screen.get_rect() settings from ai_game.settings and
+    stats from ai_game.stats
+Will also init the text_color with a three number tuple and self.font =
+    pygame.font.SysFont(None, 48)
+Last it will init self.prep_score() which will come next.
+prep_score() turns the score into a rendered image
+Get score from self.stats and turn it in to a string score_str = str(
+    self.stats.score)
+Create a score_image with = self.font.render(score_str, True, self.text_color,
+    self.settings.bg_color)
+Next to display the score at the top right of the screen.
+score_rect = score_image.get_rect()
+then score_rect.right = screen_rect.right - 20 # To move it a a little
+score_rect.top = 20 # Just off of the top of the screen.
+
+Last (for now I assume) will be to create the method show_score(self) which
+    simply draws the score to the screen with self.screen.blit(
+        self.score_image, self.score_rect)
+Need to from scoreboard import Scoreboard and in init just under self.stats
+    self.sb = Scoreboard(self)
+In _update_screen draw the score information self.sb.show_score()
+
+Now to update the score when aliens shot down
+In settings.initialize_dynamic_settings() self.alien_points = 50 (or whatever)
+    Note: This goes in to dynamic settings because eventually will change
+        alien point values to increase as level difficulty increases.
+In alien_invasion._check_laser_alien_collisions(self): add an if collisions:
+    self.stats.score += self.settings.alien_points
+    self.sb.prep_score()
+This works because collisions and its expression evaluate to a dict of the
+    different things colliding. If nothing is colliding then the dict is empty.
+
+To reset the score *BEFORE* a single alien it hit simply just add
+    self.sb.prep_score() to check click play (in this case difficulty) button.
+    The rest of that function resets the score and everything else needed.
+
+There technically is a bug in the games current state where if for some reason
+    more then one alien it hit by a laser in a single iteration of the check
+    hit loop due to testing laser or some future powerup or whatever, only one
+    of those aliens hit is added to the score. In order to fix this we need to
+    make a loop through the collisions.values() dict because the values in the
+    dict is a list of all of the aliens hit in that iteration. In that short
+    for-loop score += alien_point * the len of aliens in the dict. If this
+    does not make sense to future Brayton, print(collisions) and it should
+    become clear.
+
+To scale the alien point values to make getting farther in the game worth more
+    points in settings.__init__() add score_scale = 1.3 or whatever.
+Then in increase_speed() change alien points = to int(
+    alien_points * score_scale)
+Again, this can be verified with a print(alien_points) during testing.
+
+Typically in a game like this the points are rounded to some round number
+    because of... reasons or history or whatever.
+To do so, scoreboard.prep_score() add rounded_score = round(stats.score, -1)
+    and change score_str = "{:,}".format(rounded_score)
+There are two different things happening here. In round(
+
+#REVIEW STOPPED PG 293
+
+### WORK STOPPED PG301
+DO APPENDIX D ALSO BEFORE MOVING TO Project 2
 
 
             Project 2: Data Visualization

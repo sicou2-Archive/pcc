@@ -5,11 +5,19 @@ class GameStats:
         """Initialize the statistics."""
         self.screen = ai_game.screen
         self.settings = ai_game.settings
-        self.game_stats()
-        self.game_active = True
+        self.reset_game()
+        self.game_active = False
+        self.hits_on_level = 0
 
-    def game_stats(self):
+    def reset_game(self):
         """Statistics for current game state."""
         self.ships_left = self.settings.ship_limit
         self.fleets_left = self.settings.fleet_waves
         self.target_miss = self.settings.target_max_miss
+        self.reset_level()
+
+    def reset_level(self):
+        self.hits_on_level = 0
+
+    def target_level_hit(self):
+        self.hits_on_level += 1
