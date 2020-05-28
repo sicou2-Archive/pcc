@@ -30,11 +30,11 @@ class Settings:
         # Alien settings
         self.fleet_drop_speed = 10
 
+        # Game button text
+        self.button_text = ['Play', 'Easy', 'Medium', 'Hard']
+
         # How quickly the game speeds up.
         self.difficulties = {'easy': 1.1, 'medium': 2.2, 'hard': 3.3}
-        self.speedup_scale_easy = 1.1
-        self.speedup_scale_medium = 1.2
-        self.speedup_scale_hard = 1.3
 
         # How quickly the alien point values increase
         self.score_scale = 1.5

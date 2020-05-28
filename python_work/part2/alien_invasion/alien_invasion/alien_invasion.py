@@ -40,13 +40,15 @@ class AlienInvasion:
         self.lasers = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
 
-        self._create_fleet()
-
         # Make the Start game buttons.
-        self.play_button = Button(self, "Play")
+        self.game_buttons = []
+        # self.play_button = Button(self, "Play")
         self.easy_button = Button(self, "Easy")
         self.medium_button = Button(self, "Medium")
         self.hard_button = Button(self, "Hard")
+
+        self._create_fleet()
+        self._make_game_buttons()
 
     def _start_game(self):
         # Reset the game statistics.
@@ -95,9 +97,16 @@ class AlienInvasion:
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
 
+    def _make_game_buttons(self):
+        for button in self.settings.button_text:
+
+            new_button = Button(self, button)
+            self.game_buttons.append(new_button)
+            print(self.game_buttons)
+
     def _check_play_button(self, mouse_pos):
         """Prompt for difficulty when the player clicks Play."""
-        button_clicked = self.play_button.rect.collidepoint(mouse_pos)
+        button_clicked = self.game_buttons[0].rect.collidepoint(mouse_pos)
         if button_clicked and not self.stats.game_active:
             # Prompt for game difficulty.
             self.stats.show_play = 0
@@ -114,25 +123,19 @@ class AlienInvasion:
             difficulty = 'easy'
             self.settings.initialize_dynamic_settings(difficulty)
             self._start_game()
-            self.sb.prep_score()
-            self.sb.prep_level()
-            self.sb.prep_ships()
+            self.sb.prep_images()
         elif medium_button_clicked and not self.stats.game_active:
             # Reset the game settings.
             difficulty = 'medium'
             self.settings.initialize_dynamic_settings(difficulty)
             self._start_game()
-            self.sb.prep_score()
-            self.sb.prep_level()
-            self.sb.prep_ships()
+            self.sb.prep_images()
         elif hard_button_clicked and not self.stats.game_active:
             # Reset the game settings.
             difficulty = 'hard'
             self.settings.initialize_dynamic_settings(difficulty)
             self._start_game()
-            self.sb.prep_score()
-            self.sb.prep_level()
-            self.sb.prep_ships()
+            self.sb.prep_images()
 
     def _check_keydown_events(self, event):
         """Respond to keypresses."""
@@ -190,14 +193,17 @@ class AlienInvasion:
             self.sb.check_high_score()
 
         if not self.aliens:
-            # Remove existing lasers and create a new fleet
-            self.lasers.empty()
-            self._create_fleet()
-            self.settings.increase_speed()
+            self._start_new_level()
 
-            # Increase level.
-            self.stats.level += 1
-            self.sb.prep_level()
+    def _start_new_level(self):
+        # Remove existing lasers and create a new fleet
+        self.lasers.empty()
+        self._create_fleet()
+        self.settings.increase_speed()
+
+        # Increase level.
+        self.stats.level += 1
+        self.sb.prep_level()
 
     def _create_fleet(self):
         """Create the fleet of aliens."""
@@ -288,23 +294,23 @@ class AlienInvasion:
 
     def _draw_buttons(self):
         if self.stats.show_play:
-            self.play_button.draw_button()
+            self.game_buttons[0].draw_button()
         else:
             self._draw_difficulty_buttons()
 
     def _draw_difficulty_buttons(self):
-        self.easy_button.rect.x = int(self.play_button.rect.x -
+        self.easy_button.rect.x = int(self.game_buttons[0].rect.x -
                                       self.easy_button.width * 1.5)
         self.easy_button.msg_image_rect.x = int(
-            self.play_button.msg_image_rect.x - self.play_button.width * 1.5)
+            self.game_buttons[0].msg_image_rect.x - self.game_buttons[0].width * 1.5)
         self.easy_button.draw_button()
 
         self.medium_button.draw_button()
 
-        self.hard_button.rect.x = int(self.play_button.rect.x +
-                                      self.play_button.width * 1.5)
+        self.hard_button.rect.x = int(self.game_buttons[0].rect.x +
+                                      self.game_buttons[0].width * 1.5)
         self.hard_button.msg_image_rect.x = int(
-            self.play_button.msg_image_rect.x + self.play_button.width * 1.5)
+            self.game_buttons[0].msg_image_rect.x + self.game_buttons[0].width * 1.5)
         self.hard_button.draw_button()
 
     def _update_screen(self):

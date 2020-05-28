@@ -1858,7 +1858,7 @@ There are two different things happening here. In round(
 #REVIEW STOPPED PG 293
 
 ### WORK STOPPED PG301
-DO APPENDIX D ALSO BEFORE MOVING TO Project 2
+
 
 
             Project 2: Data Visualization
