@@ -1853,12 +1853,56 @@ Typically in a game like this the points are rounded to some round number
     because of... reasons or history or whatever.
 To do so, scoreboard.prep_score() add rounded_score = round(stats.score, -1)
     and change score_str = "{:,}".format(rounded_score)
-There are two different things happening here. In round(
-
-#REVIEW STOPPED PG 293
-
-### WORK STOPPED PG301
-
+There are two different things happening here. In round(thing_to_round,
+    -1 is round to nearest 10, where -3 would be nearest thousand)
+In score_str = we are doing a string format where the comma is added to the
+    string for the different thousands places (1,000,000 instead of 1000000)
+High scores are fun. In game_stats.py add in __init__ self.high_score = 0
+Then in scoreboard.py add to __init__ new method prep_high_score()
+def prep_high_score() consists of a highscore = round of the stats highscore to
+    the nearest 10.
+    convert that highscore to a str with good ":," formatting
+    create a highscore_image = self.font.render(highscore_str, True,
+    text_color, background color)
+    Then simply center the image at the top of the screen with the top of this
+    rect = to the top of the current score rect. self.high_score_rect.centerx =
+Next add another screen.blit(high_score_image, high_score_rect)
+Also, in scoreboard, need to def check_high_score()
+    if stats.score > stats.high_score:
+    high_score = score
+    prep_high_score() # This is needed to update the new high score as the
+        player shatters records.
+Within alien_invasion.py in _check_alien_laser_collisions() within
+    if collisions after prep_score include sb.check_high_score()
+To display the current game level. In game_stats add new init attribute,
+    level = 1
+In scoreboard add new method to init prep_level()
+    Within the new method of def prep_level() make level_str and the level
+    number a str
+Create a new level_image self.font.render(level_str, True, text_clr, bg_clr)
+Set the position of the image level_rect = level.img.get_rect()
+    position of level_image is right aligned with the right side of score and
+    the top is "+ 10" pixels below the bottom of score.rect.
+In show_screen another self.screen.blit(level_img, level_rect)
+And in alien_invasion in _check_alien_laser_collisions, if not aliens: need to
+    increment level += 1 and self.sb.prep_level()
+Also, when checking to see if play button is clicked sb.prep_level()
+Lets display the number of remaining player ships.
+First ship.py needs to import pygame.sprite Sprite and have Ship inherit from
+    it. Then super().__init__()
+In scoreboard, need to now import pygame.sprite Group and Ship from Ship.
+The __init__ will add self.ai_game = ai_game and self.prep_ships
+The def prep_ships() needs to create a self.ships = Group()
+A loop for ship number through range of self.stats.ships_left:
+    assign ship to Ship(self.ai_game) then place the location of the
+    ship.rect.x and y in the appropriate places with a loop using ship.width,
+    ship number, and absolute positioning.
+    Last in the loop self.ships.add(ship)
+In the show_score method we will draw the ship instead of blit, there is a
+    reason for it, however, I do not know why.
+    self.ships.draw(self.screen)
+In alien_invasion under check_click_play_button() add sb.prep_ships
+Also in ship_hit() after decrementing ships_left add sb.prep_ships.
 
 
             Project 2: Data Visualization
