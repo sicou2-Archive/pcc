@@ -7,9 +7,9 @@ x_values_5000 = range(1, 5001)
 y_values_5000 = [x**3 for x in x_values_5000]
 
 plt.style.use('bmh')
-fig, ax_1 = plt.subplots()
+fig, (ax_1, ax_2) = plt.subplots(1, 2)
 ax_1.plot(x_values_5, y_values_5, c='Red', linewidth=5)
-fig, ax_2 = plt.subplots()
+# fig, ax_2 = plt.subplots()
 ax_2.scatter(x_values_5000, y_values_5000,
              c=y_values_5000, cmap=plt.cm.Reds, s=5)
 
