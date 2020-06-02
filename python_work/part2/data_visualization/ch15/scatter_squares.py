@@ -7,6 +7,7 @@ y_values = [x**2 for x in x_values]
 plt.style.use('fast')
 fig, ax = plt.subplots()
 ax.scatter(x_values, y_values, c=y_values, cmap=plt.cm.Blues, s=10)
+ax.scatter(200, 40000, s=200)
 
 
 # Set chart title and label axes.
@@ -18,6 +19,7 @@ ax.set_ylabel("Square of Value", fontsize=14)
 ax.axis([0, 1_100, 0, 1_100_000])
 
 # Set size of tick labels.
-ax.tick_params(axis='both', labelsize=14)
+ax.tick_params(axis='both', which='major', labelsize=14)
+ax.ticklabel_format(style='plain')
 
-plt.savefig('squares_plot.png', bbox_inches='tight')
+plt.savefig('charts/squares_plot.png', bbox_inches='tight')

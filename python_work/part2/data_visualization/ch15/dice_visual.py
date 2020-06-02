@@ -10,16 +10,18 @@ die_2 = Die()
 
 # Make some rolls, and store results in a list.
 results = []
-for roll_num in range(1_000_000):
-    result = die_1.roll() * die_2.roll()
-    results.append(result)
+# for roll_num in range(1_000_000):
+#     result = die_1.roll() * die_2.roll()
+#     results.append(result)
+results = [die_1.roll() * die_2.roll() for roll_num in range(1_000_000)]
 
 # Analyze the results.
 frequencies = []
 max_result = die_1.num_sides * die_2.num_sides
-for value in range(1, max_result + 1):
-    frequency = results.count(value)
-    frequencies.append(frequency)
+# for value in range(1, max_result + 1):
+#     frequency = results.count(value)
+#     frequencies.append(frequency)
+frequencies = [results.count(value) for value in range(1, max_result +1)]
 
 # print(frequencies)
 
@@ -32,4 +34,4 @@ y_axis_config = {'title': 'Frequency of Result'}
 my_layout = Layout(title='Results of rolling 2 D6 multiplied together '
                    '1,000,000 times', xaxis=x_axis_config, yaxis=y_axis_config)
 offline.plot({'data': data, 'layout': my_layout},
-             filename='d6_d6_expload.html')
+             filename='charts/d6_d6_expload.html')
