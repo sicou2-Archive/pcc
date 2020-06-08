@@ -1,4 +1,4 @@
-latitude,longitude,brightness,scan,track,acq_date,acq_time,satellite,confidence,version,bright_t31,frp,daynight
+latitude,longitude,brightness,scan,track,acq_date  ,acq_time,satellite,confidence,version,bright_t31,frp ,daynight
 -13.505,-172.586,310.6,3.8,1.8,2018-09-22,0035,A,0,6.0NRT,294,39.7,D
 -0.38,-160.008,310.7,2,1.4,2018-09-22,0035,A,39,6.0NRT,298,18,D
 -4.093,145.066,312.7,1.4,1.2,2018-09-22,0100,T,0,6.0NRT,297.4,14,D
