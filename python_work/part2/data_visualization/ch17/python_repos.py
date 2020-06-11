@@ -4,52 +4,41 @@ from plotly.graph_objs import Bar
 from plotly import offline
 
 
-# Make an API call and store the response.
-url = 'https://api.github.com/search/repositories?q=language:c%2B%2B&sort=stars'
-headers = {'Accept': 'application/vnd.github.v3+json'}
-r = requests.get(url, headers=headers)
-print(f"Status code: {r.status_code}")
-
-# Process results
-response_dict = r.json()
-# print(f"Total repositories: {response_dict['total_count']}")
-# # Explore imformation about the repositories.
-repo_dicts = response_dict['items']
-repo_links, stars, labels = [], [], []
-# print(f"Repositories returned: {len(repo_dicts)}")
-
-# Examine the first repository.
-# repo_dict = repo_dicts[0]
+def get_requests():
+    """Make an API call and store the response."""
+    url = 'https://api.github.com/search/repositories?q=language:c%2B%2B&sort=stars'
+    headers = {'Accept': 'application/vnd.github.v3+json'}
+    r = requests.get(url, headers=headers)
+    print(f"Status code: {r.status_code}")
+    return r
 
 
-# print("\nSelected information about each repository:")
-for repo_dict in repo_dicts:
-    repo_name = repo_dict['name']
-    repo_url = repo_dict['html_url']
-    repo_link = f"<a href='{repo_url}'>{repo_name}</a>"
-    repo_links.append(repo_link)
+def process_response(response):
+    """Process response and results from get_reqests."""
+    response_dict = response.json()
 
-    stars.append(repo_dict['stargazers_count'])
-    # print(f"Name: {repo_dict['name']}")
-    # print(f"Owner: {repo_dict['owner']['login']}")
-    # print(f"Stars: {repo_dict['stargazers_count']}")
-    # print(f"Repository: {repo_dict['html_url']}")
-    # print(f"Created: {repo_dict['created_at']}")
-    # print(f"Updated: {repo_dict['updated_at']}")
-    # print(f"Description: {repo_dict['description']}")
+    # Explore imformation about the repositories.
+    repo_dicts = response_dict['items']
+    repo_links, stars, labels = [], [], []
 
-    owner = repo_dict['owner']['login']
-    description = repo_dict['description']
-    label = f"{owner}<br />{description}"
-    labels.append(label)
+    # Examine the first repository.
+    for repo_dict in repo_dicts:
+        repo_name = repo_dict['name']
+        repo_url = repo_dict['html_url']
+        repo_link = f"<a href='{repo_url}'>{repo_name}</a>"
+        repo_links.append(repo_link)
 
-# print(f"\nKeys: {len(repo_dict)}")
-# for key in sorted(repo_dict.keys()):
-#     print(key)
+        stars.append(repo_dict['stargazers_count'])
 
+        owner = repo_dict['owner']['login']
+        description = repo_dict['description']
+        label = f"{owner}<br />{description}"
+        labels.append(label)
 
-# # Process results.
-# print(response_dict.keys())
+    return repo_links, stars, labels
+
+# Process results.
+
 
 # Make visualization.
 data = [{
@@ -81,4 +70,8 @@ my_layout = {
 }
 
 fig = {'data': data, 'layout': my_layout}
-offline.plot(fig, filename='python_repos.html')
+offline.plot(fig, filename='data/python_repos.html')
+
+if __name__ == '__main__':
+    r = get_requests()
+    repo_links, stars, labels = process_response(r)
