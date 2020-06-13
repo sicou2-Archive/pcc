@@ -6,7 +6,7 @@ from plotly import offline
 
 def get_requests():
     """Make an API call and store the response."""
-    url = 'https://api.github.com/search/repositories?q=language:c%2B%2B&sort=stars'
+    url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'
     headers = {'Accept': 'application/vnd.github.v3+json'}
     r = requests.get(url, headers=headers)
     print(f"Status code: {r.status_code}")
@@ -37,41 +37,42 @@ def process_response(response):
 
     return repo_links, stars, labels
 
-# Process results.
+
+def data_visualization(repo_links, stars, labels):
+    ''' Make visualization.'''
+    data = [{
+        'type': 'bar',
+        'x': repo_links,
+        'y': stars,
+        'hovertext': labels,
+        'marker': {
+            'color': 'rgb(60, 100, 150)',
+            'line': {'width': 1.5, 'color': 'rgb(25, 25, 25)'}
+        },
+        'opacity': 0.6,
+    }]
+
+    my_layout = {
+        'title': 'Most-Starred Python Projects on GitHub',
+        'xaxis': {
+            'title': 'Repository',
+            'titlefont': {'size': 24},
+            'tickfont': {'size': 14},
+        },
+        'yaxis': {
+            'title': 'Stars',
+            'titlefont': {'size': 24},
+            'tickfont': {'size': 14},
+        },
 
 
-# Make visualization.
-data = [{
-    'type': 'bar',
-    'x': repo_links,
-    'y': stars,
-    'hovertext': labels,
-    'marker': {
-        'color': 'rgb(60, 100, 150)',
-        'line': {'width': 1.5, 'color': 'rgb(25, 25, 25)'}
-    },
-    'opacity': 0.6,
-}]
+    }
 
-my_layout = {
-    'title': 'Most-Starred Python Projects on GitHub',
-    'xaxis': {
-        'title': 'Repository',
-        'titlefont': {'size': 24},
-        'tickfont': {'size': 14},
-    },
-    'yaxis': {
-        'title': 'Stars',
-        'titlefont': {'size': 24},
-        'tickfont': {'size': 14},
-    },
+    fig = {'data': data, 'layout': my_layout}
+    offline.plot(fig, filename='data/python_repos.html')
 
-
-}
-
-fig = {'data': data, 'layout': my_layout}
-offline.plot(fig, filename='data/python_repos.html')
 
 if __name__ == '__main__':
     r = get_requests()
     repo_links, stars, labels = process_response(r)
+    data_visualization(repo_links, stars, labels)
