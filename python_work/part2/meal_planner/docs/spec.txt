@@ -1,0 +1,12 @@
+DIY Project
+18-5 Make a new folder called meal_planner and start a Django project inside.
+Mane a new app called 'meal_plans'.
+Make a simple home page for this project.
+
+Did not Define Models
+Did not activate Models ### NEEDED TO ACTIVATE THE APP ###
+Did not setup admin site
+Did not define "entry model"
+Did not migrate 'entry model'
+Did not reg 'entry' with admin site
+Did not Django shell

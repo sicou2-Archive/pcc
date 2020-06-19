@@ -6,3 +6,5 @@ name should be able to hold values such as pineapple, Canadian bacon, and
 sausage.
 Register both models with the admin site, and use the site to enter some pizza
 names and toppings. Use the shell to explore the data you entered.
+
+18-6 Add a home page to the Pizzeria project started in 18-4
