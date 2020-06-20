@@ -8,3 +8,6 @@ Register both models with the admin site, and use the site to enter some pizza
 names and toppings. Use the shell to explore the data you entered.
 
 18-6 Add a home page to the Pizzeria project started in 18-4
+
+18-8 Pizzeria Pages: Add a page to Pizzeria project that shows the names of
+abailable pizza. Use Template Inheritance to build pages efficiently.
