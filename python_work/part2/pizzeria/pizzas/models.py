@@ -11,7 +11,7 @@ class Pizza(models.Model):
         return self.name
 
 
-class Topping(models.Model):
+class Toppings(models.Model):
     """A class for the toppings for different pizzas."""
     pizza = models.ForeignKey(Pizza, on_delete=models.DO_NOTHING)
     name = models.TextField()
