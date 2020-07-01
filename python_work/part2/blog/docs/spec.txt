@@ -1,0 +1,4 @@
+Django Project called Blog
+Create app called blogs in Blog
+Create a model called BlogPost
+### STOPPED SPEC HERE
