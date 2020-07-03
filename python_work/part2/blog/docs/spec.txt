@@ -1,4 +1,9 @@
 Django Project called Blog
 Create app called blogs in Blog
 Create a model called BlogPost
-### STOPPED SPEC HERE
+BlogPost will include fields: title, text, date_added
+Create a superuser
+Make several admin posts
+Make a home page that displays posts in chronological order
+Create a form for new posts
+Create a form for editing posts.
