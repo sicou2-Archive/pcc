@@ -1,4 +1,4 @@
-Django Project called Blog
+xxx Django Project called Blog
 Create app called blogs in Blog
 Create a model called BlogPost
 BlogPost will include fields: title, text, date_added
