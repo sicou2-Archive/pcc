@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'a$$l95g9yj2@cd7*aj68+39kjvi)4la2_k*xtv_a$7cgc^i_f#'
+SECRET_KEY = '*tC?!2D4cDcoPqR?Zh,dY+qR13mFW5yssb|UPM93x0~8eGtEDq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,6 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Blog apps
+    'blogs',
+
+
+    # Default Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
