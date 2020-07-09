@@ -5,5 +5,6 @@ xxx BlogPost will include fields: title, text, date_added
 xxx Create a superuser
 xxx Make several admin posts
 xxx Make a home page that displays posts in chronological order
-Create a form for new posts
+xxx Create a form for new posts
+# STOPPED NEED TO FORMAT THE FORM BETTER
 Create a form for editing posts.
