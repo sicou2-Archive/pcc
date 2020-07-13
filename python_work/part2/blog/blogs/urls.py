@@ -12,5 +12,5 @@ urlpatterns = [
     # New Blog Post
     path('new_post/', views.new_post, name='new_post'),
     # Edit Blog Post
-    path('edit_post/', views.edit_post, name='edit_post'),
+    path('edit_post/<int:entry_id>/', views.edit_post, name='edit_post'),
 ]
