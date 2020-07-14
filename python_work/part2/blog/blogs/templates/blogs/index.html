@@ -1,11 +1,15 @@
 {% extends 'blogs/base.html' %}
 
 {% block content %}
+  <ul>
   {% for post in blogs %}
+
     <h2>{{ post.title }}</h2>
     <p>{{ post.text }}</p>
-    <p><a href="{% url 'blogs:edit_post' post %}">Edit {{ post.title}}<p>
+    <p><a href="{% url 'blogs:edit_post' post.id %}">Edit post</a></p>
+
   {% empty %}
     <p>There are no posts on this blog yet.</p>
   {% endfor %}
+  </ul>
 {% endblock content %}
